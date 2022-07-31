@@ -1,0 +1,21 @@
+.content {
+  height: 100%;
+  padding: 1rem 0.5rem 0 0.5rem;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.content::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.timeStamp {
+  font-weight: 500;
+  display: inline;
+  margin-right: 0.5rem;
+}
+
+.message {
+  display: inline;
+}

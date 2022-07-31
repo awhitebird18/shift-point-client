@@ -1,0 +1,20 @@
+.addPosition {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+}
+
+.columns {
+  grid-template-columns: repeat(4, 1fr) repeat(2, 4rem);
+}
+
+.remove {
+  justify-self: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .columns {
+    grid-template-columns: 1.5fr 1fr repeat(2, 4rem);
+  }
+}

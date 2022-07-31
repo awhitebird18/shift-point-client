@@ -1,0 +1,24 @@
+.columns {
+  grid-template-columns: repeat(5, 1fr) 5rem;
+}
+
+.centeredHeading {
+  text-align: center;
+}
+
+.addOvertimeRule {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.5rem;
+}
+
+.remove {
+  justify-self: center;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .columns {
+    grid-template-columns: repeat(3, 1fr) 5rem;
+  }
+}

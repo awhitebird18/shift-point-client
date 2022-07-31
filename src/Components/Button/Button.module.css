@@ -1,0 +1,41 @@
+.button {
+  min-width: 4rem;
+  width: 100%;
+  height: 100%;
+  /* background-color: #1890ff; */
+  background-color: var(--color-primary);
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1rem;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.button:hover .buttonOverlay {
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.buttonOverlay {
+  transition: 0.3s opacity ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  opacity: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    font-size: 0.8rem;
+    width: 100%;
+    /* padding: 0.25rem; */
+    min-width: 3rem;
+  }
+}

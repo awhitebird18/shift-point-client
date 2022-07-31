@@ -1,0 +1,26 @@
+.columns {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.title {
+  font-weight: 400;
+}
+
+.button {
+  padding: 0.5rem;
+  margin-top: 1rem;
+  width: 10rem;
+  justify-self: center;
+  margin-left: auto;
+}
+
+.scheduleList {
+  min-height: 15rem;
+  width: 40rem;
+}
+
+.buttonSection {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}

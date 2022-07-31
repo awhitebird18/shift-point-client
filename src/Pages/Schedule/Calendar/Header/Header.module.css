@@ -1,0 +1,26 @@
+.row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 2rem;
+  border-bottom: var(--border-main);
+}
+
+.dayHeader {
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem;
+}
+
+.icon {
+  font-weight: 700;
+  color: rgb(184, 184, 184) !important;
+}
+
+.icon:hover {
+  cursor: pointer;
+  color: #000 !important;
+}

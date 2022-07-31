@@ -1,0 +1,77 @@
+$red: #f79393;
+$volcano: #ff9c6e;
+$orange: #ffc069;
+$yellow: #fff566;
+$lime: #d3f261;
+$green: #98ee95;
+$teal: #84efed;
+$blue: #a1a4f5;
+$purple: #b37feb;
+$magenta: #ff85c0;
+$gray: rgb(166, 166, 166);
+
+@mixin shiftStyles($color) {
+  background: rgba($color, 0.2);
+  border: 2px dashed $color;
+  color: darken($color, 50);
+  border-radius: 5px;
+  padding: 0.25rem 0.4rem;
+  font-size: 0.8rem;
+  height: 3.5rem;
+
+  &.published {
+    background: $color;
+    border: none;
+  }
+}
+
+.shift {
+  &.red {
+    @include shiftStyles($red);
+  }
+  &.orange {
+    @include shiftStyles($orange);
+  }
+  &.volcano {
+    @include shiftStyles($volcano);
+  }
+  &.yellow {
+    @include shiftStyles($yellow);
+  }
+  &.lime {
+    @include shiftStyles($lime);
+  }
+  &.teal {
+    @include shiftStyles($teal);
+  }
+  &.green {
+    @include shiftStyles($green);
+  }
+  &.blue {
+    @include shiftStyles($blue);
+  }
+  &.purple {
+    @include shiftStyles($purple);
+  }
+  &.magenta {
+    @include shiftStyles($magenta);
+  }
+
+  &.anotherSchedule {
+    @include shiftStyles($gray);
+    border: none;
+  }
+
+  &.current {
+    outline: 2px solid var(--text-color);
+  }
+}
+
+.schedule {
+  &.row {
+    display: grid;
+    grid-template-columns: 14rem repeat(7, minmax(7rem, 1fr));
+    align-items: center;
+    justify-content: flex-start;
+  }
+}

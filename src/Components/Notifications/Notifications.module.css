@@ -1,0 +1,29 @@
+.container {
+  width: 15rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+.notification {
+  animation-name: slidein;
+  animation-duration: 0.5s;
+  border-radius: 0.5rem;
+  border: var(--border-main);
+  font-size: 2rem;
+  box-shadow: var(--boxshadow-main);
+  padding: 0.5rem 1rem;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}

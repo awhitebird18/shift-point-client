@@ -1,0 +1,74 @@
+.row {
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.row:hover {
+  background: rgba(199, 199, 199, 0.116);
+}
+
+.employeeCard {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  height: 4rem;
+}
+
+.employeeImage {
+  height: 100%;
+}
+
+.imageContainer {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.employeeInfo {
+  display: flex;
+  align-items: center;
+  align-self: start;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.employeeInfo:hover .moreOptions {
+  opacity: 1;
+}
+
+.moreOptions {
+  margin-top: 0.3rem;
+  font-size: 1.3rem;
+  color: #8c8c8c;
+  opacity: 0;
+  position: relative;
+}
+
+.moreOptions:hover {
+  cursor: pointer;
+}
+
+.employeeName {
+  margin-right: auto;
+}
+
+.extendedEmployeeInfo {
+  font-size: 1rem;
+  color: #000;
+  position: absolute;
+  background: #fff;
+  box-shadow: var(--boxshadow-main);
+  z-index: 1;
+  top: 2rem;
+  right: 0;
+  padding: 0.5rem;
+  width: 10rem;
+}

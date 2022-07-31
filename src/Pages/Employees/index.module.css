@@ -1,0 +1,5 @@
+.container {
+  height: 100%;
+  border-radius: var(--section-border-radius);
+  min-height: 40rem;
+}

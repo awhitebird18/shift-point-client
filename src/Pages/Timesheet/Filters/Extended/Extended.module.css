@@ -1,0 +1,32 @@
+.container {
+  padding: 1rem;
+}
+
+.filterRow {
+  display: grid;
+  grid-template-columns: 10rem 10rem 2fr 1fr;
+  gap: 1rem;
+  /* margin-bottom: 1rem; */
+}
+
+.filterActions {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.addIcon {
+  color: #1890ff;
+  font-size: 1.7rem;
+}
+
+.addIcon:hover {
+  cursor: pointer;
+  color: rgb(46, 121, 218);
+}
+
+.removeIcon {
+  font-size: 1.3rem;
+  color: var(--color-text-lightGray);
+}

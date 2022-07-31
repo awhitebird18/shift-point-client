@@ -1,0 +1,20 @@
+.formActions {
+  display: flex;
+  height: 2rem;
+  gap: 1rem;
+}
+
+.colorDisplay {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  border-radius: 50% !important;
+  padding: 0;
+}
+
+.option {
+  display: flex;
+  gap: 1rem;
+  height: 100%;
+  padding: 0.2rem;
+  align-items: center;
+}

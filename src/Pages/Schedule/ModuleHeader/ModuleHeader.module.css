@@ -1,0 +1,107 @@
+.headerTitle {
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  position: static;
+  height: 5rem;
+  padding: 0 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.titleIcon {
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+  color: #434343;
+}
+
+.settingsContainer {
+  height: 3rem;
+  border-radius: 1rem;
+  border: 1px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+}
+
+.settingsContainer:hover {
+  cursor: pointer;
+  background: var(--color-primary-trans);
+}
+
+.settingsIcon {
+  margin-right: 1rem;
+}
+
+.mainFilter {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mainFilterLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.button {
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-text-lightGray);
+  color: var(--color-text-gray);
+  font-size: 1.1rem;
+  height: 100%;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.filterIcon {
+  font-size: 1.4rem;
+  margin-right: 1rem;
+}
+
+.saveIcon {
+  font-size: 1.1rem;
+  margin-right: 1rem;
+}
+
+.scheduleOptions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--boxshadow-main);
+}
+
+.publish {
+  background: #40a9ff;
+  background: var(--color-primary);
+  color: #fff !important;
+}
+.manage {
+  background: #9254de;
+}

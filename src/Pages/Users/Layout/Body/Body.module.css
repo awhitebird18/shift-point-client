@@ -1,0 +1,36 @@
+.body {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+}
+
+@media screen and (max-width: 768px) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sideNav {
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.save {
+  display: flex;
+  right: 0;
+  bottom: 0;
+  padding: 0 1rem 1rem 0;
+  width: 12rem;
+  height: 3rem;
+  margin-left: auto;
+}
+
+.mobileMenuSelect {
+  padding: 1rem;
+  border-bottom: 1px solid var(--color_gray_1);
+  flex-direction: column;
+}

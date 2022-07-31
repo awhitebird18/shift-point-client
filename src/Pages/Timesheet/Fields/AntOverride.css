@@ -1,0 +1,5 @@
+@media screen and (max-width: 1024px) {
+  .ant-input.ant-input-borderless {
+    padding: 0.5rem 0;
+  }
+}

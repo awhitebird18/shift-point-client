@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  padding: 1rem;
+}
+
+.button {
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.nameInput {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}

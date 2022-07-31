@@ -1,0 +1,21 @@
+.container {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  font-weight: 500;
+}
+
+.columns {
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.section {
+  padding: 1rem 0;
+}
+
+.sectionTitle {
+  margin-bottom: 1rem;
+}

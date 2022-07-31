@@ -1,0 +1,8 @@
+.panel {
+  padding: 0.5rem;
+  border-color: var(--color_gray_1) !important;
+}
+
+.panel:last-child {
+  border: 0;
+}

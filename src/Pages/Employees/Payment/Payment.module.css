@@ -1,0 +1,22 @@
+.columns {
+  grid-template-columns: 1.5fr repeat(3, 1fr) 6rem;
+}
+
+@media (max-width: 768px) {
+  .columns {
+    grid-template-columns: 1.5fr 1fr;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.formActions {
+  display: flex;
+  height: 2rem;
+  gap: 1rem;
+  width: 10rem;
+  margin-left: auto;
+}

@@ -1,0 +1,16 @@
+.columns {
+  grid-template-columns: repeat(5, 1fr) 5rem;
+}
+
+@media (max-width: 768px) {
+  .columns {
+    grid-template-columns: 1fr 5rem;
+  }
+}
+
+.icon {
+  justify-self: center;
+  text-align: center;
+  height: 2rem;
+  width: 100%;
+}

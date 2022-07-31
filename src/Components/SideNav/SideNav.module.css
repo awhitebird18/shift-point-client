@@ -1,0 +1,12 @@
+.sideNavMenu {
+  padding-left: 0.6rem;
+  height: 100%;
+  padding-top: 0.5rem;
+  border-right: var(--border-main);
+  box-shadow: var(--boxshadow-main);
+}
+
+.header {
+  margin: 0.5rem 0 0;
+  color: inherit;
+}

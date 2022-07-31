@@ -1,0 +1,18 @@
+.tile {
+  height: 2.5rem;
+  border-left: var(--border-main);
+  border-top: var(--border-main);
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  font-size: 0.8rem;
+}
+
+.first {
+  border-left: 0;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 14rem repeat(7, minmax(7rem, 1fr));
+}

@@ -1,0 +1,20 @@
+.container {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  border-bottom: var(--border-main);
+}
+
+.weekSelector {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+.icon:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,54 @@
+.timecard {
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--boxshadow-main);
+  font-size: 0.8rem;
+  animation-name: slidein;
+  animation-duration: 0.75s;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: var(--timesheet-row);
+  align-items: center;
+  height: 100%;
+}
+
+.header {
+  display: block;
+}
+
+.summary {
+  display: grid;
+  align-items: center;
+  grid-template-columns: var(--timesheet-row-summary);
+  gap: 0.3rem;
+  height: 2rem;
+}
+
+.approvedLabel {
+  text-align: right;
+}
+
+.employeeInfo {
+  margin-bottom: 1rem;
+  justify-content: start;
+}
+
+.employeeInfo span {
+  font-size: 0.9rem;
+}
+
+th {
+  font-weight: 500;
+}
+
+.table {
+  padding: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .table {
+    padding: 0.25rem;
+  }
+}

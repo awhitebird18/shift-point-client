@@ -1,0 +1,15 @@
+.input {
+  width: 18rem;
+  justify-content: flex-end;
+  position: relative;
+  border: var(--border-main);
+  border-radius: 0.1rem;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  background: var(--inputBackground);
+}
+
+.icon {
+  margin-left: auto !important;
+  width: min-content;
+}

@@ -1,0 +1,57 @@
+.main {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 1rem;
+}
+
+.content {
+  padding: 1.5rem;
+  width: 23rem;
+  border-radius: 0.5rem;
+  box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+  position: absolute;
+  bottom: 1rem;
+  justify-self: flex-end;
+}
+
+.title {
+  color: inherit;
+  font-size: 2.3rem;
+}
+
+.formControl {
+  padding: 1rem 0.5rem;
+}
+
+.label {
+  color: #fff;
+  margin: 0.5rem 0;
+  margin-bottom: 1rem;
+}
+
+label {
+  color: inherit !important;
+}
+
+.ant-input-affix-wrapper {
+  background-color: inherit !important;
+}

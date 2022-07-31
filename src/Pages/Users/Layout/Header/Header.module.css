@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: var(--border-main);
+  padding: 1rem;
+}
+
+.formControls {
+  display: flex;
+  align-items: center;
+  max-width: 16rem;
+  flex-grow: 1;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+}
+
+.imageWrapper {
+  height: 3rem;
+  width: 3rem;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(246, 246, 246);
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+@media screen and (max-width: 650px) {
+  .title {
+    display: none;
+  }
+}

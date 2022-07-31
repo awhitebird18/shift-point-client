@@ -1,0 +1,60 @@
+.mainFilter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainFilterLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-grow: 1;
+  max-width: 35rem;
+}
+
+.filter {
+  max-width: 7rem;
+  flex-grow: 1;
+}
+
+.icon {
+  font-size: 1.4rem;
+  margin-right: 1rem;
+}
+
+.sort {
+  flex-grow: 1;
+  max-width: 14rem;
+}
+.payPeriod {
+  flex-grow: 1;
+  max-width: 13rem;
+  width: 100%;
+}
+
+.saveButton {
+  font-size: 1.1rem;
+}
+
+.rightFilterSection {
+  display: flex;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .icon {
+    font-size: 1rem !important;
+  }
+
+  .mainFilterLeft {
+    max-width: 8rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .saveButton {
+    font-size: 0.6rem;
+    padding: 0;
+  }
+}

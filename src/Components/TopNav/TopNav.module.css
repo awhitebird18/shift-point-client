@@ -1,0 +1,87 @@
+.topNav {
+  width: 100%;
+  border-bottom: var(--border-main);
+  height: 4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 1rem 0 0.5rem;
+  box-shadow: var(--boxshadow-main);
+}
+
+/* Left Side Nav */
+.leftSide {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  cursor: pointer;
+  max-width: 12.5rem;
+}
+
+.logoIcon {
+  color: var(--color-primary);
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.logoText {
+  margin: 0 !important;
+  margin-left: 0.5rem;
+  font-weight: 500 !important;
+  font-size: 1.8rem;
+  color: inherit;
+}
+
+.navHeaderLogo {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-right: 0.5rem;
+}
+
+/* Right Side Nav */
+.rightSide {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  height: 100%;
+}
+
+.helpIcon {
+  font-size: 1.7rem;
+  color: var(--color_gray_4);
+  cursor: pointer;
+}
+
+.divider {
+  height: 2.2rem;
+  width: 1px;
+  background-color: var(--color_gray_2);
+}
+
+.alerts {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+  .userName {
+    display: none;
+  }
+
+  .navHeader h1 {
+    font-size: 1rem;
+  }
+
+  .navHeaderLogo {
+    font-size: 1.4rem;
+  }
+}

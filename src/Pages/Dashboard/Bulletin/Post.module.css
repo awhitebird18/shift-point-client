@@ -1,0 +1,81 @@
+.post {
+  padding: 0rem 1rem;
+  padding-right: 1.5rem;
+  border-bottom: var(--border-main);
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post:hover {
+  background: var(--color-hover-gray);
+  cursor: pointer;
+}
+
+.author {
+  font-weight: 300;
+}
+
+.postImage {
+  padding-top: 0.25rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.postIcon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.postViewed {
+  font-size: 1.3rem;
+  position: relative;
+  color: var(--color_gray_4);
+}
+
+.postViewed:hover {
+  color: #40a9ff;
+  cursor: pointer;
+}
+
+.postViewedBy {
+  position: absolute;
+  right: 1.4rem;
+  top: 0rem;
+  width: 10rem;
+  background: #fff;
+  box-shadow: var(--boxshadow-main);
+  display: none;
+  flex-direction: column;
+  z-index: 1;
+  cursor: auto;
+  border-radius: 0.2rem;
+}
+
+.postViewed:hover .postViewedBy {
+  display: flex;
+}
+
+.employeeRow {
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  height: 3rem;
+}
+
+.employeeImage {
+  height: 100%;
+}
+
+.imageContainer {
+  margin-right: 0.75rem;
+
+  z-index: 1;
+}
+
+.employeeName {
+  font-size: 0.8rem;
+  color: rgb(103, 103, 103);
+}

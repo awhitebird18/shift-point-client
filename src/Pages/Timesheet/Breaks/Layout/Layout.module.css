@@ -1,0 +1,3 @@
+.columns {
+  grid-template-columns: var(--breaksheet-row);
+}

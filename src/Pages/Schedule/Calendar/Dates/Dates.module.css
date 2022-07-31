@@ -1,0 +1,32 @@
+.calendar {
+  width: 100%;
+}
+
+.week {
+  width: 100%;
+}
+
+.date {
+  width: calc(100% / 7);
+  display: inline-block;
+  text-align: center;
+  padding: 0.25rem;
+  height: calc(18rem / 7);
+  padding-top: 0.55rem;
+}
+
+.otherMonth {
+  color: var(--color_gray_5);
+  color: rgba(141, 141, 141, 0.496);
+}
+
+.currentDate {
+  background: #b5f5ec;
+  border-radius: 50%;
+  color: rgb(25, 25, 25) !important;
+}
+
+.date:hover {
+  background: var(--color_gray_1);
+  color: rgb(25, 25, 25) !important;
+}

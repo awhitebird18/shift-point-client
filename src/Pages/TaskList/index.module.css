@@ -1,0 +1,9 @@
+.container {
+  border-radius: var(--section-border-radius);
+  min-height: 40rem;
+  padding: 1rem;
+}
+
+.subHeader {
+  color: rgb(158, 158, 158);
+}

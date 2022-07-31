@@ -1,0 +1,105 @@
+$breakpoint-mobile: 600px;
+$breakpoint-tablet: 768px;
+$breakpoint-medium: 1024px;
+$breakpoint-large: 1200px;
+
+@mixin list-item($py, $px) {
+  gap: 0.5rem;
+  align-items: center;
+  display: grid;
+  padding: $py $px;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    padding: $py $px - 0.5rem;
+  }
+}
+
+@mixin row() {
+  &:nth-of-type(2n) {
+    // background: var(--color_gray_0);
+    background: rgba(215, 215, 215, 0.15);
+  }
+
+  &:hover {
+    // background: var(--color_gray_1) !important;
+    background: rgba(215, 215, 215, 0.15);
+    cursor: pointer;
+  }
+}
+
+@mixin list-header() {
+  font-weight: 500;
+}
+
+.list-item {
+  &--lg {
+    @include list-item(1rem, 1.25rem);
+    @include row();
+  }
+
+  &--md {
+    @include list-item(0.75rem, 1rem);
+    @include row();
+  }
+
+  &--sm {
+    @include list-item(0.5rem, 0.75rem);
+    @include row();
+  }
+}
+
+.list-header {
+  &--lg {
+    @include list-item(1rem, 1.25rem);
+    font-weight: 500;
+    border-bottom: var(--border-main);
+  }
+
+  &--md {
+    @include list-item(0.75rem, 1rem);
+    font-weight: 500;
+    border-bottom: var(--border-main);
+  }
+
+  &--sm {
+    @include list-item(0.5rem, 0.75rem);
+    font-weight: 500;
+    border-bottom: var(--border-main);
+  }
+}
+
+@media screen and(max-width: $breakpoint-mobile) {
+  .hide--mobile {
+    display: none;
+  }
+}
+
+.show--tablet {
+  display: none;
+}
+
+@media screen and(max-width: $breakpoint-tablet) {
+  .hide--tablet {
+    display: none;
+  }
+
+  .show--tablet {
+    display: flex;
+  }
+}
+
+// .hide-medium {
+//   display: flex;
+// }
+
+@media screen and (max-width: $breakpoint-medium) {
+  .hide--medium {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $breakpoint-large) {
+  .hide--large {
+    display: none;
+  }
+}

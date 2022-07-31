@@ -1,0 +1,15 @@
+export const breakcardSchema = {
+  eeNum: '',
+  breakTypeId: '',
+  hours: '',
+  unpaid: '',
+  auto: '',
+  name: '',
+  start: '',
+  end: '',
+  employeeStart: '',
+  employeeEnd: '',
+  status: '',
+  remove: false,
+  id: null,
+};

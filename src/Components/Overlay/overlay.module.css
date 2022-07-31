@@ -1,0 +1,33 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.426);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.circle {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: 0.25rem solid rgb(47, 47, 47);
+  border-top-color: var(--color-primary-trans);
+  animation: spinner 0.5s linear infinite;
+  z-index: 201;
+  background: transparent;
+}

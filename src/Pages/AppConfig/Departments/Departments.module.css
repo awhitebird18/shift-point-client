@@ -1,0 +1,33 @@
+.columns {
+  grid-template-columns: 0.5fr repeat(2, 1fr) repeat(2, 5rem);
+}
+
+@media screen and (max-width: 768px) {
+  .columns {
+    grid-template-columns: 0.5fr repeat(2, 1fr) repeat(2, 3rem);
+  }
+}
+
+.departmentName {
+  text-align: start;
+}
+
+.button {
+  text-align: center;
+}
+
+.addDepartment {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+}
+
+.departmentName {
+  text-align: start;
+  padding-left: 0.75rem;
+}
+
+.center {
+  justify-self: center;
+  text-align: center;
+}

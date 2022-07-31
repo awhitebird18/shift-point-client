@@ -1,0 +1,39 @@
+.dailyShifts {
+  padding: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  height: 100%;
+  z-index: 1;
+  background: inherit !important;
+  border-top: var(--border-main);
+  border-left: var(--border-main);
+}
+
+.dailyShifts:hover .shiftOptions {
+  display: flex;
+}
+
+.shiftOptions {
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  top: 0.25rem;
+  right: 0.25rem;
+  border-radius: 0.3rem;
+  box-shadow: var(--boxshadow-main);
+}
+
+.shiftAction {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shiftAction:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.05) 0 0);
+  cursor: pointer;
+}

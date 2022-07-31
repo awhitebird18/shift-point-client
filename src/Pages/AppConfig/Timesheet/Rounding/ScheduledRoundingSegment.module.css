@@ -1,0 +1,54 @@
+.scheduledPunchLabel {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, 1fr);
+  align-items: center;
+  grid-gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.punchTransaction {
+  padding: 2rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.title {
+  font-weight: 500;
+}
+
+.scheduledGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 1rem;
+}
+
+.roundingGrid {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, 1fr);
+  grid-template-rows: repeat(3, 2.5rem);
+  grid-gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.roundingGrid div {
+  justify-self: center;
+}
+
+.punchTransaction {
+  padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .emptyTile {
+    display: none;
+  }
+
+  .roundingGrid {
+    grid-gap: 0.5rem;
+  }
+
+  .scheduledPunchLabel {
+    grid-gap: 0.5rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

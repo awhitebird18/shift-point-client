@@ -1,0 +1,38 @@
+@use "./genericList.scss";
+@use "./animation.scss";
+@use "./schedule.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap");
+
+body {
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 1024px) {
+  body,
+  input,
+  span,
+  td,
+  th {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body,
+  input,
+  span,
+  td,
+  th {
+    font-size: 0.7rem;
+  }
+}
+// @media screen and (max-width: 600px) {
+//   body,
+//   input,
+//   span,
+//   div,
+//   td {
+//     font-size: 0.6rem !important;
+//   }
+// }

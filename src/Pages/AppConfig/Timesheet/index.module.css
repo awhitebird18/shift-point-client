@@ -1,0 +1,9 @@
+.header {
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+  .menu {
+    display: none;
+  }
+}

@@ -1,0 +1,16 @@
+.userImageCont {
+  background: #9254de;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.text {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+}

@@ -1,0 +1,23 @@
+.row {
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 1fr;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.header {
+  font-weight: 500;
+  gap: 1rem;
+}
+
+.entry {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.entry:last-child {
+  border-bottom: 0;
+}
+
+.entry:hover {
+  background: var(--color-hover-gray);
+}

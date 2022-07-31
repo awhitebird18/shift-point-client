@@ -1,0 +1,43 @@
+.formGrid221 {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr) 1fr;
+  gap: 1rem;
+}
+
+.formGrid32 {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1rem;
+}
+
+.formGrid22 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.formGrid111 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .formGrid111,
+  .formGrid22 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.save {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.panel {
+  padding: 0.5rem;
+}
+
+.panel:last-child {
+  border: 0 !important;
+}

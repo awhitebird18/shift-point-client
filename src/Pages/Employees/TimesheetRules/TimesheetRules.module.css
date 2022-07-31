@@ -1,0 +1,16 @@
+.container {
+  padding: 1rem;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.title {
+  margin-bottom: 1rem;
+}

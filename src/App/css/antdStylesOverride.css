@@ -1,0 +1,95 @@
+.ant-statistic {
+  color: inherit;
+}
+
+.ant-select-selector {
+  background-color: inherit !important;
+  border: var(--border-main) !important;
+}
+
+.ant-menu {
+  background-color: inherit !important;
+  color: inherit !important;
+  height: 100%;
+}
+
+.ant-menu-item a {
+  color: inherit !important;
+}
+
+.ant-select > div {
+  color: black !important;
+}
+
+.ant-select,
+.ant-input {
+  background: var(--inputBackground);
+}
+
+.ant-select > a {
+  background: red !important;
+}
+
+.ant-select-selection {
+  background: green !important;
+}
+
+.ant-layout {
+  background: none !important;
+}
+
+.ant-typography,
+.ant-timeline,
+.ant-form-item-label,
+.ant-form,
+input {
+  color: var(--text-color);
+}
+
+.ant-collapse-header {
+  color: var(--text-color) !important;
+}
+
+.ant-collapse-item {
+  border-bottom: var(--border-main) !important;
+}
+
+.ant-menu-vertical {
+  border-right: var(--border-main);
+}
+
+.ant-select-selection-placeholder {
+  color: #1f1f1f !important;
+}
+
+.ant-form .ant-form-item {
+  overflow: hidden !important;
+}
+
+.ant-btn span {
+  color: rgb(38, 38, 38) !important;
+}
+
+.ant-menu-horizontal > li > span > a {
+  color: var(--text-color) !important;
+}
+
+.ant-menu-vertical > li.ant-menu-item-selected > span > a {
+  color: black !important;
+}
+
+.ant-select-selection-placeholder {
+  color: var(--text-color) !important;
+}
+
+label {
+  font-weight: 500;
+}
+
+.ant-dropdown-menu {
+  background-color: var(--sectionmain) !important;
+}
+
+.ant-dropdown-menu-item-active .ant-dropdown-menu-title-content {
+  color: #000 !important;
+}

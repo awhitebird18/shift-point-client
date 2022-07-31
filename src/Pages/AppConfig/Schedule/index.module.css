@@ -1,0 +1,32 @@
+.container {
+  margin: 0.5rem;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid var(--color-border);
+  max-width: 1000px;
+  min-width: 800px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.sideNav {
+  background: #fff;
+  height: 100%;
+  border-right: 1px solid var(--color-border);
+}
+
+.mainContent {
+  width: 100%;
+  padding: 0 0.5rem;
+  height: 30rem;
+}
+
+.header {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.title {
+  font-weight: 400;
+}

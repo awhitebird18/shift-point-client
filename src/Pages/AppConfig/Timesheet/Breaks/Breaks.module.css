@@ -1,0 +1,36 @@
+.columns {
+  grid-template-columns: repeat(4, 1fr) 9rem;
+}
+
+@media screen and (max-width: 768px) {
+  .columns {
+    grid-template-columns: repeat(4, 1fr) min-content;
+  }
+}
+
+.addBreakTemplate {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1.5rem;
+}
+
+/* Modal Styles */
+.container {
+  min-height: 20rem;
+}
+
+.breakSection {
+  width: 100%;
+  border-left: 0.5rem solid #dedede;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.deleteBreak {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  margin-bottom: 1rem;
+}

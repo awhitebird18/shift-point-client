@@ -1,0 +1,35 @@
+.container {
+  padding: 1rem;
+}
+
+.body {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  max-width: 35rem;
+  margin: 0 auto;
+}
+
+.roundingGrid {
+  display: grid;
+  grid-template-columns: 0.75fr repeat(2, 1fr);
+  grid-template-rows: repeat(3, 2.5rem);
+  grid-gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.roundingGrid div {
+  justify-self: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .roundingGrid {
+    grid-gap: 0.25rem;
+  }
+}

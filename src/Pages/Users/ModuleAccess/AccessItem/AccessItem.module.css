@@ -1,0 +1,13 @@
+.accessItems_row {
+  display: flex;
+  gap: 1rem;
+}
+
+.checkboxGroup {
+  width: 12rem;
+  display: flex;
+}
+
+.accessItemTitle {
+  margin-left: 0.5rem;
+}

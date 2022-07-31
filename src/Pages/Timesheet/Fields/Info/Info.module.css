@@ -1,0 +1,57 @@
+.infoIcon {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  border-radius: 0.2rem;
+  border-color: rgb(217, 217, 217);
+}
+
+.infoIconActive {
+  background: rgb(208, 208, 208);
+}
+
+.infoIcon:hover .dot {
+  transform: scale(1.2);
+}
+
+.dot {
+  width: 0.25rem;
+  height: 0.25rem;
+  background: rgb(208, 208, 208);
+  border-radius: 50%;
+}
+
+.dotActive {
+  background: #fff;
+}
+
+.premiumContainer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  top: -0.3rem;
+  right: -0.3rem;
+  width: 1rem;
+  height: 100%;
+}
+
+.premiumIcon {
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #1890ff;
+  /* background: #2f54eb; */
+  border: 1px solid rgb(255, 255, 255);
+}

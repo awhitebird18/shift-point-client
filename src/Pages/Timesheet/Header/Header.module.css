@@ -1,0 +1,44 @@
+.employeeImage {
+  height: 100%;
+}
+
+.imageContainer {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 0.75rem;
+}
+
+.employeeInfo {
+  display: flex;
+  align-items: center;
+  border-bottom: var(--border-main);
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.employeeName {
+  margin: 0;
+}
+
+.employeeDetails {
+  color: var(--color_gray_4);
+  font-weight: 300;
+}
+
+@media screen and (max-width: 768px) {
+  .imageContainer {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .employeeInfo {
+    margin-bottom: 0.5rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .employeeName {
+    font-size: 0.7rem;
+  }
+}

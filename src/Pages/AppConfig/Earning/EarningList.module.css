@@ -1,0 +1,27 @@
+.columns {
+  grid-template-columns: repeat(2, 1.5fr) repeat(3, 1fr) repeat(2, 4rem);
+}
+
+@media screen and (max-width: 768px) {
+  .columns {
+    grid-template-columns: repeat(2, 1.5fr) repeat(2, 3rem);
+  }
+}
+
+.addEarning {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+}
+
+.icon {
+  justify-self: center;
+  text-align: center;
+  align-items: center;
+  display: flex;
+}
+
+.name {
+  text-align: start;
+  padding-left: 0.75rem;
+}

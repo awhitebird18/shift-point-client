@@ -1,0 +1,92 @@
+.breaks {
+  &.row {
+    width: 100%;
+    height: 2.5rem;
+    margin-bottom: 0.3rem;
+    display: grid;
+    align-items: center;
+    gap: 0.2rem;
+
+    &:hover {
+      background: var(--color-hover-gray);
+    }
+
+    & > div {
+      text-align: center;
+    }
+  }
+
+  &.header {
+    font-weight: 500;
+  }
+
+  & > td {
+    height: 100%;
+  }
+}
+
+.timecard {
+  &.row {
+    display: grid;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0;
+    position: relative;
+  }
+
+  &.row:hover {
+    background: var(--color-hover-gray);
+  }
+
+  &.premiumContainer {
+    position: absolute;
+    right: -0.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: grid;
+    grid-template-columns: repeat(2, 1rem);
+    grid-template-rows: repeat(2, 1rem);
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &.columns {
+    grid-template-columns:
+      6rem repeat(2, minmax(8rem, 2fr))
+      repeat(3, minmax(5.5rem, 1fr)) minmax(4rem, 1fr) minmax(5rem, 1fr) 2.125rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    &.columns {
+      grid-template-columns:
+        3.5rem repeat(2, minmax(8rem, 2fr))
+        repeat(3, minmax(5.5rem, 1fr)) 3rem 2.125rem;
+    }
+
+    .summary {
+      grid-template-columns:
+        3.5rem repeat(2, minmax(8rem, 2fr))
+        minmax(11rem, 2fr) minmax(5.5rem, 1fr) 3rem 2.125rem;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &.columns {
+      grid-template-columns: 2.5rem 8rem repeat(3, 1fr) 2.5rem 2rem;
+    }
+
+    .summary {
+      grid-template-columns: 2.5rem 8rem 2fr 1fr 2.5rem 2rem;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    &.columns {
+      grid-template-columns: 2.5rem repeat(3, 1fr) 2.5rem 2rem;
+    }
+
+    .summary {
+      grid-template-columns: 2.5rem 2fr 1fr 2.5rem 2rem;
+    }
+  }
+}

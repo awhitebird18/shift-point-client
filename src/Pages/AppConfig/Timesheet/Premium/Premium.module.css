@@ -1,0 +1,20 @@
+.addPremium {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1.5rem;
+}
+
+.columns {
+  grid-template-columns: repeat(3, 1fr) repeat(2, 4rem);
+}
+
+.center {
+  justify-self: center;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .columns {
+    grid-template-columns: repeat(2, 1fr) repeat(2, 4rem);
+  }
+}

@@ -1,0 +1,21 @@
+/* Used to style dark mode icon */
+/* DEV: Can move this to css module */
+#darkMode {
+  border: none;
+  height: 2rem;
+  width: 2rem;
+
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  /* border: var(--border-main); */
+}
+
+.dark #darkMode {
+  background: rgb(85, 11, 154);
+  box-shadow: 6px 1px 4px rgba(217, 191, 0, 0.789) inset;
+}
+.light #darkMode {
+  background: rgb(237, 197, 34);
+  box-shadow: -6px 1px 4px rgba(2, 48, 186, 0.636) inset;
+}
