@@ -1,7 +1,6 @@
 .container {
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  height: calc(100% - 3rem);
+  gap: 1rem;
 }
 
 .addBulletinIcon {
@@ -11,4 +10,8 @@
 
 .addBulletinIcon:hover {
   cursor: pointer;
+}
+
+.viewMoreText {
+  text-align: center;
 }

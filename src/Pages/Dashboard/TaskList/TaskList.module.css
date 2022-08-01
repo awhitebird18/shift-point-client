@@ -1,0 +1,29 @@
+.container {
+  width: 100%;
+}
+
+.columns {
+  grid-template-columns: 2fr repeat(5, 1fr);
+}
+
+.columns th {
+  text-align: left;
+}
+
+.due {
+  border: 1px solid rgb(255, 0, 0);
+  width: 5rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  color: rgb(217, 0, 0) !important;
+  background: rgba(255, 0, 0, 0.25);
+}
+
+.complete {
+  border: 1px solid rgb(0, 166, 6);
+  width: 5rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  color: rgb(34, 169, 0) !important;
+  background: rgba(77, 255, 0, 0.25);
+}

@@ -28,21 +28,16 @@ const Bulletin = () => {
   };
 
   return (
-    <>
-      <TileLayout
-        title="Company Bulletins"
-        headerComponent={<BsClipboardPlus className={styles.addBulletinIcon} />}
-        onHeaderClick={handleAddBulletin}
-        contentStyles={{ display: "grid", gridTemplateRows: "repeat(3, 1fr)" }}
-      >
-        {bulletins?.map((post, index) => {
-          if (index > 2) {
-            return;
-          }
-          return <Post key={index} post={post} setBulletins={setBulletins} />;
-        })}
-      </TileLayout>
-    </>
+    <div className={styles.container}>
+      {bulletins?.map((post, index) => {
+        if (index > 2) {
+          return;
+        }
+        return <Post key={index} post={post} setBulletins={setBulletins} />;
+      })}
+
+      <p className={styles.viewMoreText}>View More Bulletins</p>
+    </div>
   );
 };
 

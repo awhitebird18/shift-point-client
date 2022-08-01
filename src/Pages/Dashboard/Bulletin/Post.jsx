@@ -1,12 +1,15 @@
 import { actionCreators } from "../../../State";
 import { bindActionCreators } from "redux";
 import { useDispatch } from "react-redux";
+import { Avatar, Divider, Tooltip } from "antd";
 
 // Components
 import { useFetch } from "../../../Hooks";
 import { Image, Transformation } from "cloudinary-react";
 import userOutline from "../../../Assets/userOutline.png";
-import { BsEyeFill } from "react-icons/bs";
+import { BsEyeFill, BsEye } from "react-icons/bs";
+
+import { AntDesignOutlined, UserOutlined } from "@ant-design/icons";
 
 // Styles
 import styles from "./Post.module.css";
@@ -27,15 +30,50 @@ const Post = ({ post, setBulletins }) => {
   };
 
   return (
-    <div className={styles.post} onClick={handleEditBulletin}>
+    <section className={styles.post} onClick={handleEditBulletin}>
+      <h3 className={styles.title}>{post.title}</h3>
       <div className={styles.info}>
-        <h3>{post.title}</h3>
-        <h4
-          className={`color-gray--4 ${styles.author}`}
-        >{`${post.author} - ${post.createdAt}`}</h4>
+        <div>
+          <h4>Published By:</h4>
+          <h4 className={`${styles.author}`}>{`${post.author}`}</h4>
+        </div>
+        <div>
+          <h4>Publish Date:</h4>
+          <h4 className={styles.author}>{`${post.createdAt}`}</h4>
+        </div>
       </div>
-      <div className={`color-gray--4 ${styles.postViewed}`}>
-        <BsEyeFill />
+      <div className={styles.postViewed}>
+        <Avatar.Group
+          maxCount={2}
+          maxStyle={{
+            color: "#f56a00",
+            backgroundColor: "#fde3cf",
+          }}
+        >
+          <Avatar src="https://joeschmoe.io/api/v1/random" />
+          <Avatar
+            style={{
+              backgroundColor: "#f56a00",
+            }}
+          >
+            K
+          </Avatar>
+          <Tooltip title="Ant User" placement="top">
+            <Avatar
+              style={{
+                backgroundColor: "#87d068",
+              }}
+              icon={<UserOutlined />}
+            />
+          </Tooltip>
+          <Avatar
+            style={{
+              backgroundColor: "#1890ff",
+            }}
+            icon={<AntDesignOutlined />}
+          />
+        </Avatar.Group>
+        {/* <BsEye size={25} color="#fff" /> */}
         <div className={styles.postViewedBy}>
           {post.seen?.length > 0 && employees?.length > 0 ? (
             post.seen.map((employeeId, index) => {
@@ -70,7 +108,7 @@ const Post = ({ post, setBulletins }) => {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

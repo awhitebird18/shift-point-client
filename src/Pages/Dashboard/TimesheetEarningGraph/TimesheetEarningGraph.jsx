@@ -40,12 +40,12 @@ const TimesheetEarningGraph = () => {
                 label: "Total Hours",
                 data: earningHours,
                 backgroundColor: "#40a9ff",
+                borderRadius: 5,
               },
             ],
           }}
           options={{
             response: true,
-
             maintainAspectRatio: false,
 
             scales: {
@@ -55,6 +55,7 @@ const TimesheetEarningGraph = () => {
               },
               y: {
                 beginsAtZero: true,
+                borderWidth: 0,
               },
             },
           }}

@@ -5,23 +5,52 @@
   grid-row: 2/-1;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: start;
+  height: calc(100vh - 6rem);
 }
 
-.tiles {
+.timesheetMiniStats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  grid-column: 1/2;
-  grid-row: 1/2;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.leftSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.rightSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-left: var(--border-main);
+  padding: 0 1rem;
+  height: calc(100% - 1rem);
+  border-radius: 0.5rem;
+}
+
+.dashHeader {
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.graphs {
+  display: flex;
+  gap: 1.5rem;
+  position: relative;
 }
 
 .tile {
-  height: 18rem;
-  border-radius: 0.5rem;
-  overflow: hidden;
+  border-radius: var(--section-border-radius) !important;
   box-shadow: var(--boxshadow-main);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  min-height: 20rem;
 }
 
 .tileFull {
@@ -37,16 +66,51 @@
   overflow: hidden;
 }
 
+.chatWrapper {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.chat {
+  position: relative;
+  transform: rotateY(180deg);
+  color: var(--color-primary) !important;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.chatShadow {
+  position: absolute;
+  bottom: -0.3rem;
+  left: 55%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 2rem;
+  padding: 1rem;
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0) 80%
+  );
+}
+
 @media (max-width: 1200px) {
   .dashboard {
     grid-template-columns: 1fr;
   }
 
-  .bulletin {
+  .rightSection {
+    border-left: 0;
+    padding: 0;
+  }
+
+  /* .bulletin {
     grid-template-columns: 1fr;
     grid-column: 1/-1;
     grid-row: 2/-1;
-  }
+  } */
 
   .tiles {
     grid-row: 1/2;
@@ -57,13 +121,18 @@
   .tiles {
     grid-template-columns: 1fr;
   }
-  .bulletin {
-    grid-row: 8/-1;
-    grid-column: -2/-1;
+
+  .graphs {
+    flex-direction: column;
   }
 
-  .dashboard {
-    grid-template-rows: repeat(7, 18rem);
+  /* .bulletin {
+    grid-row: 8/-1;
+    grid-column: -2/-1;
+  } */
+
+  .leftSection {
+    /* grid-template-rows: repeat(7, 18rem); */
     grid-template-columns: 1fr;
   }
 }

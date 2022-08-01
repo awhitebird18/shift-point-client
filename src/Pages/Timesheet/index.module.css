@@ -7,7 +7,7 @@
   animation-name: slidein;
   animation-duration: 1.5s;
   min-width: 100%;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
 }
 
 @keyframes slidein {

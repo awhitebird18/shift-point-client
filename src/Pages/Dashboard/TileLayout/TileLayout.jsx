@@ -18,8 +18,6 @@ const TileContainer = ({
         <div className={styles.iconContainer} onClick={onHeaderClick}>
           {headerComponent}
         </div>
-
-        <div className={styles.header_border}></div>
       </div>
       <div className={styles.content} style={contentStyles}>
         {children}

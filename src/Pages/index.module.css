@@ -4,7 +4,8 @@
   width: calc(100% - 175px);
   left: 175px;
   transition: left 0.26s ease-out;
-  min-height: 100%;
+  max-height: calc(100vh - 4rem);
+  overflow-y: scroll;
 }
 
 .container::-webkit-scrollbar {
