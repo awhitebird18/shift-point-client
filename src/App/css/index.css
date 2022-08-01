@@ -49,6 +49,7 @@
 body.light {
   --background-color: var(--color_gray_0);
   --text-color: var(--color_gray_8);
+  --text-color-highlight: #000;
   --text-color-reverse: var(--color_gray_2);
   --sectionmain: var(--color_white);
   --inputBackground: var(--color_white);
@@ -60,6 +61,7 @@ body.light {
 
 body.dark {
   --background-color: var(--blue);
+  --text-color-highlight: #fff;
   --text-color: var(--color_gray_2);
   --text-color-reverse: var(--color_gray_8);
   --sectionmain: var(--section);
@@ -101,7 +103,7 @@ body ul {
 }
 
 .header-gray {
-  color: var(--color_gray_3);
+  color: var(--color_gray_4);
 }
 
 h1,

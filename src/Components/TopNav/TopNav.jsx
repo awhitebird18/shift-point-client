@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router";
 
 // Components
-import { BsQuestionCircle, BsSlack } from "react-icons/bs";
 import User from "./User/User";
 import Notifications from "./Notifications/Notifications";
 import DarkMode from "../../Components/DarkMode/DarkMode";
+import brandLogo from "../../Assets/brandLogo.png";
 
 // Styles
 import styles from "./TopNav.module.css";
@@ -19,9 +19,11 @@ const TopNav = ({ user }) => {
   return (
     <nav className={styles.topNav}>
       <div className={styles.leftSide} onClick={handleNavigateHome}>
-        <BsSlack className={styles.logoIcon} />
+        <div className={styles.logoWrapper}>
+          <img src={brandLogo} alt="/" className={styles.logo} />
+        </div>
 
-        <h1 className={styles.logoText}>TIME QP</h1>
+        <h1 className={styles.logoText}>Shift Point</h1>
       </div>
 
       <div className={styles.rightSide}>

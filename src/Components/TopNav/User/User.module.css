@@ -11,19 +11,19 @@
 }
 
 .usernameText {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0;
+  padding-top: 0.3rem;
 }
 
 .profilePictureWrapper {
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-left: 0.25rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin: 0 0.25rem;
 }
 
 .chevron {
-  font-size: 1rem;
-  color: var(--color_gray_5);
+  font-size: 1.3rem;
 }
 
 /* Media Queries */

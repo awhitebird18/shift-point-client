@@ -1,6 +1,6 @@
 // Components
-import { Typography, Menu, Dropdown } from "antd";
-const { Text } = Typography;
+import { Menu, Dropdown } from "antd";
+
 import ProfilePicture from "../../../Components/ProfilePicture/ProfilePicture";
 import { BsChevronDown } from "react-icons/bs";
 
@@ -19,9 +19,9 @@ const CurrentUser = ({ user }) => {
   return (
     <Dropdown overlay={menu} placement="bottomRight" trigger={["click"]}>
       <div className={styles.userInfo}>
-        <span
+        <p
           className={styles.usernameText}
-        >{`${user.firstName} ${user.lastName}`}</span>
+        >{`${user.firstName} ${user.lastName}`}</p>
 
         <div className={styles.profilePictureWrapper}>
           <ProfilePicture user={user} />
