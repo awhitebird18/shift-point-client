@@ -43,7 +43,7 @@ const EarningField = ({ timedata, earningOptions, date, employee }) => {
 
   return (
     <Select
-      className={`border--gray ${styles.field}`}
+      className={`${styles.field}`}
       value={earning}
       bordered={false}
       onChange={(e) => inputChangeHandler(e)}

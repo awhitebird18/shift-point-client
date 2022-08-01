@@ -24,7 +24,7 @@ const RateField = ({ timedata }) => {
 
   return (
     <Input
-      className={`border--gray hide-screen--small ${styles.field} ${styles.text}`}
+      className={`hide-screen--small ${styles.field} ${styles.text}`}
       bordered={false}
       value={timedata.rate}
       onChange={inputChangeHandler}

@@ -2,9 +2,43 @@
   color: inherit;
 }
 
-.ant-select-selector {
-  background-color: inherit !important;
+.ant-select,
+.ant-input,
+.ant-picker-range {
   border: var(--border-main) !important;
+  border-radius: 0.3rem !important;
+}
+
+@media screen and (max-width: 700px) {
+  .ant-col {
+    min-height: 32px !important;
+  }
+}
+
+.ant-radio-button-wrapper,
+.ant-picker-range {
+  background: var(--inputBackground);
+}
+
+.ant-picker-panel-container {
+  background: var(--sectionmain);
+}
+
+.ant-picker-content th {
+  color: var(--color_gray_4);
+}
+
+.ant-radio-button-checked {
+  background: var(--inputBackground);
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):focus-within {
+  box-shadow: 0 0 0 3px #054fce;
+}
+
+.ant-select-selector {
+  background-color: var(--inputBackground) !important;
+  border: none !important;
 }
 
 .ant-menu {
@@ -92,4 +126,24 @@ label {
 
 .ant-dropdown-menu-item-active .ant-dropdown-menu-title-content {
   color: #000 !important;
+}
+
+.ant-input-affix-wrapper {
+  background: var(--inputBackground) !important;
+}
+
+.ant-input-password-icon {
+  color: var(--text-color) !important;
+}
+
+.ant-btn span {
+  color: #fff !important;
+}
+
+.ant-select-selector {
+  text-align: left;
+}
+
+.ant-select-arrow {
+  color: var(--text-color);
 }

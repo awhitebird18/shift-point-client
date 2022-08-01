@@ -7,7 +7,6 @@ import { Input } from "antd";
 
 // Styles
 import styles from "../InputStyles.module.css";
-import "../AntOverride.css";
 
 // Functions
 import { updateTime, timeIsDateObj } from "../../Functions/timecardFunctions";
@@ -46,7 +45,7 @@ const TimeField = ({ timedata, breakdata, type, timesheetrules, employee }) => {
 
   return (
     <Input
-      className={`border--gray ${styles.field} ${styles.text}`}
+      className={`${styles.field} ${styles.text}`}
       bordered={false}
       value={timeValue}
       onChange={(e) => inputChangeHandler(e.target.value)}

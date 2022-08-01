@@ -67,7 +67,7 @@ const PositionField = ({
 
   return (
     <Select
-      className={`border--gray ${styles.field}`}
+      className={`${styles.field}`}
       bordered={false}
       value={position}
       onChange={(e) => inputChangeHandler(e)}

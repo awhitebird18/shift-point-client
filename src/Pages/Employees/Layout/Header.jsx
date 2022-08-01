@@ -101,7 +101,7 @@ const Header = ({ currentEmployee, setCurrentEmployee }) => {
               user={currentEmployee}
               icon={UserOutlined}
               style={{
-                backgroundColor: "#e1e1e1",
+                backgroundColor: "var(--color_gray_2)",
                 color: "#fff",
                 fontSize: "2.3rem",
               }}

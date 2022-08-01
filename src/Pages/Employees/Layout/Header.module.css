@@ -13,7 +13,7 @@
 
 .employeeSelection {
   display: flex;
-  max-width: 16rem;
+  max-width: 20rem;
   flex-grow: 1;
   align-items: center;
   gap: 0.5rem;
@@ -28,7 +28,7 @@
 }
 
 .loadingBar {
-  background: var(--color_gray_1);
+  background: var(--color_gray_2);
   height: 1rem;
   margin: 0.25rem;
   border-radius: 1rem;

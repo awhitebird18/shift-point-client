@@ -33,10 +33,6 @@ const FilterBar = ({
     showModal({ name: "TIMESHEET_EXPORT" });
   };
 
-  const unsavedChanges = useSelector((state) => {
-    return state.uiData.unsavedChanges;
-  });
-
   const sortValue = useSelector((state) => {
     return state.filter.timesheetSort;
   });
@@ -58,35 +54,27 @@ const FilterBar = ({
           Filter
         </Button>
 
-        <Button type="secondary" className={`hide--tablet ${styles.sort}`}>
-          <Select
-            bordered={false}
-            style={{
-              zIndex: "2",
-              width: "100%",
-            }}
-            onChange={(e) => changeTimesheetSort(e)}
-            value={sortValue ? sortValue : "firstName"}
-            defaultValue="firstName"
-          >
-            <Option value="firstName">Sort: First Name</Option>
-            <Option value="lastName">Sort: Last Name</Option>
-            <Option value="eeNum">Sort: Employee Number</Option>
-            <Option value="homeDepartment">Sort: Department</Option>
-          </Select>
-        </Button>
-
-        <Button
-          type="secondary"
-          className={styles.payPeriod}
-          style={{ borderColor: "green !important" }}
+        <Select
+          bordered={false}
+          style={{
+            zIndex: "2",
+            width: "100%",
+          }}
+          onChange={(e) => changeTimesheetSort(e)}
+          value={sortValue ? sortValue : "firstName"}
+          defaultValue="firstName"
         >
-          <PeriodSelect
-            setDateRange={setDateRange}
-            style={{ zIndex: "2" }}
-            dateRange={dateRange}
-          />
-        </Button>
+          <Option value="firstName">Sort: First Name</Option>
+          <Option value="lastName">Sort: Last Name</Option>
+          <Option value="eeNum">Sort: Employee Number</Option>
+          <Option value="homeDepartment">Sort: Department</Option>
+        </Select>
+
+        <PeriodSelect
+          setDateRange={setDateRange}
+          style={{ zIndex: "2" }}
+          dateRange={dateRange}
+        />
       </div>
 
       <div className={styles.rightFilterSection}>
