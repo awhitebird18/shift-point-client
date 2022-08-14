@@ -17,7 +17,7 @@ const UserAccount = () => {
 
   return (
     <section className={styles.container}>
-      {userList?.length && (
+      {userList && (
         <Header
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
@@ -25,17 +25,19 @@ const UserAccount = () => {
         />
       )}
 
-      <>
-        {currentUser ? (
-          <Body
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
-            setUserList={setUserList}
-          />
-        ) : (
-          <AccountList setCurrentUser={setCurrentUser} userList={userList} />
-        )}
-      </>
+      {userList && (
+        <>
+          {currentUser ? (
+            <Body
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+              setUserList={setUserList}
+            />
+          ) : (
+            <AccountList setCurrentUser={setCurrentUser} userList={userList} />
+          )}
+        </>
+      )}
     </section>
   );
 };

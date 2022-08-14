@@ -1,23 +1,27 @@
-$red: #f79393;
-$volcano: #ff9c6e;
+$red: #ff9d9d;
+$volcano: #feb18c;
 $orange: #ffc069;
 $yellow: #fff566;
 $lime: #d3f261;
-$green: #98ee95;
-$teal: #84efed;
+$green: #abffa8;
+$teal: #97ffec;
 $blue: #a1a4f5;
-$purple: #b37feb;
-$magenta: #ff85c0;
+$purple: #c085ff;
+$magenta: #ec78b0;
 $gray: rgb(166, 166, 166);
 
 @mixin shiftStyles($color) {
-  background: rgba($color, 0.2);
+  background: rgba($color, 0.1);
   border: 2px dashed $color;
-  color: darken($color, 50);
+  box-shadow: var(--boxshadow-shift);
   border-radius: 5px;
-  padding: 0.25rem 0.4rem;
-  font-size: 0.8rem;
-  height: 3.5rem;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  height: 4.5rem;
+
+  &:not(.anotherSchedule) {
+    cursor: pointer;
+  }
 
   &.published {
     background: $color;
@@ -25,45 +29,267 @@ $gray: rgb(166, 166, 166);
   }
 }
 
-.shift {
-  &.red {
-    @include shiftStyles($red);
+@mixin textStyles($color) {
+  color: darken(rgba($color, 1), 70%) !important;
+}
+
+@mixin textDarkStyles($color) {
+  color: lighten($color, 30%) !important;
+}
+
+body.light {
+  .shift {
+    &.red {
+      @include shiftStyles($red);
+
+      & > div {
+        @include textStyles($red);
+      }
+    }
+
+    &.orange {
+      @include shiftStyles($orange);
+
+      & > div {
+        @include textStyles($orange);
+      }
+    }
+    &.volcano {
+      @include shiftStyles($volcano);
+
+      & > div {
+        @include textStyles($volcano);
+      }
+    }
+    &.yellow {
+      @include shiftStyles($yellow);
+
+      & > div {
+        @include textStyles($yellow);
+      }
+    }
+    &.lime {
+      @include shiftStyles($lime);
+
+      & > div {
+        @include textStyles($lime);
+      }
+    }
+    &.teal {
+      @include shiftStyles($teal);
+
+      & > div {
+        @include textStyles($teal);
+      }
+    }
+    &.green {
+      @include shiftStyles($green);
+
+      & > div {
+        @include textStyles($green);
+      }
+    }
+    &.blue {
+      @include shiftStyles($blue);
+
+      & > div {
+        @include textStyles($blue);
+      }
+    }
+    &.purple {
+      @include shiftStyles($purple);
+
+      & > div {
+        @include textStyles($purple);
+      }
+    }
+
+    &.magenta {
+      @include shiftStyles($magenta);
+
+      & > div {
+        @include textStyles($magenta);
+      }
+    }
+
+    &.anotherSchedule {
+      @include shiftStyles($gray);
+      border: none;
+    }
+
+    &.current {
+      outline: 2px solid var(--text-color);
+    }
   }
-  &.orange {
-    @include shiftStyles($orange);
-  }
-  &.volcano {
-    @include shiftStyles($volcano);
-  }
-  &.yellow {
-    @include shiftStyles($yellow);
-  }
-  &.lime {
-    @include shiftStyles($lime);
-  }
-  &.teal {
-    @include shiftStyles($teal);
-  }
-  &.green {
-    @include shiftStyles($green);
-  }
-  &.blue {
-    @include shiftStyles($blue);
-  }
-  &.purple {
-    @include shiftStyles($purple);
-  }
-  &.magenta {
-    @include shiftStyles($magenta);
+}
+
+body.dark {
+  .shift {
+    &.red {
+      @include shiftStyles($red);
+
+      & > div {
+        @include textDarkStyles($red);
+      }
+    }
+
+    &.orange {
+      @include shiftStyles($orange);
+
+      & > div {
+        @include textDarkStyles($orange);
+      }
+    }
+    &.volcano {
+      @include shiftStyles($volcano);
+
+      & > div {
+        @include textDarkStyles($volcano);
+      }
+    }
+    &.yellow {
+      @include shiftStyles($yellow);
+
+      & > div {
+        @include textDarkStyles($yellow);
+      }
+    }
+    &.lime {
+      @include shiftStyles($lime);
+
+      & > div {
+        @include textDarkStyles($lime);
+      }
+    }
+    &.teal {
+      @include shiftStyles($teal);
+
+      & > div {
+        @include textDarkStyles($teal);
+      }
+    }
+    &.green {
+      @include shiftStyles($green);
+
+      & > div {
+        @include textDarkStyles($green);
+      }
+    }
+    &.blue {
+      @include shiftStyles($blue);
+
+      & > div {
+        @include textDarkStyles($blue);
+      }
+    }
+    &.purple {
+      @include shiftStyles($purple);
+
+      & > div {
+        @include textDarkStyles($purple);
+      }
+    }
+
+    &.magenta {
+      @include shiftStyles($magenta);
+
+      & > div {
+        @include textDarkStyles($magenta);
+      }
+    }
+
+    &.anotherSchedule {
+      @include shiftStyles($gray);
+      border: none;
+    }
+
+    &.current {
+      outline: 2px solid var(--text-color);
+    }
   }
 
-  &.anotherSchedule {
-    @include shiftStyles($gray);
-    border: none;
-  }
+  .shift.published {
+    &.red {
+      @include shiftStyles($red);
 
-  &.current {
-    outline: 2px solid var(--text-color);
+      & > div {
+        @include textStyles($red);
+      }
+    }
+
+    &.orange {
+      @include shiftStyles($orange);
+
+      & > div {
+        @include textStyles($orange);
+      }
+    }
+    &.volcano {
+      @include shiftStyles($volcano);
+
+      & > div {
+        @include textStyles($volcano);
+      }
+    }
+    &.yellow {
+      @include shiftStyles($yellow);
+
+      & > div {
+        @include textStyles($yellow);
+      }
+    }
+    &.lime {
+      @include shiftStyles($lime);
+
+      & > div {
+        @include textStyles($lime);
+      }
+    }
+    &.teal {
+      @include shiftStyles($teal);
+
+      & > div {
+        @include textStyles($teal);
+      }
+    }
+    &.green {
+      @include shiftStyles($green);
+
+      & > div {
+        @include textStyles($green);
+      }
+    }
+    &.blue {
+      @include shiftStyles($blue);
+
+      & > div {
+        @include textStyles($blue);
+      }
+    }
+    &.purple {
+      @include shiftStyles($purple);
+
+      & > div {
+        @include textStyles($purple);
+      }
+    }
+
+    &.magenta {
+      @include shiftStyles($magenta);
+
+      & > div {
+        @include textStyles($magenta);
+      }
+    }
+
+    &.anotherSchedule {
+      @include shiftStyles($gray);
+      border: none;
+    }
+
+    &.current {
+      outline: 2px solid var(--text-color);
+    }
   }
 }
 

@@ -10,10 +10,14 @@
   animation-name: slidein;
   animation-duration: 0.5s;
   border-radius: 0.5rem;
-  border: var(--border-main);
+  /* border: var(--border-main); */
   font-size: 2rem;
   box-shadow: var(--boxshadow-main);
   padding: 0.5rem 1rem;
+}
+
+.container::-webkit-scrollbar {
+  width: 0;
 }
 
 @keyframes slidein {

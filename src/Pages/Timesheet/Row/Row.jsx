@@ -51,13 +51,13 @@ const TimecardRow = ({ timedata, employee, earningOptions, rowCount }) => {
 
   return (
     <tr className="timecard row columns">
-      <td className={`${styles.date}`}>
-        <div className="hide--tablet">
+      <td className={styles.date}>
+        <p className={styles.dateLarge}>
           {rowCount === 0 &&
             `${days[timedata.date.getDay()].substring(0, 3)} ${dateDisplay}`}
-        </div>
+        </p>
 
-        <div className="show--tablet">{rowCount === 0 && `${dateDisplay}`}</div>
+        <p className={styles.dateSmall}>{rowCount === 0 && `${dateDisplay}`}</p>
       </td>
 
       <td className={`hide--tablet ${styles.field}`}>

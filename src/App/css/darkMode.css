@@ -4,11 +4,9 @@
   border: none;
   height: 2rem;
   width: 2rem;
-
   border-radius: 50%;
   color: #fff;
   cursor: pointer;
-  /* border: var(--border-main); */
 }
 
 .dark #darkMode {

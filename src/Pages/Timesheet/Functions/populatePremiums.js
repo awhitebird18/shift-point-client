@@ -1,6 +1,6 @@
 export const populatePremiums = (timedata, premiums, earningList) => {
   const updatedTimedata = timedata.map((timeEl) => {
-    if (!timeEl.unsaved) return timeEl;
+    if (!timeEl.unsaved || !timeEl.start || !timeEl.end) return timeEl;
 
     premiums.forEach((premium) => {
       // Check if day is eligible

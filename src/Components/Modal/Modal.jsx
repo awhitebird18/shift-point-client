@@ -12,6 +12,13 @@ import ManagePost from "../../Pages/Dashboard/Bulletin/ManagePost";
 import EarningDetailed from "../../Pages/Employees/Payment/EarningDetailed";
 import PositionDetailed from "../../Pages/Employees/Position/PositionDetailed";
 import ExtendedTimecard from "../../Pages/Timesheet/ExtendedTimecard/ExtendedTimecard";
+import OvertimeConfig from "../../Pages/AppConfig/Timesheet/Overtime/OvertimeConfig";
+import PremiumConfig from "../../Pages/AppConfig/Timesheet/Premium/PremiumConfig";
+import BreakTemplateConfig from "../../Pages/AppConfig/Timesheet/Breaks/BreakTemplateConfig";
+import PositionConfig from "../../Pages/AppConfig/Position/PositionConfig";
+import DepartmentConfig from "../../Pages/AppConfig/Departments/DepartmentConfig";
+import CostCentreConfig from "../../Pages/AppConfig/CostCentres/CostCentreConfig";
+import EarningConfig from "../../Pages/AppConfig/Earning/EarningConfig";
 
 // Styles
 import styles from "./Modal.module.css";
@@ -64,6 +71,27 @@ const Modal = (props) => {
 
       case "EXTENDED_TIMECARD_DATA":
         return <ExtendedTimecard {...props} showModal={showModal} />;
+
+      case "OVERTIME_CONFIG":
+        return <OvertimeConfig {...props} showModal={showModal} />;
+
+      case "PREMIUM_CONFIG":
+        return <PremiumConfig {...props} showModal={showModal} />;
+
+      case "BREAK_TEMPLATE_CONFIG":
+        return <BreakTemplateConfig {...props} showModal={showModal} />;
+
+      case "POSITION_CONFIG":
+        return <PositionConfig {...props} showModal={showModal} />;
+
+      case "DEPARTMENT_CONFIG":
+        return <DepartmentConfig {...props} showModal={showModal} />;
+
+      case "COSTCENTRE_CONFIG":
+        return <CostCentreConfig {...props} showModal={showModal} />;
+
+      case "EARNING_CONFIG":
+        return <EarningConfig {...props} showModal={showModal} />;
     }
   }
 
@@ -72,7 +100,7 @@ const Modal = (props) => {
       <div className={styles.modalOverlay} ref={domNode}>
         <main className={styles.modal}>
           <div className={styles.header}>
-            <h2 className={styles.title}>{props.name}</h2>
+            <h2 className={styles.title}>{props.title}</h2>
             <div className={styles.close} onClick={handleClose}>
               &#10005;
             </div>

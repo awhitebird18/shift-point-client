@@ -10,15 +10,17 @@ const Button = ({ children, color, type, onClick, style, className }) => {
     customStyles.backgroundColor = color;
   }
 
-  if (type === "secondary") {
-    customStyles.backgroundColor = "var(--inputBackground)";
-    customStyles.border = "1px solid var(--inputBorder)";
-    customStyles.color = "var(--color-text)";
-  }
+  // if (type === "secondary") {
+  //   customStyles.backgroundColor = "var(--inputBackground)";
+  //   customStyles.border = "1px solid var(--inputBorder)";
+  //   customStyles.color = "var(--color-text)";
+  // }
 
   return (
     <button
-      className={`${styles.button} ${className}`}
+      className={`${styles.button} ${
+        type === "secondary" ? styles.secondary : ""
+      } ${className}`}
       style={customStyles}
       onClick={onClick}
     >

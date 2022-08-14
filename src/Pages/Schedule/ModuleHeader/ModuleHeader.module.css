@@ -8,7 +8,6 @@
   margin-bottom: 1rem;
   position: static;
   height: 5rem;
-  padding: 0 1rem;
 }
 
 .title {
@@ -58,18 +57,8 @@
 }
 
 .button {
-  padding: 0.25rem 1rem;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  border: 1px solid var(--color-text-lightGray);
-  color: var(--color-text-gray);
-  font-size: 1.1rem;
-  height: 100%;
-}
-
-.button:hover {
-  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none !important;
 }
 
 .filterIcon {
@@ -102,6 +91,10 @@
   background: var(--color-primary);
   color: #fff !important;
 }
-.manage {
-  background: #9254de;
+
+@media screen and (max-width: 768px) {
+  .headerTitle {
+    height: 3rem;
+    margin-bottom: 0;
+  }
 }

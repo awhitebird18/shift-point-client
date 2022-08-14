@@ -22,6 +22,7 @@ const MoreInfo = ({ timedata, breakdata, date, employee }) => {
   const handleShowExtended = () => {
     showModal({
       name: "EXTENDED_TIMECARD_DATA",
+      title: "Extended Timecard",
       timecardId: timedata.id,
     });
   };

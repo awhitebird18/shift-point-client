@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 // Styles
 import styles from "./Summary.module.css";
 
@@ -11,14 +13,25 @@ const Summary = ({ currentUser }) => {
   const [departments] = useFetch("/department");
   const [costCentres] = useFetch("/costcentre");
 
+  const { module: moduleList } = useSelector((state) => {
+    return state.payroll;
+  });
+
   const assignedModules = [];
 
   for (const module in currentUser.moduleAccess) {
     if (currentUser.moduleAccess[module].access) {
+      const moduleDetails = moduleList.find((el) => {
+        return el._id === currentUser.moduleAccess[module].moduleId;
+      });
+
       assignedModules.push(
-        <Tag style={{ margin: "0.25rem" }} key={module}>{`${module
+        <Tag
+          style={{ margin: "0.25rem" }}
+          key={currentUser.moduleAccess[module].moduleId}
+        >{`${moduleDetails.name
           .substring(0, 1)
-          .toUpperCase()}${module.substring(1)}`}</Tag>
+          .toUpperCase()}${moduleDetails.name.substring(1)}`}</Tag>
       );
     }
   }
@@ -40,9 +53,10 @@ const Summary = ({ currentUser }) => {
           <div
             key={assignedDepartment.id}
             className={`list-item--sm ${styles.columns}`}
+            style={{ cursor: "auto" }}
           >
-            <div>{department.number}</div>
-            <div>{department.name}</div>
+            <div>{department?.number}</div>
+            <div>{department?.name}</div>
             <div>{costCentre?.name}</div>
           </div>
         );

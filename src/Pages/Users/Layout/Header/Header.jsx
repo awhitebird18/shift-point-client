@@ -5,7 +5,6 @@ import styles from "./Header.module.css";
 import { Select } from "antd";
 const { Option } = Select;
 import { UserAddOutlined, UserOutlined } from "@ant-design/icons";
-
 import { ProfilePicture, Button } from "../../../../Components";
 
 const Header = ({ currentUser, setCurrentUser, userList }) => {
@@ -20,7 +19,25 @@ const Header = ({ currentUser, setCurrentUser, userList }) => {
   }
 
   function createNewUser() {
-    setCurrentUser({});
+    setCurrentUser({
+      firstName: "",
+      lastName: "",
+      username: "",
+      password: "",
+      confirmPassword: "",
+      departments: [],
+      clientId: "D20003",
+      title: "",
+      active: true,
+      email: "",
+      profileImage: "",
+      preferences: {
+        colorCode: "",
+      },
+      moduleAccess: [],
+      createdAt: new Date(Date.now()).toDateString(),
+      updatedAt: "",
+    });
   }
 
   const employeeOptions = userList.map((el, index) => {
@@ -82,7 +99,7 @@ const Header = ({ currentUser, setCurrentUser, userList }) => {
         <Button
           size="large"
           style={{
-            margin: "0rem 0.5rem",
+            marginLeft: "0.5rem",
             width: "2.5rem",
             padding: "0",
             borderRadius: "0.3rem",

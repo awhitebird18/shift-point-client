@@ -14,29 +14,26 @@ const ModuleHeader = () => {
 
   const handlePublish = (e) => {
     e.stopPropagation();
-    showModal({ name: "PUBLISH_SCHEDULE" });
+    showModal({ name: "PUBLISH_SCHEDULE", title: "Publish Schedule" });
   };
 
   const handleManage = (e) => {
     e.stopPropagation();
-    showModal({ name: "MANAGE_SCHEDULE" });
+    showModal({ name: "MANAGE_SCHEDULE", title: "Manage Schedule" });
   };
 
   return (
     <div className={styles.headerTitle}>
-      <div className={styles.title}>Scheduler</div>
+      <h1 className={styles.title}>Scheduler</h1>
       <div className={styles.scheduleOptions}>
         <Button
           type="secondary"
-          className={`${styles.manage} ${styles.icon}`}
+          className={styles.button}
           onClick={handleManage}
         >
           Manage
         </Button>
-        <Button
-          className={`${styles.publish} ${styles.icon}`}
-          onClick={handlePublish}
-        >
+        <Button className={styles.button} onClick={handlePublish}>
           Publish
         </Button>
       </div>

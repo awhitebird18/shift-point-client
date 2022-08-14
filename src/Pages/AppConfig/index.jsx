@@ -26,7 +26,7 @@ const Settings = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.header}>{current}</div>
       <div className={styles.body}>
         <div className={styles.sideNav}>
@@ -107,7 +107,7 @@ const Settings = () => {
           </Routes>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

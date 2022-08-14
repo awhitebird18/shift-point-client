@@ -20,6 +20,7 @@ const EarningRow = ({
   const handleEditEarning = () => {
     showModal({
       name: "EARNING_DETAILED",
+      title: "Edit Earning",
       earning,
       earningList,
       currentEmployee,

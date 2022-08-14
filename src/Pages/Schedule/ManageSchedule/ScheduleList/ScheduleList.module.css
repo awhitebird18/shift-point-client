@@ -1,9 +1,11 @@
 .columns {
   grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 }
 
 .title {
   font-weight: 400;
+  margin-bottom: 1rem;
 }
 
 .button {
@@ -16,11 +18,20 @@
 
 .scheduleList {
   min-height: 15rem;
-  width: 40rem;
 }
 
-.buttonSection {
+.formActions {
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .container {
+    width: 80vw;
+  }
 }

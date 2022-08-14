@@ -12,7 +12,7 @@ const Rounding = ({ timesheetRules, setTimesheetRules }) => {
       {/* UNSCHEDULED PUNCHES */}
       <Form name="complex-form" layout="vertical">
         <div className={styles.container}>
-          <h3>Unscheduled Punches</h3>
+          <h2 style={{ marginBottom: "1rem" }}>Unscheduled Punches</h2>
 
           <div className={styles.roundingGrid}>
             <div></div>
@@ -33,7 +33,7 @@ const Rounding = ({ timesheetRules, setTimesheetRules }) => {
 
         {/* SCHEDULED PUNCHES */}
         <div className={styles.container}>
-          <h3>Scheduled Punches</h3>
+          <h2 style={{ marginBottom: "1rem" }}>Scheduled Punches</h2>
 
           <div className={styles.scheduledGrid}>
             <ScheduledRoundingSegment

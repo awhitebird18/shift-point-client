@@ -28,23 +28,127 @@ const TimecardLayout = ({
 
   const timeFilter = useSelector((state) => {
     const filteredState = state.filter.timesheetFilter.filter((el) => {
-      return el.active && el.type === "shift";
+      return el.active && (el.type === "status" || el.type === "employee");
     });
 
     return filteredState;
   });
 
-  const filteredTimedata = timedata.filter((timecard) => {
-    if (timecard.status === timeFilter[0]?.value) {
-      return timecard;
-    }
-  });
+  const filteredTimedata = timedata
+    .filter((timecard) => {
+      if (timecard.id || timecard.unsaved) return true;
+    })
+    .filter((timecard) => {
+      let passed = true;
+
+      if (timecard.eeNum !== employee.eeNum) return false;
+      if (timecard.unsaved) return true;
+
+      for (let i = 0; i < timeFilter.length; i++) {
+        // if (
+        //   timeFilter[i].type === "punch" &&
+        //   timeFilter[i].subtype === "is" &&
+        //   ((timecard.start && timecard.end) ||
+        //     (!timecard.start && !timecard.end))
+        // ) {
+        //
+        //   passed = false;
+        // }
+
+        // if (
+        //   timeFilter[i].type === "punch" &&
+        //   timeFilter[i].subtype === "isNot" &&
+        //   (!timecard.start || !timecard.end)
+        // ) {
+        //
+        //   passed = false;
+        // }
+
+        if (timeFilter[i].type === "employee") {
+          // Missing Punches
+          if (
+            timeFilter[i].subtype === "isMissingPunches" &&
+            ((timecard.start && timecard.end) ||
+              (!timecard.start && !timecard.end))
+          ) {
+            passed = false;
+          }
+
+          if (
+            timeFilter[i].subtype === "isNotMissingPunches" &&
+            timecard.start &&
+            timecard.end
+          ) {
+            passed = false;
+          }
+
+          // Signed in
+          if (timeFilter[i].subtype === "isSignedIn" && !timecard.start) {
+            passed = false;
+          }
+
+          // Signed out
+          if (timeFilter[i].subtype === "isSignedOut" && !timecard.end) {
+            passed = false;
+          }
+        }
+
+        // if (
+        //   timeFilter[i].type === "end" &&
+        //   timeFilter[i].subtype === "is" &&
+        //   timecard.end &&
+        //   !timecard.unsaved
+        // ) {
+        //   passed = false;
+        // }
+        // if (
+        //   timeFilter[i].type === "end" &&
+        //   timeFilter[i].subtype === "isNot" &&
+        //   !timecard.end &&
+        //   !timecard.unsaved
+        // ) {
+        //   passed = false;
+        // }
+
+        // if (
+        //   timeFilter[i].type === "start" &&
+        //   timeFilter[i].subtype === "is" &&
+        //   timecard.start &&
+        //   !timecard.unsaved
+        // ) {
+        //   passed = false;
+        // }
+
+        if (timeFilter[i].type === "status") {
+          if (
+            timeFilter[i].subtype === "is" &&
+            timeFilter[i].value !== timedata.status
+          ) {
+            passed = false;
+          } else if (
+            timeFilter[i].subtype === "isNot" &&
+            timeFilter[i].value === timedata.status
+          ) {
+            passed = false;
+          }
+        }
+      }
+
+      return passed;
+    });
 
   const approvedHours = calcApprovedHours(
     filteredTimedata,
     breakdata,
     dateRange
   );
+
+  if (
+    timeFilter.length &&
+    filteredTimedata.length <= 1 &&
+    !filteredTimedata[0]?.id
+  )
+    return null;
 
   return (
     <section className={styles.timecard}>
@@ -92,13 +196,15 @@ const TimecardLayout = ({
           </tbody>
 
           <tfoot>
-            <tr className="timecard row columns">
+            <tr className="timecard row summary">
               <td></td>
               <td className="hide--mobile"></td>
               <td className="hide--tablet"></td>
-              <td className={styles.approvedLabel}>Approved Hours</td>
+              <td className={styles.approvedLabel} colspan="2">
+                Approved Hours
+              </td>
+
               <td style={{ textAlign: "center" }}>{approvedHours}</td>
-              <td></td>
               <td className="hide--medium"></td>
               <td></td>
             </tr>

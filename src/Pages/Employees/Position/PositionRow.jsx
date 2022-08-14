@@ -62,6 +62,7 @@ const PositionRow = ({
   const handleEdit = () => {
     showModal({
       name: "EMPLOYEE_POSITION_DETAILED",
+      title: "Edit Position",
       position,
       positionList,
       earningList,

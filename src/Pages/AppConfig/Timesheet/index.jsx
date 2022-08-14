@@ -14,12 +14,18 @@ import { Menu } from "antd";
 
 const TimesheetSetting = () => {
   const firstLoad = useRef(true);
-  const [current, setCurrent] = useState("rounding");
+  const [current, setCurrent] = useState("");
   const [timesheetRules, setTimesheetRules] = useState();
 
   const handleClick = (e) => {
     setCurrent(e.key);
   };
+
+  useEffect(() => {
+    const pathSegments = window.location.pathname.split("/");
+
+    setCurrent(pathSegments[pathSegments.length - 1]);
+  }, []);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_BASE_URL}/timesheetrules`, {
@@ -59,25 +65,23 @@ const TimesheetSetting = () => {
   return (
     <>
       <div className={styles.header}>
-        <div className={styles.menu}>
-          <Menu onClick={handleClick} selectedKeys={current} mode="horizontal">
-            <Menu.Item key="rounding">
-              <Link to="/app/settings/timesheet/rounding">Rounding</Link>
-            </Menu.Item>
-            <Menu.Item key="overtime">
-              <Link to="/app/settings/timesheet/overtime">Overtime</Link>
-            </Menu.Item>
-            <Menu.Item key="premiums">
-              <Link to="/app/settings/timesheet/premium">Premiums</Link>
-            </Menu.Item>
-            <Menu.Item key="breaks">
-              <Link to="/app/settings/timesheet/breaks">Break Templates</Link>
-            </Menu.Item>
-            <Menu.Item key="shiftrules">
-              <Link to="/app/settings/timesheet/shiftrules">Shift Rules</Link>
-            </Menu.Item>
-          </Menu>
-        </div>
+        <Menu onClick={handleClick} selectedKeys={current} mode="horizontal">
+          <Menu.Item key="rounding">
+            <Link to="/app/settings/timesheet/rounding">Rounding</Link>
+          </Menu.Item>
+          <Menu.Item key="overtime">
+            <Link to="/app/settings/timesheet/overtime">Overtime</Link>
+          </Menu.Item>
+          <Menu.Item key="premium">
+            <Link to="/app/settings/timesheet/premium">Premiums</Link>
+          </Menu.Item>
+          <Menu.Item key="breaks">
+            <Link to="/app/settings/timesheet/breaks">Break Templates</Link>
+          </Menu.Item>
+          <Menu.Item key="shiftrules">
+            <Link to="/app/settings/timesheet/shiftrules">Shift Rules</Link>
+          </Menu.Item>
+        </Menu>
       </div>
       <div>
         {timesheetRules && (

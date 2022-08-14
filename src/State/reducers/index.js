@@ -9,6 +9,7 @@ import notificationReducer from "./notificationReducer.js";
 import employeeReducer from "./employeeReducer.js";
 import payrollReducer from "./payrollReducer.js";
 import userReducer from "./userReducer.js";
+import appConfigReducer from "./appConfigReducer.js";
 
 const reducers = combineReducers({
   timedata: timeDataReducer,
@@ -21,6 +22,7 @@ const reducers = combineReducers({
   employee: employeeReducer,
   payroll: payrollReducer,
   user: userReducer,
+  appConfig: appConfigReducer,
 });
 
 export default reducers;

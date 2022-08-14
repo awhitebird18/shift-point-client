@@ -1,6 +1,7 @@
 .mainFilter {
   display: flex;
   justify-content: space-between;
+  height: 32px;
 }
 
 .mainFilterLeft {
@@ -12,8 +13,10 @@
 }
 
 .filter {
-  max-width: 7rem;
   flex-grow: 1;
+  border: var(--border-input) !important;
+  border-radius: var(--inputBorderRadius);
+  box-shadow: var(--boxshadow-input);
 }
 
 .icon {
@@ -56,5 +59,9 @@
   .saveButton {
     font-size: 0.6rem;
     padding: 0;
+  }
+
+  .sort {
+    display: none !important;
   }
 }

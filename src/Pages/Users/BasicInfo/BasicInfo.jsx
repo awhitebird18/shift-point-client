@@ -1,11 +1,18 @@
 // Components
-import { Form, Input, Button, Select } from "antd";
+import { Form, Input, Select } from "antd";
+import { Button } from "../../../Components";
 import Summary from "./Summary/Summary";
+import { useSelector } from "react-redux";
+
+import { toast } from "react-hot-toast";
 
 // Styles
 import styles from "./BasicInfo.module.css";
 
 const BasicInfo = ({ currentUser, setCurrentUser, setUserList }) => {
+  const { currentUser: loggedInUser } = useSelector((state) => {
+    return state.user;
+  });
   // Handle Field Change
   const handleChange = (e, fieldName) => {
     let key = fieldName ? fieldName : e.target.name;
@@ -17,6 +24,11 @@ const BasicInfo = ({ currentUser, setCurrentUser, setUserList }) => {
   };
 
   const handleDeleteAccount = () => {
+    if (loggedInUser.username === "awhitebird") {
+      toast.error("Guest accounts are unable to remove users");
+      return;
+    }
+
     fetch(`${process.env.REACT_APP_BASE_URL}/userAccounts/${currentUser._id}`, {
       headers: {
         "Content-Type": "application/json",
@@ -36,6 +48,10 @@ const BasicInfo = ({ currentUser, setCurrentUser, setUserList }) => {
         console.error("Something went wrong");
       }
     });
+  };
+
+  const handleEmailAccount = () => {
+    toast.error("Guest accounts are unable to resend email credentials");
   };
 
   return (
@@ -113,10 +129,18 @@ const BasicInfo = ({ currentUser, setCurrentUser, setUserList }) => {
             </Form.Item>
 
             <Form.Item label="Account Actions">
-              <Button>Resend Email</Button>
-              <Button danger onClick={handleDeleteAccount}>
-                Delete Account
-              </Button>
+              <div className={styles.formActions}>
+                <Button type="secondary" onClick={handleEmailAccount}>
+                  Resend Email
+                </Button>
+                <Button
+                  danger
+                  onClick={handleDeleteAccount}
+                  style={{ background: "#f5222d" }}
+                >
+                  Delete Account
+                </Button>
+              </div>
             </Form.Item>
           </>
         )}

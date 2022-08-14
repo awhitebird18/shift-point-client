@@ -9,6 +9,7 @@
 .name {
   display: block;
   flex-shrink: 1;
+  color: var(--color_gray_4) !important;
 }
 
 .employeeSelection {
@@ -30,7 +31,7 @@
 .loadingBar {
   background: var(--color_gray_2);
   height: 1rem;
-  margin: 0.25rem;
+  margin-top: 0.25rem;
   border-radius: 1rem;
   width: 100%;
 }
@@ -74,14 +75,14 @@
 
 .imgMenu {
   position: absolute;
-  bottom: -8rem;
+  bottom: -7rem;
   left: -0.4rem;
-  border-radius: 0.5rem;
-  background: rgb(255, 255, 255);
+  border-radius: 0.5rem !important;
   display: none;
   z-index: 1;
   -webkit-box-shadow: 0px 6px 17px 13px rgba(0, 0, 0, 0.12);
-  box-shadow: 0px 6px 17px 13px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--boxshadow-main);
+  box-shadow: 0px -2px 15px rgba(0, 0, 0, 0.6);
 }
 
 .imgMenuTriangle {
@@ -93,7 +94,7 @@
   height: 0;
   border-left: 2rem solid transparent;
   border-right: 2rem solid transparent;
-  border-bottom: 2rem solid rgb(255, 255, 255);
+  border-bottom: 2rem solid var(--sectionmain);
   z-index: -1;
 }
 
@@ -102,18 +103,38 @@
   display: flex;
   flex-direction: column;
   margin: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  width: 9rem;
 }
 
 .imgMenu li {
   display: flex;
   align-items: center;
+  height: 3rem;
   width: 100%;
-  padding: 1rem;
+  text-align: center;
+  justify-content: center;
 }
 
 .imgMenu li:hover {
-  background: var(--color-hover-gray);
+  background: var(--list-hover);
   cursor: pointer;
+}
+
+.imgMenu li label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+}
+
+.customFileUpload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 @media screen and (max-width: 650px) {

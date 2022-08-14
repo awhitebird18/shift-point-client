@@ -1,15 +1,10 @@
 import { actionCreators } from "../../../State";
 import { bindActionCreators } from "redux";
 import { useDispatch } from "react-redux";
-import { Avatar, Divider, Tooltip } from "antd";
+import { Avatar, Tooltip } from "antd";
 
 // Components
 import { useFetch } from "../../../Hooks";
-import { Image, Transformation } from "cloudinary-react";
-import userOutline from "../../../Assets/userOutline.png";
-import { BsEyeFill, BsEye } from "react-icons/bs";
-
-import { AntDesignOutlined, UserOutlined } from "@ant-design/icons";
 
 // Styles
 import styles from "./Post.module.css";
@@ -24,10 +19,13 @@ const Post = ({ post, setBulletins }) => {
   const handleEditBulletin = () => {
     showModal({
       name: "MANAGE_POST",
+      title: "Edit Bulletin",
       post,
       setBulletins,
     });
   };
+
+  const avatarColors = ["#722ed1", "#13c2c2", "#eb2f96", "#1890ff", "#52c41a"];
 
   return (
     <section className={styles.post} onClick={handleEditBulletin}>
@@ -43,6 +41,7 @@ const Post = ({ post, setBulletins }) => {
         </div>
       </div>
       <div className={styles.postViewed}>
+        {/* Avatars */}
         <Avatar.Group
           maxCount={2}
           maxStyle={{
@@ -50,63 +49,33 @@ const Post = ({ post, setBulletins }) => {
             backgroundColor: "#fde3cf",
           }}
         >
-          <Avatar src="https://joeschmoe.io/api/v1/random" />
-          <Avatar
-            style={{
-              backgroundColor: "#f56a00",
-            }}
-          >
-            K
-          </Avatar>
-          <Tooltip title="Ant User" placement="top">
-            <Avatar
-              style={{
-                backgroundColor: "#87d068",
-              }}
-              icon={<UserOutlined />}
-            />
-          </Tooltip>
-          <Avatar
-            style={{
-              backgroundColor: "#1890ff",
-            }}
-            icon={<AntDesignOutlined />}
-          />
-        </Avatar.Group>
-        {/* <BsEye size={25} color="#fff" /> */}
-        <div className={styles.postViewedBy}>
-          {post.seen?.length > 0 && employees?.length > 0 ? (
+          {employees &&
             post.seen.map((employeeId, index) => {
               const employee = employees.find((el) => {
                 return el._id === employeeId;
               });
 
+              if (!employee) return;
+
               return (
-                <div key={index} className={styles.employeeRow}>
-                  <div className={styles.imageContainer}>
-                    {employee?.employeeImage ? (
-                      <Image
-                        cloudName="dwkvw91pm"
-                        publicId={employee.employeeImage}
-                      >
-                        <Transformation width="30" crop="scale" />
-                      </Image>
-                    ) : (
-                      <img src={userOutline} alt="" style={{ width: "100%" }} />
-                    )}
-                  </div>
-                  <div
-                    className={styles.employeeName}
-                  >{`${employee.firstName} ${employee.lastName}`}</div>
-                </div>
+                <Tooltip
+                  key={employeeId}
+                  title={`${employee.firstName} ${employee.lastName}`}
+                  placement="bottom"
+                  style={{ color: "#fff" }}
+                >
+                  <Avatar
+                    style={{
+                      backgroundColor: avatarColors[index],
+                      color: "#fff !important",
+                    }}
+                  >
+                    {employee.firstName.substring(0, 1)}
+                  </Avatar>
+                </Tooltip>
               );
-            })
-          ) : (
-            <div className={styles.employeeRow}>
-              <div className={styles.employeeName}>Not seen</div>
-            </div>
-          )}
-        </div>
+            })}
+        </Avatar.Group>
       </div>
     </section>
   );

@@ -1,8 +1,5 @@
-.panel {
-  padding: 0.5rem;
-  border-color: var(--color_gray_1) !important;
-}
-
-.panel:last-child {
-  border: 0;
+.columns {
+  grid-template-columns: repeat(4, 1fr);
+  cursor: auto !important;
+  pointer-events: none;
 }

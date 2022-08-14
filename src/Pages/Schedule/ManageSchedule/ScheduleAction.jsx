@@ -38,6 +38,7 @@ const ScheduleAction = ({ setStep }) => {
           className={styles.button}
           type="secondary"
           onClick={handleViewSchedules}
+          style={{ width: "100%" }}
         >
           View Schedules
         </Button>
@@ -50,6 +51,7 @@ const ScheduleAction = ({ setStep }) => {
       <Button
         className={styles.button}
         onClick={!newSchedule ? handleNewSchedule : handleSave}
+        style={{ width: "100%" }}
       >
         {!newSchedule ? "New Schedule" : "Save"}
       </Button>

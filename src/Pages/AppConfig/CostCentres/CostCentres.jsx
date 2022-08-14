@@ -1,5 +1,9 @@
+import { useDispatch } from "react-redux";
+import { actionCreators } from "../../../State";
+import { bindActionCreators } from "redux";
+
 // Components
-import { Button } from "antd";
+import { Button } from "../../../Components";
 import CostCentreRow from "./Row/Row";
 
 // Styles
@@ -10,9 +14,15 @@ import { useFetch } from "../../../Hooks";
 
 const CostCentres = () => {
   const [costCentreList, setCostCentreList] = useFetch("/costcentre");
+  const dispatch = useDispatch();
+  const { showModal } = bindActionCreators(actionCreators, dispatch);
+
   const handleAddCostCentre = () => {
-    setCostCentreList((prev) => {
-      return [...prev, { name: "", number: "" }];
+    showModal({
+      name: "COSTCENTRE_CONFIG",
+      title: "Create Department",
+      setCostCentreList,
+      costCentre: {},
     });
   };
 
@@ -20,10 +30,9 @@ const CostCentres = () => {
     <>
       <div>
         <div className={`list-header--md ${styles.columns}`}>
-          <div className={styles.departmentName}>Number</div>
-          <div className={styles.departmentName}>Cost Centre Name</div>
-          <div className={styles.button}>Edit</div>
-          <div className={styles.button}>Delete</div>
+          <div>Number</div>
+          <div>Cost Centre Name</div>
+          <div>Delete</div>
         </div>
       </div>
 
@@ -35,6 +44,7 @@ const CostCentres = () => {
                   key={index}
                   costCentre={costCentre}
                   setCostCentreList={setCostCentreList}
+                  showModal={showModal}
                 />
               );
             })

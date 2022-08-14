@@ -29,16 +29,16 @@ const ShiftRules = ({ shiftRulesTM, setTimesheetRules }) => {
   };
 
   return (
-    <div>
-      <Form layout="vertical">
-        <Divider orientation="left">Shift Limits</Divider>
-        <div className={styles.container}>
+    <div className={styles.container}>
+      <Form layout="vertical" style={{ width: "max-content" }}>
+        <h2 className={styles.sectionLabel}>Shift Limits</h2>
+        <div>
           <Form.Item>
             <Form.Item label="Min Hours" style={{ display: "inline-block" }}>
               <Input
                 name="minShiftLength"
                 value={shiftRules?.minShiftLength}
-                style={{ width: "5rem", marginRight: "1rem" }}
+                style={{ width: "6rem", marginRight: "1rem" }}
                 onChange={(e) => handleChange(e.target.value, "minShiftLength")}
               />
             </Form.Item>
@@ -57,11 +57,11 @@ const ShiftRules = ({ shiftRulesTM, setTimesheetRules }) => {
             </Form.Item>
           </Form.Item>
 
-          <Form.Item className={styles.container}>
+          <Form.Item>
             <Form.Item label="Max Hours" style={{ display: "inline-block" }}>
               <Input
                 value={shiftRules?.maxShiftLength}
-                style={{ width: "5rem", marginRight: "1rem" }}
+                style={{ width: "6rem", marginRight: "1rem" }}
                 onChange={(e) => handleChange(e.target.value, "maxShiftLength")}
               />
             </Form.Item>
@@ -80,14 +80,14 @@ const ShiftRules = ({ shiftRulesTM, setTimesheetRules }) => {
             </Form.Item>
           </Form.Item>
         </div>
-        <Divider orientation="left">Misc</Divider>
+        <h2 className={styles.sectionLabel}>Miscellaneous</h2>
 
-        <div className={styles.container}>
-          <Form.Item className={styles.container}>
+        <div>
+          <Form.Item>
             <Form.Item label="End of Day" style={{ display: "inline-block" }}>
               <Input
                 value={shiftRules?.endOfDay}
-                style={{ width: "5rem", marginRight: "1rem" }}
+                style={{ width: "6rem", marginRight: "1rem" }}
                 onChange={(e) => handleChange(e.target.value, "endOfDay")}
                 placeholder="Time"
               />
@@ -104,16 +104,13 @@ const ShiftRules = ({ shiftRulesTM, setTimesheetRules }) => {
             </Form.Item>
           </Form.Item>
 
-          <Form.Item
-            label="Duplicate Punch Handling (Minutes)"
-            className={styles.container}
-          >
+          <Form.Item label="Duplicate Punch Handling (Minutes)">
             <Input
               value={shiftRules.duplicatePunchHandling}
               onChange={(e) =>
                 handleChange(e.target.value, "duplicatePunchHandling")
               }
-              style={{ width: "5rem" }}
+              style={{ width: "6rem" }}
             />
           </Form.Item>
         </div>

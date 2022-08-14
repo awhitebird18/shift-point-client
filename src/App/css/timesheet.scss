@@ -51,41 +51,54 @@
 
   &.columns {
     grid-template-columns:
-      6rem repeat(2, minmax(8rem, 2fr))
+      5rem repeat(2, minmax(8rem, 2fr))
       repeat(3, minmax(5.5rem, 1fr)) minmax(4rem, 1fr) minmax(5rem, 1fr) 2.125rem;
+  }
+  &.summary {
+    grid-template-columns:
+      5rem repeat(2, minmax(8rem, 2fr))
+      minmax(11rem, 2fr) repeat(1, minmax(5.5rem, 1fr)) minmax(4rem, 1fr) minmax(
+        5rem,
+        1fr
+      )
+      2.125rem;
   }
 
   @media screen and (max-width: 1024px) {
     &.columns {
       grid-template-columns:
-        3.5rem repeat(2, minmax(8rem, 2fr))
-        repeat(3, minmax(5.5rem, 1fr)) 3rem 2.125rem;
+        3rem repeat(2, minmax(8rem, 2fr))
+        repeat(2, minmax(5.5rem, 1fr)) 3rem 4.5rem 2.125rem;
     }
 
-    .summary {
+    &.summary {
       grid-template-columns:
-        3.5rem repeat(2, minmax(8rem, 2fr))
-        minmax(11rem, 2fr) minmax(5.5rem, 1fr) 3rem 2.125rem;
+        3rem repeat(2, minmax(8rem, 2fr))
+        minmax(11rem, 2fr) 3rem 4.5rem 2.125rem;
     }
   }
 
   @media screen and (max-width: 768px) {
     &.columns {
-      grid-template-columns: 2.5rem 8rem repeat(3, 1fr) 2.5rem 2rem;
+      grid-template-columns: 3rem 8rem repeat(3, 1fr) 2.5rem 2rem;
     }
 
-    .summary {
-      grid-template-columns: 2.5rem 8rem 2fr 1fr 2.5rem 2rem;
+    &.summary {
+      grid-template-columns: 3rem 8rem 2fr 1fr 2.5rem 2rem;
     }
   }
 
   @media screen and (max-width: 600px) {
     &.columns {
-      grid-template-columns: 2.5rem repeat(3, 1fr) 2.5rem 2rem;
+      grid-template-columns: 2.5rem repeat(2, 1fr) 2.5rem 2rem 2rem;
     }
 
-    .summary {
-      grid-template-columns: 2.5rem 2fr 1fr 2.5rem 2rem;
+    &.summary {
+      grid-template-columns: 2.5rem 2fr 2.5rem 2rem 2rem;
+    }
+
+    .ant-input {
+      padding: 0.25rem !important;
     }
   }
 }

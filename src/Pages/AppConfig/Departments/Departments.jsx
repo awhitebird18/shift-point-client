@@ -1,30 +1,30 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { actionCreators } from "../../../State";
+import { bindActionCreators } from "redux";
 
 // Styles
 import styles from "./Departments.module.css";
 
 // Components
 import DepartmentRow from "./Row";
-import { Button } from "antd";
+import { Button } from "../../../Components";
 
 import { useFetch } from "../../../Hooks";
 
 const Departments = () => {
-  const [isEditing, setIsEditing] = useState("");
   const [departmentList, setDepartmentList] = useFetch("/department");
   const [costCentreList] = useFetch("/costcentre");
 
-  const handleAddDepartment = () => {
-    const tempId = Math.floor(Math.random() * 10000);
-    setIsEditing(tempId);
-    setDepartmentList((prev) => {
-      prev.push({
-        departmentName: "",
-        departmentNumber: "",
-        tempId,
-      });
+  const dispatch = useDispatch();
+  const { showModal } = bindActionCreators(actionCreators, dispatch);
 
-      return [...prev];
+  const handleAddDepartment = () => {
+    showModal({
+      name: "DEPARTMENT_CONFIG",
+      title: "Create Department",
+      costCentreList,
+      setDepartmentList,
+      department: {},
     });
   };
 
@@ -32,10 +32,9 @@ const Departments = () => {
     <>
       <div>
         <div className={`list-header--md ${styles.columns}`}>
-          <div className={styles.departmentName}>Number</div>
-          <div className={styles.departmentName}>Deptartment Name</div>
-          <div className={styles.departmentName}>Cost Centre</div>
-          <div className={styles.button}>Edit</div>
+          <div>Number</div>
+          <div>Deptartment Name</div>
+          <div>Cost Centre</div>
           <div className={styles.button}>Delete</div>
         </div>
 
@@ -47,9 +46,8 @@ const Departments = () => {
                     key={index}
                     department={el}
                     setDepartmentList={setDepartmentList}
-                    isEditing={isEditing}
-                    setIsEditing={setIsEditing}
                     costCentreList={costCentreList}
+                    showModal={showModal}
                   />
                 );
               })

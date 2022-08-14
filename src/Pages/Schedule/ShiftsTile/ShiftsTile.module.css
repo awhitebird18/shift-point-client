@@ -23,6 +23,7 @@
   right: 0.25rem;
   border-radius: 0.3rem;
   box-shadow: var(--boxshadow-main);
+  background: var(--inputBackground);
 }
 
 .shiftAction {

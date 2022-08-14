@@ -202,14 +202,12 @@ const PositionDetailed = ({
       <div className={`${styles.grid} ${styles.cols_3}`}>
         <Form.Item label="Start Time">
           <Input
-            defaultValue=""
             onChange={(e) => handleChange(e.target.value, "start")}
             value={currentPosition.start}
           />
         </Form.Item>
         <Form.Item label="End Time">
           <Input
-            defaultValue=""
             onChange={(e) => handleChange(e.target.value, "end")}
             value={currentPosition.end}
           />
@@ -217,15 +215,18 @@ const PositionDetailed = ({
 
         <Form.Item label="Earning Rate">
           <Input
-            defaultValue=""
-            onChange={(e) => handleChange(e.target.value, "earningRate")}
+            onChange={(e) => handleChange(e.target.value, "rate")}
             value={currentPosition.rate}
           />
         </Form.Item>
       </div>
 
       <div className={styles.formActions}>
-        <Button type="secondary" onClick={handleCancel}>
+        <Button
+          type="secondary"
+          onClick={handleCancel}
+          style={{ marginLeft: "auto" }}
+        >
           Cancel
         </Button>
         <Button onClick={handleSave}>Save</Button>

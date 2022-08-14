@@ -16,7 +16,7 @@ const NavLink = ({ slug, icon: Icon, text, colorCode, iconStyles }) => {
             <Icon style={{ color: "#fff", ...iconStyles }} />
           </div>
 
-          <span className={styles.menuItemText}>{text}</span>
+          <p className={styles.menuItemText}>{text}</p>
         </div>
       </div>
     </Link>

@@ -4,8 +4,12 @@
   margin: 1rem;
 }
 
+.header {
+  padding-top: 0.5rem;
+}
+
 .columns {
-  grid-template-columns: repeat(4, 1fr) repeat(2, 4rem);
+  grid-template-columns: repeat(4, 1fr) min-content;
 }
 
 .remove {

@@ -10,57 +10,59 @@ const TaskList = () => {
   return (
     <TileContainer headerStyles={{ height: "0" }}>
       <table className={styles.container}>
-        <tr className={`list-header--lg ${styles.columns}`}>
-          <th>Task</th>
-          <th>Section</th>
-          <th>Assigned</th>
-          <th>Due Date</th>
-          <th>Days Remaining</th>
-          <th>Status</th>
-        </tr>
-        <div className={styles.content}>
+        <thead>
+          <tr className={`list-header--lg ${styles.columns}`}>
+            <th>Task</th>
+            <th className="hide--tablet">Section</th>
+            <th className="hide--tablet">Assigned</th>
+            <th>Due Date</th>
+            <th className="hide--tablet">Days Remaining</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody className={styles.content}>
           <tr className={`list-item--lg ${styles.columns}`}>
             <td>Approve Timecards</td>
-            <td>Timesheets</td>
-            <td>Aaron Whitebird</td>
+            <td className="hide--tablet">Timesheets</td>
+            <td className="hide--tablet">Aaron Whitebird</td>
             <td>Aug 6th</td>
-            <td>2</td>
+            <td className="hide--tablet">2</td>
             <td>
               <div className={styles.complete}>Complete</div>
             </td>
           </tr>
           <tr className={`list-item--lg ${styles.columns}`}>
             <td>Review New Employees</td>
-            <td>Employees</td>
-            <td>Aaron Whitebird</td>
+            <td className="hide--tablet">Employees</td>
+            <td className="hide--tablet">Aaron Whitebird</td>
             <td>Aug 6th</td>
-            <td>6</td>
+            <td className="hide--tablet">6</td>
             <td>
               <div className={styles.due}>Past Due</div>
             </td>
           </tr>
           <tr className={`list-item--lg ${styles.columns}`}>
-            <td>Approve Timecards</td>
-            <td>Timesheets</td>
-            <td>Aaron Whitebird</td>
+            <td>Mid-Cycle Timecard Review</td>
+            <td className="hide--tablet">Timesheets</td>
+            <td className="hide--tablet">Aaron Whitebird</td>
             <td>Aug 8th</td>
-            <td>1</td>
+            <td className="hide--tablet">1</td>
             <td>
               <div className={styles.complete}>Complete</div>
             </td>
           </tr>
 
           <tr className={`list-item--lg ${styles.columns}`}>
-            <td>Approve Timecards</td>
-            <td>Timesheets</td>
-            <td>Aaron Whitebird</td>
+            <td>Review Office Schedules</td>
+            <td className="hide--tablet">Scheduler</td>
+            <td className="hide--tablet">Aaron Whitebird</td>
             <td>Aug 8th</td>
-            <td>1</td>
+            <td className="hide--tablet">1</td>
             <td>
               <div className={styles.complete}>Complete</div>
             </td>
           </tr>
-        </div>
+        </tbody>
       </table>
     </TileContainer>
   );

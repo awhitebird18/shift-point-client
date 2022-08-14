@@ -3,9 +3,8 @@ import { bindActionCreators } from "redux";
 import { useDispatch } from "react-redux";
 
 // Components
-import { BsClipboardPlus } from "react-icons/bs";
 import Post from "./Post";
-import TileLayout from "../TileLayout/TileLayout";
+import { BsClipboardPlus } from "react-icons/bs";
 
 // Styles
 import styles from "./Bulletin.module.css";
@@ -22,22 +21,32 @@ const Bulletin = () => {
   const handleAddBulletin = () => {
     showModal({
       name: "MANAGE_POST",
+      title: "Create Bulletin",
       post: {},
       setBulletins,
     });
   };
 
   return (
-    <div className={styles.container}>
-      {bulletins?.map((post, index) => {
-        if (index > 2) {
-          return;
-        }
-        return <Post key={index} post={post} setBulletins={setBulletins} />;
-      })}
+    <>
+      <div className={styles.bulletinHeader}>
+        <h2 className={styles.bulletinTitle}>Bulletins</h2>
+        <div onClick={handleAddBulletin}>
+          <BsClipboardPlus className={styles.addBulletinIcon} />
+        </div>
+      </div>
 
-      <p className={styles.viewMoreText}>View More Bulletins</p>
-    </div>
+      <div className={styles.container}>
+        {bulletins?.map((post, index) => {
+          if (index > 3) {
+            return;
+          }
+          return (
+            <Post key={post._id} post={post} setBulletins={setBulletins} />
+          );
+        })}
+      </div>
+    </>
   );
 };
 

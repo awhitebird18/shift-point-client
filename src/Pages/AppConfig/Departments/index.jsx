@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router";
 
 // Styles
-import styles from "../index.module.css";
+import styles from "./index.module.css";
 
 // Components
 import { Menu } from "antd";
@@ -19,7 +19,7 @@ const DepartmentSetup = () => {
 
   return (
     <>
-      <div className={`hide-medium ${styles.header}`}>
+      <div className={styles.header}>
         <Menu
           onClick={handleClick}
           selectedKeys={current}

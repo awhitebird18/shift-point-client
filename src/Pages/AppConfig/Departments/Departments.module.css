@@ -1,5 +1,5 @@
 .columns {
-  grid-template-columns: 0.5fr repeat(2, 1fr) repeat(2, 5rem);
+  grid-template-columns: 0.5fr repeat(2, 1fr) 5rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -20,11 +20,6 @@
   display: flex;
   justify-content: flex-end;
   margin: 1rem;
-}
-
-.departmentName {
-  text-align: start;
-  padding-left: 0.75rem;
 }
 
 .center {

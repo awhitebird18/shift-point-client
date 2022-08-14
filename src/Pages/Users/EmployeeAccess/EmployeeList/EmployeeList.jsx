@@ -1,8 +1,4 @@
-// Components
-import { Collapse, Typography } from "antd";
-const { Text } = Typography;
-const { Panel } = Collapse;
-import EmployeePanel from "./EmployeePanel";
+import { Checkbox } from "antd";
 
 // Styles
 import styles from "./EmployeeList.module.css";
@@ -14,46 +10,41 @@ const EmployeeList = ({
   employees,
   costCentres,
 }) => {
-  return (
-    <Collapse bordered={false} style={{ background: "none" }}>
-      {departments.map((department, index) => {
-        const deptIndex = currentUser.departments.findIndex((el) => {
-          return el.id === department._id;
-        });
+  const assignedDepartments = currentUser.departments;
 
-        if (deptIndex === -1) {
-          return;
-        }
+  const filteredEmployees = employees.filter((employee) => {
+    return assignedDepartments.find((department) => {
+      return department.id === employee.homeDepartment;
+    });
+  });
+
+  return (
+    <div>
+      <div className={`list-header--sm ${styles.columns}`}>
+        <div>Name</div>
+        <div>Department</div>
+        <div>Cost Centre</div>
+        <div>Pay Type</div>
+      </div>
+      {filteredEmployees.map((employee) => {
+        const department = departments.find((department) => {
+          return department._id === employee.homeDepartment;
+        });
 
         const costCentre = costCentres.find((costCentre) => {
           return costCentre._id === department.costCentreId;
         });
 
-        const employeeCount = employees.reduce((prev, curr) => {
-          if (curr.homeDepartment === department._id) {
-            return (prev += 1);
-          } else {
-            return prev;
-          }
-        }, 0);
-
         return (
-          <Panel
-            header={`${department.name} (${employeeCount})`}
-            extra={<Text type="secondary">{costCentre?.name}</Text>}
-            key={index}
-            className={styles.panel}
-          >
-            <EmployeePanel
-              employees={employees}
-              department={department}
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            />
-          </Panel>
+          <div className={`list-item--sm ${styles.columns}`}>
+            <div>{`${employee.firstName} ${employee.lastName}`}</div>
+            <div>{department.name}</div>
+            <div>{costCentre?.name}</div>
+            <div>Hourly</div>
+          </div>
         );
       })}
-    </Collapse>
+    </div>
   );
 };
 

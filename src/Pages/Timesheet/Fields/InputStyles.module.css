@@ -1,7 +1,8 @@
 .field {
   height: 100%;
   width: 100%;
-  border-radius: 0.3rem;
+  border-radius: var(--inputBorderRadius);
+  cursor: pointer;
 }
 
 .text {
@@ -13,5 +14,6 @@
   align-items: center;
   justify-content: center;
   background: var(--inputBackground);
-  border: var(--border-main);
+  border: var(--border-input);
+  box-shadow: var(--boxshadow-input);
 }

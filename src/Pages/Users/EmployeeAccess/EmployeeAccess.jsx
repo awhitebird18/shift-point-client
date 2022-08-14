@@ -38,40 +38,38 @@ const EmployeeAccess = ({ currentUser, setCurrentUser }) => {
             <Link to="">Departments</Link>
           </Menu.Item>
           <Menu.Item key="employeeList">
-            <Link to="employeeList">Employee List</Link>
+            <Link to="employeeList">Assigned Employees</Link>
           </Menu.Item>
         </Menu>
       </div>
 
-      {
-        <div className={styles.content}>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <DepartmentList
-                  currentUser={currentUser}
-                  setCurrentUser={setCurrentUser}
-                  departments={departments}
-                  costCentres={costCentres}
-                />
-              }
-            />
-            <Route
-              path="employeeList"
-              element={
-                <EmployeeList
-                  departments={departments}
-                  currentUser={currentUser}
-                  setCurrentUser={setCurrentUser}
-                  employees={employees}
-                  costCentres={costCentres}
-                />
-              }
-            />
-          </Routes>
-        </div>
-      }
+      <div className={styles.content}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <DepartmentList
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+                departments={departments}
+                costCentres={costCentres}
+              />
+            }
+          />
+          <Route
+            path="employeeList"
+            element={
+              <EmployeeList
+                departments={departments}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+                employees={employees}
+                costCentres={costCentres}
+              />
+            }
+          />
+        </Routes>
+      </div>
     </>
   );
 };

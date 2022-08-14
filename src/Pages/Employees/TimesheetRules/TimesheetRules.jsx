@@ -24,6 +24,7 @@ const TimesheetRules = ({ employeeTimesheetRules, setCurrentEmployee }) => {
       return {
         ...prev,
         timesheetrules: { ...prev.timesheetrules, [field]: value },
+        save: true,
       };
     });
   };

@@ -396,14 +396,13 @@ export const displayErrorMessage = (errorTitle, errorMessage) => {
 export const showModal = (modalProps) => {
   return (dispatch) => {
     dispatch({
-      type: "SET_MODAL_TYPE",
+      type: "SHOW_MODAL",
       payload: modalProps,
     });
   };
 };
 
 export const setNotification = (notification) => {
-  console.log(notification);
   return (dispatch) => {
     dispatch({
       type: "SET_NOTIFICATION",
@@ -434,6 +433,24 @@ export const addTimesheetFilter = (index) => {
       payload: {
         index,
       },
+    });
+  };
+};
+
+export const setTimesheetFilter = (filter) => {
+  return (dispatch) => {
+    dispatch({
+      type: "setTimesheetFilter",
+      payload: filter,
+    });
+  };
+};
+
+export const removeAllTimesheetFilters = () => {
+  return (dispatch) => {
+    dispatch({
+      type: "removeAllTimesheetFilters",
+      payload: null,
     });
   };
 };
@@ -557,8 +574,6 @@ export const editShift = (shift) => {
     updatedShift.start = dayjs(updatedShift.start);
     updatedShift.end = dayjs(updatedShift.end);
 
-    console.log(updatedShift);
-
     dispatch({
       type: "EDIT_SHIFT",
       payload: updatedShift,
@@ -678,7 +693,7 @@ export const markAllAsRead = (notifications) => {
     const queryString = notificationIdArr.join("&");
 
     await fetch(
-      `${process.env.REACT_APP_BASE_URL}notification?${queryString}`,
+      `${process.env.REACT_APP_BASE_URL}/notification?${queryString}`,
       {
         headers: {
           Accept: "application/json",

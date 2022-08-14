@@ -1,8 +1,33 @@
 .header {
+  padding-top: 0.5rem;
+  border-bottom: var(--border-main);
+}
+
+.columns {
+  grid-template-columns: 1.5fr repeat(3, 1fr) 4rem;
+}
+
+@media screen and (max-width: 768px) {
+  .columns {
+    grid-template-columns: repeat(2, 1.5fr) 4rem;
+  }
+}
+
+.addEarning {
   display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+  margin-top: 2rem;
+}
+
+.icon {
+  justify-self: center;
+  text-align: center;
   align-items: center;
-  padding: 1.2rem;
-  height: 4rem;
-  border-bottom: 1px solid var(--color-border);
-  font-size: 1.3rem;
+  display: flex;
+}
+
+.name {
+  text-align: start;
+  padding-left: 0.75rem;
 }

@@ -1,6 +1,6 @@
-import { v4 as uuidv4 } from 'uuid';
-import _ from 'lodash';
-import { timeReg } from '../../../Misc/constants';
+import { v4 as uuidv4 } from "uuid";
+import _ from "lodash";
+import { timeReg } from "../../../Misc/constants";
 
 // Timesheet
 export const updateStatus = (timecard) => {
@@ -8,21 +8,21 @@ export const updateStatus = (timecard) => {
 
   timecardCopy.unsaved = true;
 
-  if (timecardCopy.status === 'approved') {
+  if (timecardCopy.status === "approved") {
     if (
       timecardCopy.start &&
       timecardCopy.end &&
-      Object.prototype.toString.call(timecardCopy.start) === '[object Date]' &&
-      Object.prototype.toString.call(timecardCopy.end) === '[object Date]'
+      Object.prototype.toString.call(timecardCopy.start) === "[object Date]" &&
+      Object.prototype.toString.call(timecardCopy.end) === "[object Date]"
     ) {
-      timecardCopy.status = 'pending';
+      timecardCopy.status = "pending";
     }
   } else if (
-    timecardCopy.status === 'pending' &&
-    Object.prototype.toString.call(timecardCopy.start) === '[object Date]' &&
-    Object.prototype.toString.call(timecardCopy.end) === '[object Date]'
+    timecardCopy.status === "pending" &&
+    Object.prototype.toString.call(timecardCopy.start) === "[object Date]" &&
+    Object.prototype.toString.call(timecardCopy.end) === "[object Date]"
   ) {
-    timecardCopy.status = 'approved';
+    timecardCopy.status = "approved";
   }
 
   return timecardCopy;
@@ -46,41 +46,43 @@ export const updatePosition = (timeData, value, position, employee) => {
       ? timeData.departmentId
       : position.departmentId
       ? position.departmentId
-      : '',
+      : "",
 
     earningId: timeData.earningId
       ? timeData.earningId
       : position.earningId
       ? position.earningId
-      : '',
+      : "",
 
     start:
-      timeData.start && Object.prototype.toString.call(timeData.start) !== '[object Date]'
+      timeData.start &&
+      Object.prototype.toString.call(timeData.start) !== "[object Date]"
         ? new Date(`${dateFormatted} ${timeData.start}`)
         : timeData.start
         ? timeData.start
         : position.start
         ? new Date(`${dateFormatted} ${position.start}`)
-        : '',
+        : "",
 
     end:
-      timeData.end && Object.prototype.toString.call(timeData.end) !== '[object Date]'
+      timeData.end &&
+      Object.prototype.toString.call(timeData.end) !== "[object Date]"
         ? new Date(`${dateFormatted} ${timeData.end}`)
         : timeData.end
         ? timeData.end
         : position.end
         ? new Date(`${dateFormatted} ${position.end}`)
-        : '',
+        : "",
 
     rate: timeData.rate
       ? timeData.rate
-      : position.rate >= 0
+      : position && position.rate >= 0
       ? position.rate
-      : primaryEarning.rate
+      : primaryEarning?.rate
       ? primaryEarning.rate
-      : '',
+      : "",
 
-    status: 'pending',
+    status: "pending",
     unsaved: true,
     premiums: [],
   };
@@ -99,10 +101,10 @@ export const updateTime = (timedata, value, key) => {
   timedata = generateId(timedata);
 
   if (!timedata.earningId) {
-    timedata.earningId = '62083c1bdb60a6e265c7db81';
+    timedata.earningId = "62083c1bdb60a6e265c7db81";
   }
   timedata.unsaved = true;
-  timedata.status = 'pending';
+  timedata.status = "pending";
 
   if (timeReg.test(value)) {
     const dateFormatted = `${timedata.date.getFullYear()}-${
@@ -122,7 +124,8 @@ export const updateTime = (timedata, value, key) => {
 export const calculateBreakDeduction = (breakdata) => {
   return breakdata.reduce((prev, curr) => {
     if (curr.unpaid && timeIsDateObj(curr)) {
-      const hours = (curr.end.getTime() - curr.start.getTime()) / 60 / 60 / 1000;
+      const hours =
+        (curr.end.getTime() - curr.start.getTime()) / 60 / 60 / 1000;
       return (prev += hours);
     }
 
@@ -133,8 +136,8 @@ export const calculateBreakDeduction = (breakdata) => {
 // Helpers
 export const timeIsDateObj = (timedata) => {
   if (
-    Object.prototype.toString.call(timedata.start) === '[object Date]' &&
-    Object.prototype.toString.call(timedata.end) === '[object Date]'
+    Object.prototype.toString.call(timedata.start) === "[object Date]" &&
+    Object.prototype.toString.call(timedata.end) === "[object Date]"
   ) {
     return true;
   }

@@ -13,6 +13,8 @@ import EmployeeAccess from "../../EmployeeAccess/EmployeeAccess.jsx";
 import ModuleAccess from "../../ModuleAccess/ModuleAccess.jsx";
 import { Button } from "../../../../Components";
 
+import { toast } from "react-hot-toast";
+
 const Body = ({ currentUser, setCurrentUser, setUserList }) => {
   const [current, setCurrent] = useState("basicinfo");
 
@@ -32,6 +34,18 @@ const Body = ({ currentUser, setCurrentUser, setUserList }) => {
       url = url.concat(`/${currentUser._id}`);
     }
 
+    if (
+      !(
+        currentUser.firstName &&
+        currentUser.lastName &&
+        currentUser.username &&
+        currentUser.email
+      )
+    ) {
+      toast.error("Missing User Details");
+      return;
+    }
+
     fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -45,12 +59,16 @@ const Body = ({ currentUser, setCurrentUser, setUserList }) => {
         return res.json();
       })
       .then((data) => {
+        if (data.status === "fail") {
+          toast.error(data.message);
+          return;
+        }
         setUserList((prev) => {
-          const userIndex = prev.findIndex((user) => {
+          const stateCopy = [...prev];
+
+          const userIndex = stateCopy.findIndex((user) => {
             return user._id === currentUser._id;
           });
-
-          const stateCopy = [...prev];
 
           if (userIndex === -1) {
             stateCopy.push(data.data);
@@ -61,7 +79,7 @@ const Body = ({ currentUser, setCurrentUser, setUserList }) => {
           return stateCopy;
         });
 
-        setCurrentUser(null);
+        setCurrentUser(data.data);
       });
   };
 
@@ -142,22 +160,26 @@ const Body = ({ currentUser, setCurrentUser, setUserList }) => {
               path="/moduleaccess"
               element={
                 <ModuleAccess
-                  currentUser={currentUser}
+                  moduleAccess={currentUser.moduleAccess}
                   setCurrentUser={setCurrentUser}
                 />
               }
             />
           </Routes>
         </Form>
-        <div className={styles.save}>
+        <div className={styles.formActions}>
           <Button
             type="secondary"
-            style={{ marginRight: "1rem" }}
+            style={{ marginLeft: "auto", width: "5rem" }}
             onClick={handleBack}
           >
             Back
           </Button>
-          <Button type="primary" onClick={handleUserSave}>
+          <Button
+            type="primary"
+            style={{ width: "5rem" }}
+            onClick={handleUserSave}
+          >
             Save
           </Button>
         </div>

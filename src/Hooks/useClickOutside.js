@@ -9,7 +9,7 @@ const useClickOutside = (componentHandler) => {
         componentHandler(false);
       }
       // else {
-      //   console.log("true");
+      
       //   componentHandler(true);
       // }
     };

@@ -18,7 +18,7 @@ const PublishSchedule = () => {
   });
   const currentSchedule = schedules.find((el) => el.current);
 
-  const handleChange = (date, dateStr) => {
+  const handleChange = (date) => {
     setDate(date);
   };
 
@@ -39,14 +39,22 @@ const PublishSchedule = () => {
     showModal(null);
   };
 
+  const handleCancel = () => {
+    showModal(null);
+  };
+
   return (
     <div className={styles.container}>
       <h3>Select Date</h3>
       <DatePicker onChange={handleChange} />
 
-      <Button style={{ height: "2.5rem" }} onClick={handlePublish}>
-        Publish
-      </Button>
+      <div className={styles.formActions}>
+        <Button type='secondary' style={{ marginLeft: "auto" }} onClick={handleCancel}>
+          Cancel
+        </Button>
+
+        <Button onClick={handlePublish}>Publish</Button>
+      </div>
     </div>
   );
 };

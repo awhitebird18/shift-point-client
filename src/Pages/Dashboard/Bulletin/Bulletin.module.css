@@ -4,7 +4,7 @@
 }
 
 .addBulletinIcon {
-  color: var(--color_gray_2);
+  color: var(--color_gray_5);
   font-size: 1.4rem;
 }
 
@@ -14,4 +14,16 @@
 
 .viewMoreText {
   text-align: center;
+  cursor: pointer;
+}
+
+.bulletinHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.bulletinTitle {
+  margin: 0;
 }

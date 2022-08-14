@@ -7,6 +7,14 @@ const addTimesheetFilter = (state, action) => {
   return stateCopy;
 };
 
+const setTimesheetFilter = (state, action) => {
+  const stateCopy = { ...state };
+
+  stateCopy.timesheetFilter.push(action.payload);
+
+  return stateCopy;
+};
+
 const removeTimesheetFilter = (state, action) => {
   const stateCopy = { ...state, timesheetFilter: [...state.timesheetFilter] };
 
@@ -29,10 +37,13 @@ const changeTimesheetFilter = (state, action) => {
 
   if (
     stateCopy.timesheetFilter[index].hasOwnProperty("type") &&
-    stateCopy.timesheetFilter[index].hasOwnProperty("subtype") &&
-    stateCopy.timesheetFilter[index].hasOwnProperty("value")
+    stateCopy.timesheetFilter[index].hasOwnProperty("subtype")
   ) {
-    stateCopy.timesheetFilter[index].active = true;
+    if (stateCopy.timesheetFilter[index].type === "employee") {
+      stateCopy.timesheetFilter[index].active = true;
+    } else if (stateCopy.timesheetFilter[index].hasOwnProperty("value")) {
+      stateCopy.timesheetFilter[index].active = true;
+    }
   } else {
     stateCopy.timesheetFilter[index].active = false;
   }
@@ -50,8 +61,14 @@ const reducer = (
     case "addTimesheetFilter":
       return addTimesheetFilter(state, action);
 
+    case "setTimesheetFilter":
+      return setTimesheetFilter(state, action);
+
     case "removeTimesheetFilter":
       return removeTimesheetFilter(state, action);
+
+    case "removeAllTimesheetFilters":
+      return { ...state, timesheetFilter: [] };
 
     case "changeTimesheetFilter":
       return changeTimesheetFilter(state, action);

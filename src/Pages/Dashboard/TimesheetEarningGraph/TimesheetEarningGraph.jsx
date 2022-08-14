@@ -26,41 +26,51 @@ const TimesheetEarningGraph = () => {
   return (
     <TileLayout
       title="Weekly Hours By Earning"
-      contentStyles={{ position: "relative" }}
+      // contentStyles={{
+      //   position: "relative !important",
+      //   overflow: "hidden !important",
+      //   width: "50%",
+      // }}
     >
-      {weeklyStats && (
-        <Bar
-          id="earningType"
-          datasetIdKey="earningType"
-          data={{
-            labels: chartLabels,
-            datasets: [
-              {
-                id: 1,
-                label: "Total Hours",
-                data: earningHours,
-                backgroundColor: "#40a9ff",
-                borderRadius: 5,
-              },
-            ],
-          }}
-          options={{
-            response: true,
-            maintainAspectRatio: false,
+      <div
+        style={{
+          height: "100%",
+        }}
+      >
+        {weeklyStats && (
+          <Bar
+            id="earningType"
+            datasetIdKey="earningType"
+            data={{
+              labels: chartLabels,
+              datasets: [
+                {
+                  id: 1,
+                  label: "Total Hours",
+                  data: earningHours,
+                  backgroundColor: "#40a9ff",
+                  borderRadius: 3,
+                },
+              ],
+            }}
+            options={{
+              // responsive: true,
+              maintainAspectRatio: false,
 
-            scales: {
-              x: {
-                beginsAtZero: true,
-                color: "white",
+              scales: {
+                x: {
+                  beginsAtZero: true,
+                  color: "white",
+                },
+                y: {
+                  beginsAtZero: true,
+                  borderWidth: 0,
+                },
               },
-              y: {
-                beginsAtZero: true,
-                borderWidth: 0,
-              },
-            },
-          }}
-        />
-      )}
+            }}
+          />
+        )}
+      </div>
     </TileLayout>
   );
 };

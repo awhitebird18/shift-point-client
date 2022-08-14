@@ -25,6 +25,7 @@ const Position = ({
   const handleAssignPosition = () => {
     showModal({
       name: "EMPLOYEE_POSITION_DETAILED",
+      title: "Assign Position",
       position: {},
       departmentList,
       earningList,

@@ -25,11 +25,12 @@ function App() {
       <Toaster
         position="top-center"
         toastOptions={{
-          style: { fontSize: "1.2rem", padding: "0.75rem" },
+          style: {
+            fontSize: "1.2rem",
+            padding: "0.75rem",
+          },
         }}
       />
-
-      {/* {notifications.length && <Notifications notifications={notifications} />} */}
 
       <Routes />
     </>

@@ -3,3 +3,8 @@
   font-size: 1.3rem;
   margin-top: 0.4rem;
 }
+
+.container {
+  box-shadow: var(--boxshadow-main);
+  border-radius: 50%;
+}

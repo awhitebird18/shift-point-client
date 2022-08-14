@@ -5,16 +5,15 @@
 }
 
 .colorDisplay {
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  width: 1.25rem !important;
+  height: 1.25rem !important;
   border-radius: 50% !important;
-  padding: 0;
 }
 
 .option {
   display: flex;
   gap: 1rem;
-  height: 100%;
-  padding: 0.2rem;
+  padding: 0.1rem;
   align-items: center;
+  overflow: hidden;
 }

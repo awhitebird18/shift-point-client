@@ -29,48 +29,52 @@ const TimesheetStatusGraph = () => {
   });
 
   return (
-    <TileLayout
-      title="Weekly Hours By Status"
-      contentStyles={{ position: "relative" }}
-    >
-      <Bar
-        id="weeklyHoursStatus"
-        datasetIdKey="weeklyHoursStatus"
-        data={{
-          labels: chartLabels,
-          datasets: [
-            {
-              id: 1,
-              label: "Approved Hours",
-              data: approvedData,
-              backgroundColor: "#40a9ff",
-              stack: "Stack 0",
-            },
-            {
-              id: 2,
-              label: "Pending Hours",
-              data: pendingData,
-              backgroundColor: "#ff7875",
-
-              stack: "Stack 0",
-            },
-          ],
+    <TileLayout title="Weekly Hours By Status">
+      <div
+        style={{
+          height: "100%",
         }}
-        options={{
-          response: true,
-          scales: {
-            y: {
-              beginsAtZero: true,
-              stacked: true,
+      >
+        <Bar
+          id="weeklyHoursStatus"
+          datasetIdKey="weeklyHoursStatus"
+          data={{
+            labels: chartLabels,
+            datasets: [
+              {
+                id: 1,
+                label: "Approved Hours",
+                data: approvedData,
+                backgroundColor: "#40a9ff",
+                stack: "Stack 0",
+                borderRadius: 3,
+              },
+              {
+                id: 2,
+                label: "Pending Hours",
+                data: pendingData,
+                backgroundColor: "#ff7875",
+                stack: "Stack 0",
+                borderRadius: 3,
+              },
+            ],
+          }}
+          options={{
+            // responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginsAtZero: true,
+                stacked: true,
+              },
+              y: {
+                beginsAtZero: true,
+                stacked: true,
+              },
             },
-            y: {
-              beginsAtZero: true,
-              stacked: true,
-            },
-          },
-          maintainAspectRatio: false,
-        }}
-      />
+          }}
+        />
+      </div>
     </TileLayout>
   );
 };

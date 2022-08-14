@@ -1,4 +1,4 @@
-const initialState = { department: [], costcentre: [] };
+const initialState = { department: [], costcentre: [], module: [] };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

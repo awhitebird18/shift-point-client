@@ -26,11 +26,11 @@ const ScheduledRoundingSegment = ({
   return (
     <div className={styles.punchTransaction}>
       <div className={styles.scheduledPunchLabel}>
-        <h3 className={styles.transactionLabel}>Punch Transaction:</h3>
+        <h3>Punch Transaction:</h3>
         <div>{punchTransaction}</div>
         <div className={styles.emptyTile}></div>
 
-        <div className={styles.transactionLabel}>Transaction Window:</div>
+        <div>Transaction Window:</div>
         <Input
           value={timesheetRules.scheduledRounding?.[section]?.window}
           onChange={(e) => handleScheduledChange(e.target.value, "window")}

@@ -98,7 +98,6 @@ const AddShift = ({ shift, positionList, employee }) => {
 
   const handleChange = (value, field) => {
     setCurrentShift((prev) => {
-      console.log({ ...prev, [field]: value });
       return { ...prev, [field]: value };
     });
   };
@@ -157,7 +156,11 @@ const AddShift = ({ shift, positionList, employee }) => {
       </Form.Item>
 
       <div className={styles.formActions}>
-        <Button type="secondary" onClick={handleClose}>
+        <Button
+          type="secondary"
+          onClick={handleClose}
+          style={{ marginLeft: "auto" }}
+        >
           Cancel
         </Button>
         <Button onClick={handleOk}>Save</Button>

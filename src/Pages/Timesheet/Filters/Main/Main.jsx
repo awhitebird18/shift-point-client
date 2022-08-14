@@ -30,7 +30,7 @@ const FilterBar = ({
 
   const handleShowExportModal = (e) => {
     e.stopPropagation();
-    showModal({ name: "TIMESHEET_EXPORT" });
+    showModal({ name: "TIMESHEET_EXPORT", title: "Timesheet Export" });
   };
 
   const sortValue = useSelector((state) => {
@@ -44,17 +44,19 @@ const FilterBar = ({
 
   return (
     <div className={styles.mainFilter}>
-      <div className={`${styles.mainFilterLeft}`}>
+      <div className={styles.mainFilterLeft}>
         <Button
           onClick={() => setShowExtendedFilters((prev) => !prev)}
           type={filterButtonStyles}
           className={`hide--tablet ${styles.filter}`}
+          style={{ width: "14rem", height: "100% !important" }}
         >
           <BsFilter className={styles.icon} />
-          Filter
+          <p style={{ fontSize: "14px" }}>Filter</p>
         </Button>
 
         <Select
+          className={styles.sort}
           bordered={false}
           style={{
             zIndex: "2",

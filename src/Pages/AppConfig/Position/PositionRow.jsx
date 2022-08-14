@@ -2,17 +2,15 @@
 import styles from "./index.module.css";
 
 // Data and Functions
-import { Button } from "antd";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Button } from "../../../Components";
 
 const PositionRow = ({
   position,
   setPositionList,
-  setIsModalVisible,
-  setCurrentPosition,
   departmentList,
   earningList,
   premiumList,
+  showModal,
 }) => {
   const earning = earningList.find((el) => {
     return el._id === position.earningId;
@@ -23,8 +21,9 @@ const PositionRow = ({
   });
 
   // Handle Delete position
-  const handleDelete = () => {
-    const url = `${process.env.REACT_APP_BASE_URL}position/${position._id}`;
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    const url = `${process.env.REACT_APP_BASE_URL}/position/${position._id}`;
 
     fetch(url, {
       headers: {
@@ -50,8 +49,15 @@ const PositionRow = ({
 
   // Handle Edit Position
   const handleEdit = () => {
-    setCurrentPosition(position);
-    setIsModalVisible(true);
+    showModal({
+      name: "POSITION_CONFIG",
+      title: "Edit Position",
+      position,
+      departmentList,
+      earningList,
+      premiumList,
+      setPositionList,
+    });
   };
 
   let premium =
@@ -64,19 +70,14 @@ const PositionRow = ({
         })?.name;
 
   return (
-    <div className={`list-item--md ${styles.columns}`}>
+    <div className={`list-item--md ${styles.columns}`} onClick={handleEdit}>
       <div>{position.name}</div>
       <div>{department && department.name}</div>
       <div className="hide--tablet">{earning && earning.name}</div>
       <div className="hide--tablet">{premium}</div>
       <div className={styles.remove}>
-        <Button onClick={handleEdit}>
-          <EditOutlined />
-        </Button>
-      </div>
-      <div className={styles.remove}>
-        <Button onClick={handleDelete}>
-          <DeleteOutlined />
+        <Button type="secondary" onClick={handleDelete}>
+          Delete
         </Button>
       </div>
     </div>

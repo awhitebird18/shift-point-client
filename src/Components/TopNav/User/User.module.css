@@ -6,10 +6,6 @@
   gap: 0.5rem;
 }
 
-.userInfo:hover {
-  cursor: pointer;
-}
-
 .usernameText {
   font-size: 1.1rem;
   margin: 0;
@@ -24,6 +20,7 @@
 
 .chevron {
   font-size: 1.3rem;
+  display: none;
 }
 
 /* Media Queries */

@@ -17,12 +17,7 @@ const Dates = ({ setIsOpen, timesheetRules }) => {
   const endDay = dayjs(value).endOf("month").endOf("week");
 
   const dispatch = useDispatch();
-  const { setCurrentWeek, setIsLoading } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
-
-  console.log(value);
+  const { setCurrentWeek } = bindActionCreators(actionCreators, dispatch);
 
   useEffect(() => {
     let day = dayjs(startDay).subtract(1, "day");

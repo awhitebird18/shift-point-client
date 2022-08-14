@@ -19,14 +19,10 @@
   position: relative;
 }
 
-.save {
+.formActions {
   display: flex;
-  right: 0;
-  bottom: 0;
-  padding: 0 1rem 1rem 0;
-  width: 12rem;
-  height: 3rem;
-  margin-left: auto;
+  gap: 1rem;
+  margin: 1rem;
 }
 
 .mobileMenuSelect {

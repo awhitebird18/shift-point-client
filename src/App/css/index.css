@@ -5,6 +5,16 @@
   box-sizing: border-box;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
 :root {
   --breaksheet-row: minmax(8rem, 2fr) repeat(2, minmax(5.5rem, 1fr))
     minmax(4rem, 1fr) minmax(5rem, 0.5fr) minmax(5rem, 1fr) 4rem;
@@ -35,10 +45,11 @@
   --color_yellow_3: #ffc53d;
 
   /* Borders */
-  --boxshadow-main: rgba(0, 0, 0, 0.1) 0px 3px 6px;
+
   --border-main: 1px solid rgba(189, 189, 189, 0.297);
   --section-border-radius: 0.5rem;
-  --color_inputBorder-light: #d9d9d9;
+  --inputBorderRadius: 0.25rem;
+  --color_inputBorder-light: #ededed;
   --color_inputBorder-dark: #575757;
 }
 
@@ -50,9 +61,16 @@ body.light {
   --sectionmain: var(--color_white);
   --inputBackground: var(--color_white);
   --inputBorder: var(--color_inputBorder-light);
+
   --shiftColor: inherit;
   --timesheetBorderColor: var(--color_gray_1);
   --border-main: 1px solid rgba(163, 163, 163, 0.297);
+  --border-input: 1px solid rgba(163, 163, 163, 0.297);
+  --boxshadow-main: rgba(0, 0, 0, 0.1) 2px 2px 3px;
+  --boxshadow-shift: rgba(0, 0, 0, 0.5) 0px 2px 4px;
+  --boxshadow-input: rgba(0, 0, 0, 0.05) 3px 3px 3px;
+  --boxshadow-input: 0;
+  --list-hover: var(--color_gray_0);
 }
 
 body.dark {
@@ -62,10 +80,15 @@ body.dark {
   --text-color-reverse: var(--color_gray_8);
   --sectionmain: var(--section);
   --inputBackground: var(--input);
-  --inputBorder: var(--color_inputBorder-dark);
   --shiftColor: var(--color_white);
   --timesheetBorderColor: var(--color_gray_5);
-  --border-main: 1px solid rgba(189, 189, 189, 0.297);
+  --inputBorder: none;
+  /* --border-main: 1px solid rgba(189, 189, 189, 0.297); */
+  --border-main: 1px solid rgba(189, 189, 189, 0.145);
+  --boxshadow-main: rgba(0, 0, 0, 0.4) 0px 3px 6px;
+  --boxshadow-input: rgba(0, 0, 0, 0.2) 0px 3px 4px;
+  --boxshadow-shift: rgba(0, 0, 0, 0.6) 0px 3px 4px;
+  --list-hover: rgb(33, 30, 72);
 }
 
 body {
@@ -88,9 +111,14 @@ body section,
 body table,
 body header,
 body ul {
-  background: var(--sectionmain);
-  color: var(--text-color);
   transition: background 0.5s ease-in;
+  background: var(--sectionmain);
+}
+
+body section {
+  color: var(--text-color);
+  box-shadow: var(--boxshadow-main);
+  border-radius: var(--section-border-radius);
 }
 
 .main--background {

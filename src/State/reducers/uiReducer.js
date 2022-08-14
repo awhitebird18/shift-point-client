@@ -4,8 +4,6 @@ const initialState = {
   unsavedChanges: false,
   timesheetDate: null,
   timecardId: null,
-  modalProps: null,
-  component: null,
   notifications: [],
 };
 
@@ -13,19 +11,18 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "toggleBreakModal":
       return { ...state, breakModalId: action.payload.id };
+
     case "togglePremiumModal":
       return { ...state, premiumModalId: action.payload.id };
+
     case "toggleExtendedModal":
       return { ...state, timecardId: action.payload.id };
 
-    case "SET_MODAL_TYPE":
+    case "SHOW_MODAL":
       return {
         ...state,
         modalProps: action.payload,
       };
-
-    case "STORE_COMPONENT":
-      return { ...state, component: action.payload };
 
     case "unsavedChanges":
       return { ...state, unsavedChanges: action.payload.value };

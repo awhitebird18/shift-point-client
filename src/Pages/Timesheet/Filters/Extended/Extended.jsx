@@ -20,11 +20,10 @@ import {
 import { useFetch } from "../../../../Hooks";
 
 const ExtendedFilterBar = ({
-  componentTopPage,
-  setTimesheetFilters,
   setShowExtendedFilters,
   departments,
   timesheetFilter,
+  showExtendedFilters,
 }) => {
   const [positions] = useFetch("/position");
 
@@ -71,8 +70,10 @@ const ExtendedFilterBar = ({
   const shiftSelectSubType = () => {
     return (
       <>
-        <Option value="is">is</Option>
-        <Option value="isNot">is not</Option>
+        <Option value="isSignedIn">is signed in</Option>
+        <Option value="isSignedOut">is signed out</Option>
+        <Option value="isMissingPunches">is missing punches</Option>
+        <Option value="isNotMissingPunches">is not missing punches</Option>
       </>
     );
   };
@@ -99,19 +100,24 @@ const ExtendedFilterBar = ({
     { value: "empty", name: "Empty" },
   ].map((el, index) => {
     return (
-      <Option key={index} value={el.value}>
+      <Option key={el.value} value={el.value}>
         {el.name}
       </Option>
     );
   });
 
   return (
-    <div className={styles.container}>
+    <div>
       {timesheetFilter?.map((filter, index) => {
         return (
-          <div key={index}>
+          <div
+            key={index}
+            className={`${styles.filterSection} ${
+              showExtendedFilters ? styles.active : ""
+            }`}
+          >
             {index > 0 && (
-              <div style={{ color: "var(--color-primary)", padding: "0.5rem" }}>
+              <div style={{ color: "var(--color-primary)", padding: "1rem 0" }}>
                 <Select
                   value={filter.combinator}
                   style={{ width: "5rem" }}
@@ -151,6 +157,7 @@ const ExtendedFilterBar = ({
                 <Option value="positionId">Position</Option>
                 <Option value="eeNum">Employee Number</Option>
                 <Option value="status">Status</Option>
+                <Option value="employee">Employee</Option>
               </Select>
 
               {/* Sub Type */}
@@ -173,7 +180,8 @@ const ExtendedFilterBar = ({
                 {(filter.type === "firstName" || filter.type === "lastName") &&
                   containsOptions()}
 
-                {filter.type === "status" && shiftSelectSubType()}
+                {(filter.type === "status" || filter.type === "employee") &&
+                  shiftSelectSubType()}
               </Select>
               <div>
                 {/* Value */}
@@ -202,6 +210,7 @@ const ExtendedFilterBar = ({
                     style={{
                       borderBottom: "1px solid lightgray",
                       minWidth: "15rem",
+                      width: "100%",
                     }}
                     onChange={(e) => {
                       changeTimesheetFilter(e, "value", index);
@@ -246,6 +255,28 @@ const ExtendedFilterBar = ({
                     {shiftOptions}
                   </Select>
                 )}
+
+                {/* {filter.type === "punch" && (
+                  <Select
+                    value={filter.value}
+                    bordered={false}
+                    style={{
+                      borderBottom: "1px solid lightgray",
+                      minWidth: "15rem",
+                    }}
+                    onChange={(e) => {
+                      changeTimesheetFilter(e, "value", index);
+                    }}
+                    maxTagCount="responsive"
+                  >
+                    <Option key={index} value="isMissing">
+                      Is missing
+                    </Option>
+                    <Option key={index} value="isNotMissing">
+                      Is not missing
+                    </Option>
+                  </Select>
+                )} */}
               </div>
 
               <div className={styles.filterActions}>

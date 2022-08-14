@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { actionCreators } from "../../../../State";
+import { bindActionCreators } from "redux";
 
 // Styles
 import styles from "./Premium.module.css";
 
 // Components
-import { Button } from "antd";
+import { Button } from "../../../../Components";
 import PremiumRow from "./PremiumRow.jsx";
-import PremiumModal from "./PremiumModal";
 
 // Functions
 import { useFetch } from "../../../../Hooks";
@@ -15,11 +17,19 @@ const Premium = () => {
   const [premiumList, setPremiumList] = useFetch("/premium");
   const [positionList] = useFetch("/position");
   const [earningList] = useFetch("/earning");
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [currentPremium, setCurrentPremium] = useState();
+  const dispatch = useDispatch();
 
-  const showModal = () => {
-    setIsModalVisible(true);
+  const { showModal } = bindActionCreators(actionCreators, dispatch);
+
+  const handleAddPremium = () => {
+    showModal({
+      name: "PREMIUM_CONFIG",
+      title: "Create Premium",
+      premium: {},
+      setPremiumList,
+      positionList,
+      earningList,
+    });
   };
 
   return (
@@ -29,7 +39,6 @@ const Premium = () => {
           <div>Name</div>
           <div className="hide--mobile">Eligible Positions</div>
           <div>Earning Code</div>
-          <div className={styles.center}>Edit</div>
           <div className={styles.center}>Delete</div>
         </div>
         <div className="slideUpAnimation">
@@ -41,8 +50,7 @@ const Premium = () => {
                     premium={el}
                     setPremiumList={setPremiumList}
                     showModal={showModal}
-                    setIsModalVisible={setIsModalVisible}
-                    setCurrentPremium={setCurrentPremium}
+                    positionList={positionList}
                     earningList={earningList}
                   />
                 );
@@ -51,22 +59,14 @@ const Premium = () => {
         </div>
       </div>
       <div className={styles.addPremium}>
-        <Button type="primary" onClick={showModal}>
+        <Button
+          type="primary"
+          onClick={handleAddPremium}
+          style={{ width: "9rem" }}
+        >
           Add Premium
         </Button>
       </div>
-
-      {currentPremium && (
-        <PremiumModal
-          currentPremium={currentPremium}
-          setCurrentPremium={setCurrentPremium}
-          setPremiumList={setPremiumList}
-          isModalVisible={isModalVisible}
-          setIsModalVisible={setIsModalVisible}
-          positionList={positionList}
-          earningList={earningList}
-        />
-      )}
     </>
   );
 };

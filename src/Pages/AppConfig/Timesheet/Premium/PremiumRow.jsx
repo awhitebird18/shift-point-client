@@ -2,19 +2,19 @@
 import styles from "./Premium.module.css";
 
 // Components
-import { Button } from "antd";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Button } from "../../../../Components";
 
 const PremiumRow = ({
   premium,
   setPremiumList,
-  setIsModalVisible,
-  setCurrentPremium,
+  positionList,
   earningList,
+  showModal,
 }) => {
   // Delete Premium
-  const handleDelete = () => {
-    const url = `${process.env.REACT_APP_BASE_URL}premium/${data._id}`;
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    const url = `${process.env.REACT_APP_BASE_URL}/premium/${premium._id}`;
 
     fetch(url, {
       headers: {
@@ -31,7 +31,7 @@ const PremiumRow = ({
         setPremiumList((prev) => {
           return [
             ...prev.filter((el) => {
-              return el._id !== data._id;
+              return el._id !== premium._id;
             }),
           ];
         });
@@ -40,8 +40,14 @@ const PremiumRow = ({
 
   //   Edit Premium
   const handleEdit = () => {
-    setCurrentPremium(premium);
-    setIsModalVisible(true);
+    showModal({
+      name: "PREMIUM_CONFIG",
+      title: "Edit Premium",
+      premium,
+      setPremiumList,
+      positionList,
+      earningList,
+    });
   };
 
   const children = [];
@@ -56,20 +62,14 @@ const PremiumRow = ({
   });
 
   return (
-    <div className={`list-item--md ${styles.columns}`}>
+    <div className={`list-item--md ${styles.columns}`} onClick={handleEdit}>
       <div>{premium.name}</div>
       <div className="hide--mobile">Multiple</div>
       <div>{earningCode ? earningCode.name : ""}</div>
 
       <div className={styles.center}>
-        <Button onClick={handleEdit}>
-          <EditOutlined />
-        </Button>
-      </div>
-
-      <div className={styles.center}>
-        <Button onClick={handleDelete}>
-          <DeleteOutlined />
+        <Button onClick={handleDelete} type="secondary">
+          Delete
         </Button>
       </div>
     </div>

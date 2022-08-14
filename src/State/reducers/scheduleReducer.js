@@ -37,8 +37,6 @@ const addNewShift = (state, action) => {
     shifts: [...state.shifts],
   };
 
-  console.log(shift);
-
   stateCopy.shifts.push(shift);
 
   return stateCopy;

@@ -2,15 +2,17 @@
 import styles from "./Overtime.module.css";
 
 // Components
-import { Button } from "antd";
+import { Button } from "../../../../Components";
+
+import dayjs from "dayjs";
 
 const OvertimeRow = ({
   overtimeRule,
-  setCurrentOvertime,
-  setModalOpen,
+  showModal,
   setTimesheetRules,
+  earningCodes,
 }) => {
-  const periodLength = () => {
+  const periodLengthDisplay = () => {
     if (!overtimeRule.periodLength) return "None";
 
     if (overtimeRule.periodLength === 1) return "Weekly";
@@ -23,8 +25,13 @@ const OvertimeRow = ({
   };
 
   const handleEditOvertime = () => {
-    setCurrentOvertime(overtimeRule);
-    setModalOpen(true);
+    showModal({
+      name: "OVERTIME_CONFIG",
+      title: "Edit Overtime Rule",
+      overtime: overtimeRule,
+      setTimesheetRules,
+      earningCodes,
+    });
   };
 
   const handleDeleteOvertime = (e) => {
@@ -55,10 +62,14 @@ const OvertimeRow = ({
       <div>
         {overtimeRule.periodThreshold ? overtimeRule.periodThreshold : ""}
       </div>
-      <div className="hide--tablet">{periodLength()}</div>
-      <div className="hide--tablet">Sun May 22, 2022</div>
+      <div className="hide--tablet">{periodLengthDisplay()}</div>
+      <div className="hide--tablet">
+        {dayjs(overtimeRule.periodStartDate, "MM/DD/YYYY").format(
+          "MMM DD YYYY"
+        )}
+      </div>
       <div>
-        <Button danger onClick={handleDeleteOvertime}>
+        <Button type="secondary" onClick={handleDeleteOvertime}>
           Delete
         </Button>
       </div>

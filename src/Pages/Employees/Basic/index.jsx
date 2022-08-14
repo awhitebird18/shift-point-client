@@ -60,7 +60,11 @@ const EmployeeInfo = ({ currentEmployee, setCurrentEmployee }) => {
       <div className={styles.save} onClick={handleSave}>
         <Button
           type="primary"
-          style={{ margin: "1rem", height: "2.5rem", width: "5rem" }}
+          style={{
+            margin: "2rem 1rem 1rem auto",
+            height: "2.5rem",
+            width: "5rem",
+          }}
         >
           Save
         </Button>

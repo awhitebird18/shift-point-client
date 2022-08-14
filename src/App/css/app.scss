@@ -9,30 +9,34 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
-  body,
-  input,
-  span,
-  td,
-  th {
-    font-size: 0.8rem;
-  }
+  // body,
+  // input,
+  // span,
+  // td,
+  // th {
+  //   font-size: 1rem;
+  // }
 }
 
 @media screen and (max-width: 768px) {
-  body,
   input,
-  span,
-  td,
-  th {
-    font-size: 0.7rem;
+  select,
+  p,
+  span {
+    font-size: 0.7rem !important;
+  }
+
+  h1 {
+    font-size: 1.4rem !important;
+  }
+
+  h2 {
+    font-size: 1.2rem !important;
   }
 }
 // @media screen and (max-width: 600px) {
-//   body,
 //   input,
-//   span,
-//   div,
-//   td {
+//   select {
 //     font-size: 0.6rem !important;
 //   }
 // }

@@ -3,6 +3,7 @@ import { Select } from "antd";
 const { Option } = Select;
 import { ProfilePicture } from "../../../Components";
 import { Button } from "../../../Components";
+import { useSelector } from "react-redux";
 
 // Styles
 import styles from "./Header.module.css";
@@ -15,6 +16,9 @@ import { UserAddOutlined, UserOutlined } from "@ant-design/icons";
 
 const Header = ({ currentEmployee, setCurrentEmployee }) => {
   const [employeeList] = useFetch("/employee");
+  const { department: departmentList } = useSelector((state) => {
+    return state.payroll;
+  });
 
   const handleAddEmployee = () => {
     setCurrentEmployee({});
@@ -45,8 +49,15 @@ const Header = ({ currentEmployee, setCurrentEmployee }) => {
   const imgMenu = (
     <div className={styles.imgMenu}>
       <ul>
-        <li>
-          <input type="file" onChange={handleFileInputChange} />
+        <li className={styles.fileInputField}>
+          <label for="file-upload" className={styles.customFileUpload}>
+            Upload Image
+            <input
+              id="file-upload"
+              type="file"
+              onChange={handleFileInputChange}
+            />
+          </label>
         </li>
         <li>Remove Photo</li>
       </ul>
@@ -92,6 +103,12 @@ const Header = ({ currentEmployee, setCurrentEmployee }) => {
     );
   });
 
+  const employeeDepartment =
+    employeeRetrieved &&
+    departmentList.find((el) => {
+      return el._id === employeeRetrieved.homeDepartment;
+    });
+
   return (
     <div className={styles.header}>
       <div className={styles.employeeProfile}>
@@ -101,28 +118,32 @@ const Header = ({ currentEmployee, setCurrentEmployee }) => {
               user={currentEmployee}
               icon={UserOutlined}
               style={{
-                backgroundColor: "var(--color_gray_2)",
                 color: "#fff",
                 fontSize: "2.3rem",
+                backgroundColor: "var(--color_gray_2)",
               }}
             />
           </div>
-          {imgMenu}
+          {currentEmployee && imgMenu}
         </div>
 
-        <span
-          style={{ marginBottom: "0px", fontSize: "1.4rem" }}
-          className={styles.name}
-        >
+        <div style={{ marginBottom: "0px" }} className={styles.name}>
           {employeeRetrieved ? (
-            `${employeeRetrieved.firstName} ${employeeRetrieved.lastName}`
+            <>
+              <h2>
+                {employeeRetrieved.firstName} {employeeRetrieved.lastName}
+              </h2>
+              <p>
+                {employeeRetrieved.eeNum} | {employeeDepartment.name} | Active
+              </p>
+            </>
           ) : (
             <div className={styles.employeeLoading}>
               <div className={styles.loadingBar}></div>
               <div style={{ width: "60%" }} className={styles.loadingBar}></div>
             </div>
           )}
-        </span>
+        </div>
       </div>
 
       <div className={styles.employeeSelection}>

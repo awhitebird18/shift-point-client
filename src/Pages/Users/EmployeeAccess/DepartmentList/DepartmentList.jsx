@@ -64,7 +64,7 @@ const DepartmentList = ({
       });
 
       return (
-        <div className={`${styles.row} ${styles.entry}`} key={department._id}>
+        <div className={`list-item--md ${styles.columns}`} key={department._id}>
           <Checkbox
             checked={departmentFound && departmentFound.access ? true : false}
             onChange={(e) => handleDepartmentChange(e, department._id)}
@@ -79,7 +79,7 @@ const DepartmentList = ({
     .sort();
   return (
     <div>
-      <div className={`${styles.row} ${styles.header}`}>
+      <div className={`list-header--md ${styles.columns}`}>
         <div>Access</div>
         <div>Department</div>
         <div>Cost Centre</div>

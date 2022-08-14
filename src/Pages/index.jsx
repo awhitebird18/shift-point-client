@@ -30,22 +30,24 @@ import { useFetch } from "../Hooks";
 
 const Main = () => {
   const [user] = useFetch("/userAccounts/currentUser");
+
   let { isLoading } = useSelector((state) => {
     return state.uiData;
   });
 
   const dispatch = useDispatch();
 
-  const { fetchEmployees, fetchData2, setCurrentUser } = bindActionCreators(
+  const { setCurrentUser, fetchEmployees, fetchData2 } = bindActionCreators(
     actionCreators,
     dispatch
   );
 
   useEffect(() => {
+    setCurrentUser();
     fetchEmployees();
     fetchData2("department");
     fetchData2("costcentre");
-    setCurrentUser();
+    fetchData2("module");
   }, []);
 
   return (
@@ -77,7 +79,7 @@ const Main = () => {
               position: "fixed",
               top: "4rem",
               left: "0rem",
-              height: "100%",
+              height: "calc(100vh - 4rem)",
               zIndex: "5",
             }}
             className="site-layout-background"

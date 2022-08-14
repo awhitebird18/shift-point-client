@@ -10,7 +10,6 @@ import dayjs from "dayjs";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import ShiftsRow from "../ShiftsRow/ShiftsRow.jsx";
-import AddShift from "../AddShift/AddShift.jsx";
 import Footer from "../Footer/Footer.jsx";
 import { toast } from "react-hot-toast";
 
@@ -116,18 +115,6 @@ const Layout = () => {
     }
   }, [keysPressed]);
 
-  // useEffect(() => {
-  //   if (!currentShift) return;
-
-  //   showModal({
-  //     name: "MANAGE_SHIFT",
-  //     currentShift,
-  //     setCurrentShift,
-  //     positionList,
-  //     employeeList,
-  //   });
-  // }, [currentShift]);
-
   return (
     <div className={styles.container}>
       {currentWeek && <Header currentWeek={currentWeek} />}
@@ -138,6 +125,8 @@ const Layout = () => {
             const employee = employeeList.find((el) => {
               return el._id === employeeId;
             });
+
+            if (!employee) return;
 
             return (
               <ShiftsRow

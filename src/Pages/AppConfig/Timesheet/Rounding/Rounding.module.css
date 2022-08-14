@@ -8,6 +8,7 @@
   justify-self: center;
   max-width: 35rem;
   margin: 0 auto;
+  height: 100%;
 }
 
 .roundingGrid {

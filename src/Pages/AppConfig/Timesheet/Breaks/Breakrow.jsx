@@ -2,14 +2,9 @@
 import styles from "./Breaks.module.css";
 
 // Components
-import { Button } from "antd";
+import { Button } from "../../../../Components";
 
-const Breakrow = ({
-  breakEl,
-  setTimesheetRules,
-  setCurrentBreak,
-  setModalIsVisible,
-}) => {
+const Breakrow = ({ breakEl, setTimesheetRules, showModal }) => {
   const { paidMinutes, unpaidMinutes, breakCount } = breakEl.breaks.reduce(
     (prev, curr) => {
       return {
@@ -25,15 +20,19 @@ const Breakrow = ({
     { paidMinutes: 0, unpaidMinutes: 0, breakCount: 0 }
   );
 
-  const handleShowBreakModal = () => {
-    setCurrentBreak(breakEl);
-    setModalIsVisible(true);
+  const handleEditBreakTemplate = () => {
+    showModal({
+      name: "BREAK_TEMPLATE_CONFIG",
+      title: "Edit Break Template",
+      breakEl,
+      setTimesheetRules,
+    });
   };
 
   const handleDeleteTemplate = (e) => {
     e.stopPropagation();
 
-    const url = `${process.env.REACT_APP_BASE_URL}timesheetrules/breaks/${breakEl._id}`;
+    const url = `${process.env.REACT_APP_BASE_URL}/timesheetrules/breaks/${breakEl._id}`;
 
     fetch(url, {
       headers: {
@@ -55,7 +54,7 @@ const Breakrow = ({
   return (
     <div
       className={`list-item--md ${styles.columns}`}
-      onClick={handleShowBreakModal}
+      onClick={handleEditBreakTemplate}
     >
       <div>{breakEl.templateName}</div>
       <div>{breakCount}</div>
@@ -63,12 +62,12 @@ const Breakrow = ({
       <div>{paidMinutes}</div>
 
       <Button
-        danger
+        type="secondary"
         onClick={handleDeleteTemplate}
         className="hide--tablet"
         style={{ width: "min-content" }}
       >
-        Delete Template
+        Delete
       </Button>
 
       <Button

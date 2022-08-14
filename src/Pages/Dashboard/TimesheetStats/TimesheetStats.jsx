@@ -1,46 +1,103 @@
-import React from "react";
-
-// Styles
 import styles from "./TimesheetStats.module.css";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
-// Components
-import { Statistic } from "antd";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { actionCreators } from "../../../State";
 
-// Functions
-import { useFetch } from "../../../Hooks";
-import TileLayout from "../TileLayout/TileLayout";
+import { BsArrowRight } from "react-icons/bs";
 
 const TimesheetStats = ({}) => {
-  const [timesheetDayStats] = useFetch("/timesheet/stats");
+  const [stats, setStats] = useState({});
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { setTimesheetFilter } = actionCreators;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("/timesheet/stats");
+
+      setStats({ ...data.data });
+    };
+
+    fetchData();
+  }, []);
+
+  const handleViewSignedIn = () => {
+    dispatch(
+      setTimesheetFilter({
+        type: "employee",
+        subtype: "isSignedIn",
+        active: true,
+      })
+    );
+
+    navigate("/app/timesheet");
+  };
+
+  const handleViewSignedOut = () => {
+    dispatch(
+      setTimesheetFilter({
+        type: "employee",
+        subtype: "isSignedOut",
+        active: true,
+      })
+    );
+
+    navigate("/app/timesheet");
+  };
+
+  const handleViewMissingPunches = () => {
+    dispatch(
+      setTimesheetFilter({
+        type: "employee",
+        subtype: "isMissingPunches",
+        active: true,
+      })
+    );
+
+    navigate("/app/timesheet");
+  };
 
   return (
-    <TileLayout title="Timesheet Stats">
-      <div className={styles.container}>
-        <Statistic
-          title="Employees Clocked In"
-          value={timesheetDayStats?.currentlyWorking}
-          precision={0}
-        />
+    <div className={styles.tiles}>
+      <section className={styles.container}>
+        <h2 className={styles.count}>{stats ? stats.clockedIn : 0}</h2>
 
-        <Statistic
-          title="Pay Period Approved"
-          value={timesheetDayStats?.totalApprovedRecords}
-          precision={0}
-        />
+        <h3 className={styles.title}>Employees Clocked In</h3>
 
-        <Statistic
-          title="Pay Period Pending"
-          value={timesheetDayStats?.totalPendingRecords}
-          precision={0}
-        />
+        <div className={styles.arrowIconWrapper} onClick={handleViewSignedIn}>
+          <BsArrowRight className={styles.arrowIcon} />
+        </div>
+      </section>
 
-        <Statistic
-          title="Missing Punches"
-          value={timesheetDayStats?.missingPunches}
-          precision={0}
-        />
-      </div>
-    </TileLayout>
+      <section className={styles.container}>
+        <h2 className={styles.count}>{stats ? stats.missedPunches : 0}</h2>
+
+        <h3 className={styles.title}>Missed Punches</h3>
+
+        <div
+          className={styles.arrowIconWrapper}
+          onClick={handleViewMissingPunches}
+        >
+          <BsArrowRight className={styles.arrowIcon} />
+        </div>
+      </section>
+
+      <section className={styles.container}>
+        <h2 className={styles.count}>
+          {stats.clockedOut ? stats.clockedOut : 0}
+        </h2>
+
+        <h3 className={styles.title}>Employees Clocked Out</h3>
+
+        <div className={styles.arrowIconWrapper} onClick={handleViewSignedOut}>
+          <BsArrowRight className={styles.arrowIcon} />
+        </div>
+      </section>
+    </div>
   );
 };
 

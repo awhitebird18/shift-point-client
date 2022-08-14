@@ -14,6 +14,7 @@ const Shift = ({
   positionList,
   date,
   currentSchedule,
+  multiShiftStyle,
 }) => {
   const dispatch = useDispatch();
   const { showModal } = bindActionCreators(actionCreators, dispatch);
@@ -44,7 +45,7 @@ const Shift = ({
 
   if (shift && shiftIsCurrentSchedule) {
     classNames = classNames.concat(
-      ` ${shift.colorCode} ${isPublished() ? "published" : ""}`
+      ` ${shift.colorCode} text ${isPublished() ? "published" : ""} `
     );
 
     shiftStyles.opacity = isDragging ? 0 : 1;
@@ -57,11 +58,16 @@ const Shift = ({
     classNames = classNames.concat(" current");
   }
 
+  if (multiShiftStyle) {
+    shiftStyles.marginTop = "0.5rem";
+  }
+
   const handleEditShift = (e) => {
     e.stopPropagation();
 
     showModal({
       name: "MANAGE_SHIFT",
+      title: "Edit Shift",
       shift: currentShift,
       positionList,
       employee,
@@ -89,10 +95,10 @@ const Shift = ({
     >
       {shiftIsCurrentSchedule ? (
         <>
-          <div className="shiftText">{`${shift.start
+          <div>{`${shift.start.format("h:mma").slice(0, -1)} - ${shift.end
             .format("h:mma")
-            .slice(0, -1)} - ${shift.end.format("h:mma").slice(0, -1)}`}</div>
-          <div className="shiftText">{position.name}</div>
+            .slice(0, -1)}`}</div>
+          <div>{position.name}</div>
         </>
       ) : (
         <div>

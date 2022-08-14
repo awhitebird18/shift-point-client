@@ -30,7 +30,6 @@
   border-left: var(--border-main);
   padding: 0 1rem;
   height: calc(100% - 1rem);
-  border-radius: 0.5rem;
 }
 
 .dashHeader {
@@ -41,7 +40,8 @@
 .graphs {
   display: flex;
   gap: 1.5rem;
-  position: relative;
+  align-items: center;
+  position: relative !important;
 }
 
 .tile {
@@ -51,6 +51,7 @@
   position: relative;
   overflow: hidden;
   min-height: 20rem;
+  height: 100%;
 }
 
 .tileFull {

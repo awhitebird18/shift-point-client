@@ -31,7 +31,6 @@ const EmployeeForm = ({ currentEmployee, setCurrentEmployee }) => {
     if (!currentEmployee.save) {
       return;
     }
-
     let url = `${process.env.REACT_APP_BASE_URL}/employee`;
     let method = currentEmployee._id ? "PATCH" : "POST";
 

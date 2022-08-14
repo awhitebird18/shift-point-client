@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
 
 // Components
-import { Form, Input, Button } from "antd";
-
-import { DingdingOutlined } from "@ant-design/icons";
+import { Form, Input, Divider } from "antd";
+import brandLogo from "../../Assets/brandLogo.png";
+import { Button } from "../../Components";
 
 import axios from "axios";
 
@@ -14,20 +14,31 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (values) => {
-    if (!values || !values.clientId || !values.username || !values.password) {
+    let login_data = {};
+
+    if (values === "guestAccount") {
+      login_data.clientId = "D20003";
+      login_data.username = "awhitebird";
+      login_data.password = "fish123";
+    } else {
+      login_data.clientId = values.clientId;
+      login_data.username = values.username;
+      login_data.password = values.password;
+    }
+
+    if (
+      !values ||
+      !login_data.clientId ||
+      !login_data.username ||
+      !login_data.password
+    ) {
       return;
     }
 
-    const login_data = {
-      clientId: values.clientId,
-      username: values.username,
-      password: values.password,
-    };
-
+    // Fetch User
     const { data } = await axios.post("/userAccounts/login", {
       ...login_data,
     });
-    console.log(data);
 
     if (!data.token) return;
 
@@ -40,18 +51,15 @@ const Login = () => {
     <div className={styles.main}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <DingdingOutlined
-            style={{
-              fontSize: "2.5rem",
-              color: "var(--color-primary)",
-            }}
-          />
-          <h2
+          <div className={styles.imgWrapper}>
+            <img src={brandLogo} alt="" style={{ height: "100%" }} />
+          </div>
+          <h1
             style={{ margin: "0", paddingLeft: "0.25rem" }}
             className={styles.title}
           >
-            TIME QP
-          </h2>
+            Shift Point
+          </h1>
         </div>
         <main className={styles.content}>
           <Form layout="vertical" onFinish={handleSubmit} autoComplete="off">
@@ -61,30 +69,39 @@ const Login = () => {
             <Form.Item label="Username" name="username">
               <Input size="large" />
             </Form.Item>
-            <Form.Item label="Password" name="password">
-              <Input.Password size="large" style={{ background: "inherit" }} />
+            <Form.Item
+              label="Password"
+              name="password"
+              style={{ boxShadow: "none !important" }}
+            >
+              <Input.Password size="large" visibilityToggle={false} />
             </Form.Item>
 
             <Button
-              style={{
-                background: "var(--color-primary)",
-                borderColor: "var(--color-primary)",
-                color: "#fff",
-              }}
-              block
-              size="large"
               onClick={handleSubmit}
               htmlType="submit"
+              style={{ width: "100%", marginTop: "1rem" }}
             >
-              Submit
+              Login
             </Button>
+
+            <Divider>Login with Guest Account</Divider>
           </Form>
+
+          <div>
+            <Button
+              type="secondary"
+              style={{ width: "100%" }}
+              onClick={() => handleSubmit("guestAccount")}
+            >
+              Explore Shift Point
+            </Button>
+          </div>
         </main>
         <div className={styles.footer}>
           <div
             className={styles.url}
           >{`Connected to: ${process.env.REACT_APP_BASE_URL}`}</div>
-          <div>ReacTime &copy;</div>
         </div>
       </div>
     </div>

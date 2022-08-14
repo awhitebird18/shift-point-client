@@ -11,11 +11,11 @@ const Schedule = () => {
     <div className={styles.slideIn}>
       <ModuleHeader />
 
-      <main className={styles.sectionBody}>
+      <section className={styles.sectionBody}>
         <Filters />
 
         <Layout />
-      </main>
+      </section>
     </div>
   );
 };

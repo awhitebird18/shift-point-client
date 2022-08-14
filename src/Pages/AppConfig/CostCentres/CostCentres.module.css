@@ -1,20 +1,15 @@
 .columns {
-  grid-template-columns: 1fr 1fr repeat(2, 5rem);
+  grid-template-columns: 1fr 1fr 4.25rem;
 }
 
 @media screen and (max-width: 768px) {
   .columns {
-    grid-template-columns: 1fr 1fr repeat(2, 3rem);
+    grid-template-columns: 1fr 1fr 4.25rem;
   }
-}
-
-.button {
-  text-align: start;
-  padding-left: 0.75rem;
 }
 
 .addCostCentre {
   display: flex;
   justify-content: flex-end;
-  margin: 0.5rem;
+  margin: 1rem;
 }

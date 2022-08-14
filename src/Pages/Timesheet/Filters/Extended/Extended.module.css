@@ -1,12 +1,23 @@
-.container {
-  padding: 1rem;
-}
-
 .filterRow {
   display: grid;
   grid-template-columns: 10rem 10rem 2fr 1fr;
   gap: 1rem;
-  /* margin-bottom: 1rem; */
+  border-top: var(--border-main);
+  padding-top: 1rem;
+}
+
+.filterRow:first-child {
+  border-top: 0;
+}
+
+.filterSection {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 0rem;
+}
+
+.active {
+  max-height: 8rem !important;
 }
 
 .filterActions {
@@ -29,4 +40,10 @@
 .removeIcon {
   font-size: 1.3rem;
   color: var(--color-text-lightGray);
+}
+
+@media screen and (max-width: 768px) {
+  .filterSection {
+    display: none;
+  }
 }

@@ -53,38 +53,57 @@ $breakpoint-large: 1200px;
     @include list-item(1rem, 1.25rem);
     font-weight: 500;
     border-bottom: var(--border-main);
+
+    & > div {
+      display: flex;
+      gap: 0.5rem;
+    }
   }
 
   &--md {
     @include list-item(0.75rem, 1rem);
     font-weight: 500;
     border-bottom: var(--border-main);
+
+    & > div {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    & > div > span {
+      cursor: pointer;
+    }
   }
 
   &--sm {
     @include list-item(0.5rem, 0.75rem);
     font-weight: 500;
     border-bottom: var(--border-main);
+
+    & > div {
+      display: flex;
+      gap: 0.5rem;
+    }
   }
 }
 
 @media screen and(max-width: $breakpoint-mobile) {
   .hide--mobile {
-    display: none;
+    display: none !important;
   }
 }
 
 .show--tablet {
-  display: none;
+  display: none !important;
 }
 
 @media screen and(max-width: $breakpoint-tablet) {
   .hide--tablet {
-    display: none;
+    display: none !important;
   }
 
   .show--tablet {
-    display: flex;
+    display: flex !important;
   }
 }
 
@@ -94,12 +113,12 @@ $breakpoint-large: 1200px;
 
 @media screen and (max-width: $breakpoint-medium) {
   .hide--medium {
-    display: none;
+    display: none !important;
   }
 }
 
 @media screen and (max-width: $breakpoint-large) {
   .hide--large {
-    display: none;
+    display: none !important;
   }
 }

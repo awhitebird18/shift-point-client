@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 // Components
 import { useDrop } from "react-dnd";
 import Shift from "../Shift/Shift";
-import { BsThreeDots, BsPlus } from "react-icons/bs";
+import { BsPlus } from "react-icons/bs";
 
 // Styles
 import styles from "./ShiftsTile.module.css";
@@ -23,7 +23,7 @@ const ShiftsTile = ({
 }) => {
   const dispatch = useDispatch();
 
-  const { addNewShift, deleteShift, setNotification } = bindActionCreators(
+  const { addNewShift, deleteShift, showModal } = bindActionCreators(
     actionCreators,
     dispatch
   );
@@ -52,8 +52,6 @@ const ShiftsTile = ({
 
     addNewShift(newShift);
 
-    console.log(keysPressedRef.current);
-
     if (keysPressedRef.current.Control) {
       return;
     }
@@ -76,6 +74,24 @@ const ShiftsTile = ({
       scheduleId: currentSchedule._id,
     });
     setIsModalVisible(true);
+
+    showModal({
+      name: "MANAGE_SHIFT",
+      title: "Create Shift",
+      shift: {
+        eeNum: employee.eeNum,
+        positionId: "",
+        departmentId: "",
+        sheduleId: "",
+        start: "",
+        end: "",
+        colorCode: "",
+        date: date,
+        scheduleId: currentSchedule._id,
+      },
+      positionList,
+      employee,
+    });
   };
 
   const handleFocusDay = (e, shift) => {
@@ -106,16 +122,17 @@ const ShiftsTile = ({
             positionList={positionList}
             date={date}
             currentSchedule={currentSchedule}
+            multiShiftStyle={index > 0 ? true : false}
           />
         );
       })}
       <div className={styles.shiftOptions}>
         <div className={styles.shiftAction} onClick={handleAddShift}>
-          <BsPlus />
+          <BsPlus size={50} />
         </div>
-        <div className={styles.shiftAction}>
+        {/* <div className={styles.shiftAction}>
           <BsThreeDots />
-        </div>
+        </div> */}
       </div>
     </div>
   );

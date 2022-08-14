@@ -1,65 +1,63 @@
-import { useState } from "react";
+import { actionCreators } from "../../../../State";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
 
 // Styles
 import styles from "./Overtime.module.css";
 
 // Components
-import { Button } from "antd";
+import { Button } from "../../../../Components";
 import OvertimeRow from "./OvertimeRow";
-import OvertimeModal from "./OvertimeModal";
 
 // Functions
 import { useFetch } from "../../../../Hooks";
 
 const Overtime = ({ timesheetRules, setTimesheetRules }) => {
-  const [currentOvertime, setCurrentOvertime] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
   const [earningCodes] = useFetch("/earning");
 
+  const dispatch = useDispatch();
+  const { showModal } = bindActionCreators(actionCreators, dispatch);
+
   const handleAddOvertime = () => {
-    setCurrentOvertime({});
-    setModalOpen(true);
+    showModal({
+      name: "OVERTIME_CONFIG",
+      title: "Create Overtime Rule",
+      earningCodes,
+      setTimesheetRules,
+    });
   };
 
   return (
     <>
       <div className={`list-header--md ${styles.columns}`}>
         <div>Province</div>
-        <div>Daily Threshold</div>
-        <div>Period Threshold</div>
+        <div>Daily</div>
+        <div>Period</div>
         <div className="hide--tablet">Period Length</div>
         <div className="hide--tablet">Period Start Date</div>
         <div>Delete</div>
       </div>
       <div className="slideUpAnimation">
-        {timesheetRules.overtime.map((overtimeRule) => {
+        {timesheetRules?.overtime.map((overtimeRule) => {
           return (
             <OvertimeRow
               key={overtimeRule._id}
               overtimeRule={overtimeRule}
-              setCurrentOvertime={setCurrentOvertime}
-              setModalOpen={setModalOpen}
+              showModal={showModal}
+              earningCodes={earningCodes}
               setTimesheetRules={setTimesheetRules}
             />
           );
         })}
       </div>
 
-      <div className={styles.addOvertimeRule}>
-        <Button type="primary" onClick={handleAddOvertime}>
-          Add Overtime Rule
-        </Button>
-      </div>
-
-      {modalOpen && currentOvertime && (
-        <OvertimeModal
-          modalOpen={modalOpen}
-          currentOvertime={currentOvertime}
-          setCurrentOvertime={setCurrentOvertime}
-          earningCodes={earningCodes}
-          setTimesheetRules={setTimesheetRules}
-        />
-      )}
+      <Button
+        type="primary"
+        onClick={handleAddOvertime}
+        style={{ margin: "2rem 1rem 1rem auto" }}
+      >
+        Add Overtime Rule
+      </Button>
     </>
   );
 };

@@ -5,6 +5,11 @@
   gap: 2rem;
 }
 
+.formActions {
+  display: flex;
+  gap: 1rem;
+}
+
 @media screen and (max-width: 1200px) {
   .container {
     grid-template-columns: 1fr;

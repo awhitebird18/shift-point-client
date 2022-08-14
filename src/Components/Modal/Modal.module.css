@@ -24,7 +24,8 @@
   margin-top: 10rem;
   height: min-content;
   min-width: 20rem;
-  max-width: 80%;
+  max-width: 90vw;
+  /* width: 100%; */
   /* background: #fff; */
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

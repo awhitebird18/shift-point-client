@@ -29,8 +29,6 @@ const TopNav = ({ user }) => {
       <div className={styles.rightSide}>
         <DarkMode />
 
-        {/* <BsQuestionCircle className={styles.helpIcon} /> */}
-
         <Notifications />
 
         <User user={user} />

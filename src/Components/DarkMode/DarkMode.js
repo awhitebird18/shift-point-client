@@ -4,6 +4,7 @@ import "../../App/css/darkMode.css";
 import { BsMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 
 import styles from "./DarkmodeIcon.module.css";
+import { divide } from "lodash";
 
 const DarkMode = () => {
   const [theme, setTheme] = useState();
@@ -44,17 +45,19 @@ const DarkMode = () => {
   };
 
   return (
-    <button
-      className={theme === "dark" ? clickedClass : ""}
-      id="darkMode"
-      onClick={(e) => switchTheme(e)}
-    >
-      {theme === "light" ? (
-        <BsFillSunFill className={styles.icon} />
-      ) : (
-        <BsMoonStarsFill className={styles.icon} />
-      )}
-    </button>
+    <div className={styles.container}>
+      <button
+        className={theme === "dark" ? clickedClass : ""}
+        id="darkMode"
+        onClick={(e) => switchTheme(e)}
+      >
+        {theme === "light" ? (
+          <BsFillSunFill className={styles.icon} />
+        ) : (
+          <BsMoonStarsFill className={styles.icon} />
+        )}
+      </button>
+    </div>
   );
 };
 

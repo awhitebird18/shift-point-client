@@ -20,6 +20,7 @@ const EmployeePayment = ({
   const handleAddEarning = () => {
     showModal({
       name: "EARNING_DETAILED",
+      title: "Create Earning",
       earningList,
       currentEmployee,
       setCurrentEmployee,
@@ -54,8 +55,7 @@ const EmployeePayment = ({
           onClick={handleAddEarning}
           style={{
             alignSelf: "flex-end",
-            margin: "1rem",
-            width: "7rem",
+            margin: "2rem 1rem 0",
             height: "2.5rem",
           }}
         >

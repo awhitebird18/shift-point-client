@@ -13,7 +13,7 @@ const TileContainer = ({
   return (
     <section className={styles.container} style={containerStyles}>
       <div className={styles.header} style={headerStyles}>
-        <span>{title}</span>
+        <h4>{title}</h4>
 
         <div className={styles.iconContainer} onClick={onHeaderClick}>
           {headerComponent}

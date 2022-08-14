@@ -1,8 +1,47 @@
 .container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 0.25rem;
-  height: 100%;
-  padding: 1rem;
+  position: relative;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--boxshadow-main);
+  border-radius: var(--section-border-radius);
+  width: 100%;
+}
+
+.tiles {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.title {
+  color: var(--color_gray_3) !important;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 3.125rem;
+}
+
+.count {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.arrowIconWrapper {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.arrowIcon {
+  color: var(--color_gray_3);
+}
+
+@media screen and (max-width: 768px) {
+  .tiles {
+    flex-direction: column;
+  }
 }

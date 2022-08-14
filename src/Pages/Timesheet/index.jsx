@@ -1,28 +1,28 @@
 // React & Redux
 import { useState, useEffect, useMemo } from "react";
-import TimecardLayout from "./TimecardLayout/TimecardLayout";
-import { useFetch } from "../../Hooks";
 import { useSelector, useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
 import { actionCreators } from "../../State/index.js";
+import { bindActionCreators } from "redux";
 
 // Components
 import Filters from "./Filters/Filters";
+import TimecardLayout from "./TimecardLayout/TimecardLayout";
 import Modal from "./ExtendedTimecard/ExtendedTimecard";
 import ModuleHeader from "./ModuleHeader/ModuleHeader";
+import { toast } from "react-hot-toast";
 
 // Styles
 import styles from "./index.module.css";
 
 // Data and Functions
 import { getCurrentDate } from "./Functions/getCurrentDate";
-import { timesheetFiltersSchema } from "../../Schemas/timesheetFiltersSchema";
 import { convertToOptionsArr } from "./Functions/convertToOptions";
 import { updateTimedata, updateBreakdata } from "./Functions/saveTimesheet.js";
 import { timecardSchema } from "../../Schemas/timecardSchema.js";
+import { useFetch } from "../../Hooks";
 
 const Timesheet = () => {
-  let { timesheetDate, timecardId, isLoading } = useSelector((state) => {
+  let { timesheetDate, timecardId } = useSelector((state) => {
     return state.uiData;
   });
 
@@ -30,10 +30,7 @@ const Timesheet = () => {
     return state.timedata;
   });
 
-  let { timesheetFilter } = useSelector((state) => {
-    return state.filter;
-  });
-  let { timesheetSort } = useSelector((state) => {
+  let { timesheetFilter, timesheetSort } = useSelector((state) => {
     return state.filter;
   });
 
@@ -41,9 +38,6 @@ const Timesheet = () => {
     start: timesheetDate ? timesheetDate : getCurrentDate(),
     end: timesheetDate ? timesheetDate : getCurrentDate(),
   });
-  const [timesheetFilters, setTimesheetFilters] = useState(
-    timesheetFiltersSchema
-  );
   const [departments] = useFetch("/department");
   const [earningCodes] = useFetch("/earning");
   const [premiums] = useFetch("/premium");
@@ -70,8 +64,13 @@ const Timesheet = () => {
 
   const dispatch = useDispatch();
 
-  const { fetchTimedata, storeTimedata, setIsLoading, fetchData } =
-    bindActionCreators(actionCreators, dispatch);
+  const {
+    fetchTimedata,
+    storeTimedata,
+    setIsLoading,
+    fetchData,
+    removeAllTimesheetFilters,
+  } = bindActionCreators(actionCreators, dispatch);
 
   // Fetches timedata upon date change
   useEffect(() => {
@@ -89,6 +88,12 @@ const Timesheet = () => {
     // }, 300);
   }, [dateRange, employeeData, dateRangeHelper]);
 
+  useEffect(() => {
+    return () => {
+      removeAllTimesheetFilters();
+    };
+  }, []);
+
   // Save Timesheets
   const onSave = async () => {
     setIsLoading(true);
@@ -103,6 +108,20 @@ const Timesheet = () => {
       premiums,
       timesheetrules
     );
+
+    const invalidTimeField = updatedTimesheet.find((el) => {
+      return (
+        (el.start &&
+          Object.prototype.toString.call(el.start) !== "[object Date]") ||
+        (el.end && Object.prototype.toString.call(el.end) !== "[object Date]")
+      );
+    });
+
+    if (invalidTimeField) {
+      toast.error("Start and End Times must be in XX:XX am/pm format");
+      setIsLoading(false);
+      return;
+    }
 
     const updatedBreaksheet = updateBreakdata(breaksheet);
 
@@ -181,9 +200,7 @@ const Timesheet = () => {
         });
         storeTimedata(result, "breaksheet");
 
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 100);
+        setIsLoading(false);
       });
   };
 
@@ -197,7 +214,7 @@ const Timesheet = () => {
         continue;
       }
 
-      const tempArr = employeeData.filter((employee) => {
+      const tempArr = employeeData?.filter((employee) => {
         if (timesheetFilter[i].subtype === "contains") {
           return employee[timesheetFilter[i].type]
             .toLowerCase()
@@ -222,7 +239,10 @@ const Timesheet = () => {
         let passed = true;
         const resultsArr = [];
         for (let i = 0; i < timesheetFilter.length; i++) {
-          if (!timesheetFilter[i].active) {
+          if (
+            !timesheetFilter[i].active ||
+            timesheetFilter[i].type === "employee"
+          ) {
             continue;
           }
 
@@ -283,11 +303,12 @@ const Timesheet = () => {
               : resultsArr.push(false);
           }
 
-          if (subtype === "is" && type !== "status") {
+          if (subtype === "is" && type !== "status" && type !== "employee") {
             employee[type].toString().toLowerCase() === value.toLowerCase()
               ? resultsArr.push(true)
               : resultsArr.push(false);
           }
+
           if (subtype === "isNot") {
             employee[type].toString().toLowerCase() !== value.toLowerCase()
               ? resultsArr.push(true)
@@ -381,7 +402,6 @@ const Timesheet = () => {
         <Filters
           dateRange={dateRange}
           setDateRange={setDateRange}
-          setTimesheetFilters={setTimesheetFilters}
           onSave={onSave}
           departments={departments}
         />

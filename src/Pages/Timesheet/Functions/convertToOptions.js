@@ -8,7 +8,7 @@ export const convertToOptionsArr = (arr, initialText) => {
   const options = arr.map((el, index) => {
     return (
       <Option
-        key={index}
+        key={el._id ? el._id : index}
         value={initialText === "Select a Position" ? el.positionId : el._id}
       >
         {el.name}

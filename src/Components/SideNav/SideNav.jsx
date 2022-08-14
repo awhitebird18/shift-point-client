@@ -1,10 +1,7 @@
-// Styles
 import styles from "./SideNav.module.css";
 
-// Components
 import NavLink from "./NavLink.jsx";
 
-// Functions
 import { useFetch } from "../../Hooks";
 
 import {
@@ -23,8 +20,7 @@ import {
 const SideNav = ({ user }) => {
   const [modules] = useFetch("/module");
 
-  // const sections = ["Modules", "Reporting", "Users", "Communication"];
-  const sections = ["Modules", "Users", "Communication"];
+  const sections = ["Modules", "Users", "Communication", "Settings"];
 
   return (
     <nav className={styles.sideNavMenu}>
@@ -35,51 +31,65 @@ const SideNav = ({ user }) => {
         colorCode="#722ed1"
         icon={BsColumnsGap}
       />
-      {sections.map((section, index) => {
-        return (
-          <div key={index}>
-            <h5 className={`header-gray hide--large ${styles.header}`}>
-              {section}
-            </h5>
+      {modules &&
+        sections.map((section, index) => {
+          const assignedModules = modules.filter(
+            (module) =>
+              module.section === section &&
+              user.moduleAccess.find(
+                (assignedModule) => assignedModule.moduleId === module._id
+              )?.access
+          );
 
-            {user &&
-              modules
-                ?.filter((module) => module.active)
-                .map((module, index) => {
+          if (assignedModules.length === 0) return;
+
+          return (
+            <div key={index}>
+              <h5 className={`header-gray hide--large ${styles.header}`}>
+                {section}
+              </h5>
+
+              {user &&
+                assignedModules.map((module, index) => {
                   if (
-                    (module.name !== "Dashboard" &&
-                      !user.moduleAccess[module.name.toLowerCase()]?.access) ||
-                    module.section !== section
+                    !user.moduleAccess.find((el) => el.moduleId === module._id)
+                      .access
                   ) {
                     return;
                   }
 
                   let icon;
-                  switch (module.name) {
-                    case "Dashboard":
+                  switch (module._id) {
+                    // Dashboard
+                    case "62cb18a616b108c44fdf2ae3":
                       icon = BsColumnsGap;
                       break;
-                    case "Timesheet":
+                    // Timesheet
+                    case "62416fb6f3dc27c18534d150":
                       icon = BsClock;
                       break;
-                    case "Scheduler":
+                    // Scheduler
+                    case "62cb212316b108c44fdf2ae4":
                       icon = BsCalendar4Week;
                       break;
-                    case "Reports":
-                      icon = BsFileText;
-                    case "Employees":
+                    //  Employees
+                    case "62417015f3dc27c18534d158":
                       icon = BsPeople;
                       break;
-                    case "Users":
+                    // Users
+                    case "62416ff5f3dc27c18534d154":
                       icon = BsPerson;
                       break;
-                    case "Settings":
+                    // Settings
+                    case "62417021f3dc27c18534d15a":
                       icon = BsGear;
                       break;
-                    case "Messaging":
+                    // Messaging
+                    case "62d4248d027d710880de3414":
                       icon = BsChatDots;
                       break;
-                    case "TaskList":
+                    // Task List
+                    case "62d427ac027d710880de3415":
                       icon = BsListTask;
                       break;
 
@@ -98,17 +108,20 @@ const SideNav = ({ user }) => {
                     />
                   );
                 })}
-          </div>
-        );
-      })}
+            </div>
+          );
+        })}
 
       <NavLink
         key="logout"
         slug="/"
         text="Logout"
-        colorCode="#ffffff"
+        colorCode="rgba(255,255,255,0.1)"
         icon={BsArrowLeftSquare}
-        iconStyles={{ color: "#595959", fontSize: "1.1rem" }}
+        iconStyles={{
+          color: "var(--color-text)",
+          fontSize: "1.1rem",
+        }}
       />
     </nav>
   );

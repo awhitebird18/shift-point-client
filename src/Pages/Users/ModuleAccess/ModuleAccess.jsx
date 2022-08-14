@@ -1,9 +1,3 @@
-// React
-import { useState } from "react";
-
-// Components
-import ExtendedAccess from "./ExtendedAccess/ExtendedAccess";
-import { DownOutlined } from "@ant-design/icons";
 import { Checkbox } from "antd";
 
 // Styles
@@ -12,30 +6,24 @@ import styles from "./ModuleAccess.module.css";
 // Functions
 import { useFetch } from "../../../Hooks";
 
-const ModuleAccess = ({ currentUser, setCurrentUser }) => {
+const ModuleAccess = ({ moduleAccess, setCurrentUser }) => {
   const [modules] = useFetch("module");
-  const [currentModule, setCurrentModule] = useState(null);
 
-  const handleModuleChange = (e, module) => {
-    e.stopPropagation();
+  const handleChange = (value, moduleId) => {
     setCurrentUser((prev) => {
-      return {
-        ...prev,
-        moduleAccess: {
-          ...prev.moduleAccess,
-          [module]: { ...prev.moduleAccess[module], access: e.target.checked },
-        },
-      };
-    });
-  };
+      const moduleAccess = [...prev.moduleAccess];
 
-  const handleShowExtendedModule = (e, module) => {
-    setCurrentModule((prev) => {
-      if (prev === module) {
-        return null;
+      const assignedModule = moduleAccess.find(
+        (el) => el.moduleId === moduleId
+      );
+
+      if (!assignedModule) {
+        moduleAccess.push({ moduleId, access: value });
+      } else {
+        assignedModule.access = value;
       }
 
-      return module;
+      return { ...prev, moduleAccess };
     });
   };
 
@@ -51,42 +39,23 @@ const ModuleAccess = ({ currentUser, setCurrentUser }) => {
           return module.active;
         })
         .map((module) => {
-          return (
-            <>
-              <div
-                className={styles.moduleRow}
-                key={module._id}
-                onClick={(e) => handleShowExtendedModule(e, module.name)}
-              >
-                <Checkbox
-                  checked={currentUser?.moduleAccess[module.name]?.access}
-                  onChange={(e) => handleModuleChange(e, module.name)}
-                  style={{ justifySelf: " center" }}
-                />
-                <div
-                  className={styles.moduleName}
-                >{`${module.name[0].toUpperCase()}${module.name.substring(
-                  1
-                )}`}</div>
+          const assignedModule = moduleAccess.find(
+            (el) => el.moduleId === module._id
+          );
 
-                <div
-                  className={
-                    currentModule === module.name
-                      ? styles.extendedIconActive
-                      : styles.extendedIcon
-                  }
-                >
-                  <DownOutlined />
-                </div>
-              </div>
-              {currentModule === module.name && (
-                <ExtendedAccess
-                  userModuleAccess={currentUser.moduleAccess[module.name]}
-                  setCurrentUser={setCurrentUser}
-                  moduleName={module.name}
-                />
-              )}
-            </>
+          return (
+            <div className={styles.moduleRow} key={module._id}>
+              <Checkbox
+                checked={assignedModule?.access}
+                onChange={(e) => handleChange(e.target.checked, module._id)}
+                style={{ justifySelf: " center" }}
+              />
+              <div
+                className={styles.moduleName}
+              >{`${module.name[0].toUpperCase()}${module.name.substring(
+                1
+              )}`}</div>
+            </div>
           );
         })}
     </>

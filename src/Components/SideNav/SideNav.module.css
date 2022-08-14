@@ -2,7 +2,7 @@
   padding-left: 0.6rem;
   height: 100%;
   padding-top: 0.5rem;
-  border-right: var(--border-main);
+  border-top: var(--border-main);
   box-shadow: var(--boxshadow-main);
 }
 

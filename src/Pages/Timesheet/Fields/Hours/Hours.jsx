@@ -17,7 +17,11 @@ const HoursField = ({ timedata, breakdata }) => {
         ).toFixed(2)
       : "";
 
-  return <div className={`${styles.field} ${styles.hours}`}>{hours}</div>;
+  return (
+    <div className={`${styles.field} ${styles.hours}`}>
+      <span>{hours}</span>
+    </div>
+  );
 };
 
 export default HoursField;

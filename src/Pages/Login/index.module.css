@@ -20,6 +20,22 @@
   padding: 1rem;
 }
 
+.imgWrapper {
+  height: 2.25rem;
+  width: auto;
+  margin-right: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.title {
+  color: inherit;
+  font-size: 2.5rem !important;
+}
+
+.header > span {
+  font-size: 2rem !important;
+}
+
 .content {
   padding: 1.5rem;
   width: 23rem;
@@ -31,11 +47,6 @@
   position: absolute;
   bottom: 1rem;
   justify-self: flex-end;
-}
-
-.title {
-  color: inherit;
-  font-size: 2.3rem;
 }
 
 .formControl {

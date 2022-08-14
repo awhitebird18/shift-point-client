@@ -10,7 +10,6 @@ import { ProfilePicture } from "../../../../Components";
 
 // Styles
 import styles from "./ScheduleDetailed.module.css";
-import Schedule from "../..";
 
 const ScheduleDetailed = ({ current, setCurrent }) => {
   const [updatedList, setUpdatedList] = useState([...current.employeeList]);
@@ -57,8 +56,8 @@ const ScheduleDetailed = ({ current, setCurrent }) => {
         <div className={`list-header--sm ${styles.columns}`}>
           <div style={{ textAlign: "center" }}>Added</div>
           <div>Name</div>
-          <div>Department</div>
-          <div>Cost Centre</div>
+          <div className="hide--tablet">Department</div>
+          <div className="hide--medium">Cost Centre</div>
         </div>
 
         <div className={styles.employeeList}>
@@ -88,24 +87,20 @@ const ScheduleDetailed = ({ current, setCurrent }) => {
                 <div className={styles.employee}>
                   <ProfilePicture
                     user={employee}
-                    style={{
-                      width: "2.5rem",
-                      height: "2.5rem",
-                      flexShrink: "0",
-                    }}
+                    className={styles.employeeProfileImage}
                   />
-                  {`${employee.firstName} ${employee.lastName}`}
+                  <p>{`${employee.firstName} ${employee.lastName}`}</p>
                 </div>
 
-                <div>{eeDepartment.name}</div>
-                <div>{eeCostCentre?.name}</div>
+                <div className="hide--tablet">{eeDepartment?.name}</div>
+                <div className="hide--medium">{eeCostCentre?.name}</div>
               </div>
             );
           })}
         </div>
       </div>
 
-      <div className={styles.buttonSection}>
+      <div className={styles.formActions}>
         <Button
           type="secondary"
           style={{

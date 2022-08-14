@@ -8,13 +8,7 @@ import styles from "./Filters.module.css";
 import Main from "./Main/Main";
 import Extended from "./Extended/Extended";
 
-const Filters = ({
-  dateRange,
-  setDateRange,
-  setTimesheetFilters,
-  onSave,
-  departments,
-}) => {
+const Filters = ({ dateRange, setDateRange, onSave, departments }) => {
   const [showExtendedFilters, setShowExtendedFilters] = useState(false);
 
   const { timesheetFilter } = useSelector((state) => {
@@ -31,14 +25,12 @@ const Filters = ({
         dateRange={dateRange}
       />
 
-      {showExtendedFilters && (
-        <Extended
-          setTimesheetFilters={setTimesheetFilters}
-          setShowExtendedFilters={setShowExtendedFilters}
-          departments={departments}
-          timesheetFilter={timesheetFilter}
-        />
-      )}
+      <Extended
+        setShowExtendedFilters={setShowExtendedFilters}
+        departments={departments}
+        timesheetFilter={timesheetFilter}
+        showExtendedFilters={showExtendedFilters}
+      />
     </section>
   );
 };

@@ -4,9 +4,9 @@ import styles from "./ProfilePicture.module.css";
 // Components
 import { Image } from "cloudinary-react";
 
-const UserIcon = ({ user, icon: Icon, style }) => {
+const ProfilePicture = ({ user, icon: Icon, style, className }) => {
   return (
-    <div className={styles.userImageCont} style={style}>
+    <div className={`${styles.userImageCont} ${className}`} style={style}>
       {user?.profileImage ? (
         <Image
           cloudName="dwkvw91pm"
@@ -27,4 +27,4 @@ const UserIcon = ({ user, icon: Icon, style }) => {
   );
 };
 
-export default UserIcon;
+export default ProfilePicture;
