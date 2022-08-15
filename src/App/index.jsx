@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 // Components
-import { Modal, Notifications } from "../Components";
+import { Modal } from "../Components";
 import Routes from "./Routes";
 import { Toaster } from "react-hot-toast";
 
@@ -14,7 +14,7 @@ axios.defaults.headers.common["Accept"] = "application/json";
 axios.defaults.headers.common["x-access-token"] = localStorage.getItem("token");
 
 function App() {
-  const { modalProps, notifications } = useSelector((state) => {
+  const { modalProps } = useSelector((state) => {
     return state.uiData;
   });
 

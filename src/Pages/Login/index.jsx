@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Styles
@@ -12,6 +13,23 @@ import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [theme, setTheme] = useState();
+
+  const body = document.body;
+  const lightTheme = "light";
+  const darkTheme = "dark";
+
+  useEffect(() => {
+    if (localStorage) {
+      setTheme(localStorage.getItem("theme"));
+    }
+  }, []);
+
+  if (theme === lightTheme || theme === darkTheme) {
+    body.classList.add(theme);
+  } else {
+    body.classList.add(lightTheme);
+  }
 
   const handleSubmit = async (values) => {
     let login_data = {};
@@ -64,7 +82,7 @@ const Login = () => {
         <main className={styles.content}>
           <Form layout="vertical" onFinish={handleSubmit} autoComplete="off">
             <Form.Item label="Client Id" name="clientId">
-              <Input size="large" />
+              <Input size="large" style={{ border: "var(--border-input)" }} />
             </Form.Item>
             <Form.Item label="Username" name="username">
               <Input size="large" />
@@ -98,11 +116,11 @@ const Login = () => {
             </Button>
           </div>
         </main>
-        <div className={styles.footer}>
+        {/* <div className={styles.footer}>
           <div
             className={styles.url}
           >{`Connected to: ${process.env.REACT_APP_BASE_URL}`}</div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
