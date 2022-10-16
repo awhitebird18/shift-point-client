@@ -33,6 +33,7 @@ const SideNav = ({ user }) => {
       />
       {modules &&
         sections.map((section, index) => {
+          console.log(user);
           const assignedModules = modules.filter(
             (module) =>
               module.section === section &&

@@ -756,7 +756,7 @@ export const fetchNotifications = () => {
 // Employees
 export const fetchEmployees = () => {
   return async (dispatch) => {
-    const { data } = await axios.get("employee");
+    const { data } = await axios.get("/employee");
 
     dispatch({
       type: "STORE_EMPLOYEES",
@@ -784,11 +784,14 @@ export const fetchData2 = (type) => {
 export const setCurrentUser = () => {
   return async (dispatch) => {
     const { data } = await axios.get("userAccounts/currentuser");
+    console.log(data);
 
-    document.documentElement.style.setProperty(
-      "--color-primary",
-      data.data.preferences.colorCode
-    );
+    if (data.preferences && data.preferences.colorCode) {
+      document.documentElement.style.setProperty(
+        "--color-primary",
+        data.data.preferences.colorCode
+      );
+    }
 
     dispatch({
       type: "STORE_CURRENT_USER",

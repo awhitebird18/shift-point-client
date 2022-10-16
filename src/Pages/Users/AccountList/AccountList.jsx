@@ -120,6 +120,7 @@ const AccountList = ({ setCurrentUser, userList }) => {
         {sortedUsers?.map((user) => {
           return (
             <div
+              key={user._id}
               className={`${styles.columns} list-item--md`}
               onClick={() => handleSelectUser(user)}
             >

@@ -50,7 +50,7 @@ const Header = ({ currentEmployee, setCurrentEmployee }) => {
     <div className={styles.imgMenu}>
       <ul>
         <li className={styles.fileInputField}>
-          <label for="file-upload" className={styles.customFileUpload}>
+          <label htmlFor="file-upload" className={styles.customFileUpload}>
             Upload Image
             <input
               id="file-upload"

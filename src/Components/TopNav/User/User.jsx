@@ -6,6 +6,7 @@ import { BsChevronDown } from "react-icons/bs";
 import styles from "./User.module.css";
 
 const CurrentUser = ({ user }) => {
+  console.log(user);
   return (
     <div className={styles.userInfo}>
       <p

@@ -200,7 +200,7 @@ const TimecardLayout = ({
               <td></td>
               <td className="hide--mobile"></td>
               <td className="hide--tablet"></td>
-              <td className={styles.approvedLabel} colspan="2">
+              <td className={styles.approvedLabel} colSpan="2">
                 Approved Hours
               </td>
 

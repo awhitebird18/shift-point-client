@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Styles
@@ -10,18 +10,26 @@ import brandLogo from "../../Assets/brandLogo.png";
 import { Button } from "../../Components";
 
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
   const [theme, setTheme] = useState();
+  const [formData, setFormData] = useState({
+    clientId: "",
+    username: "",
+    password: "",
+  });
 
   const body = document.body;
   const lightTheme = "light";
   const darkTheme = "dark";
 
   useEffect(() => {
-    if (localStorage) {
-      setTheme(localStorage.getItem("theme"));
+    const storedTheme = localStorage.getItem("theme");
+
+    if (storedTheme) {
+      setTheme(storedTheme);
     }
   }, []);
 
@@ -31,38 +39,55 @@ const Login = () => {
     body.classList.add(lightTheme);
   }
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (guestAccount) => {
+    console.log(guestAccount);
     let login_data = {};
 
-    if (values === "guestAccount") {
+    if (guestAccount) {
       login_data.clientId = "D20003";
       login_data.username = "awhitebird";
       login_data.password = "fish123";
     } else {
-      login_data.clientId = values.clientId;
-      login_data.username = values.username;
-      login_data.password = values.password;
+      login_data.clientId = formData.clientId;
+      login_data.username = formData.username;
+      login_data.password = formData.password;
     }
 
-    if (
-      !values ||
-      !login_data.clientId ||
-      !login_data.username ||
-      !login_data.password
-    ) {
+    if (!login_data.clientId || !login_data.username || !login_data.password) {
+      toast.error("Missing credentials");
+
       return;
     }
 
     // Fetch User
-    const { data } = await axios.post("/userAccounts/login", {
-      ...login_data,
+    try {
+      console.log(login_data);
+      const { data } = await axios.post("/userAccounts/login", login_data);
+      if (!data.token) throw error;
+
+      localStorage.setItem("token", data.token);
+
+      axios.defaults.headers.common["x-access-token"] =
+        localStorage.getItem("token");
+
+      navigate("/app");
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response.data.message);
+    }
+  };
+
+  const handleChange = (field, value) => {
+    if (!field || !value) return;
+    setFormData((state) => {
+      const stateCopy = { ...state };
+
+      stateCopy[field] = value;
+
+      console.log(stateCopy);
+
+      return stateCopy;
     });
-
-    if (!data.token) return;
-
-    localStorage.setItem("token", data.token);
-
-    navigate("/app");
   };
 
   return (
@@ -80,24 +105,34 @@ const Login = () => {
           </h1>
         </div>
         <main className={styles.content}>
-          <Form layout="vertical" onFinish={handleSubmit} autoComplete="off">
+          <Form layout="vertical" autoComplete="off">
             <Form.Item label="Client Id" name="clientId">
-              <Input size="large" style={{ border: "var(--border-input)" }} />
+              <Input
+                size="large"
+                style={{ border: "var(--border-input)" }}
+                onChange={(e) => handleChange("clientId", e.target.value)}
+              />
             </Form.Item>
             <Form.Item label="Username" name="username">
-              <Input size="large" />
+              <Input
+                size="large"
+                onChange={(e) => handleChange("username", e.target.value)}
+              />
             </Form.Item>
             <Form.Item
               label="Password"
               name="password"
               style={{ boxShadow: "none !important" }}
             >
-              <Input.Password size="large" visibilityToggle={false} />
+              <Input.Password
+                size="large"
+                visibilityToggle={false}
+                onChange={(e) => handleChange("password", e.target.value)}
+              />
             </Form.Item>
 
             <Button
-              onClick={handleSubmit}
-              htmlType="submit"
+              onClick={() => handleSubmit(null)}
               style={{ width: "100%", marginTop: "1rem" }}
             >
               Login

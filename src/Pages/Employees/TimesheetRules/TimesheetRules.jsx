@@ -12,11 +12,19 @@ const TimesheetRules = ({ employeeTimesheetRules, setCurrentEmployee }) => {
   const [timesheetRules] = useFetch("timesheetrules");
 
   const overtimeOptions = timesheetRules?.overtime.map((el) => {
-    return <Option value={el._id}>{el.name}</Option>;
+    return (
+      <Option key={el._id} value={el._id}>
+        {el.name}
+      </Option>
+    );
   });
 
   const breakOptions = timesheetRules?.breakTemplates.map((el) => {
-    return <Option value={el.templateId}>{el.templateName}</Option>;
+    return (
+      <Option key={el.templateId} value={el.templateId}>
+        {el.templateName}
+      </Option>
+    );
   });
 
   const handleChange = (value, field) => {

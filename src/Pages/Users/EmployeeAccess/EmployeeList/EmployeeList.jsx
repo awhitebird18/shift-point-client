@@ -1,5 +1,3 @@
-import { Checkbox } from "antd";
-
 // Styles
 import styles from "./EmployeeList.module.css";
 
@@ -36,7 +34,7 @@ const EmployeeList = ({
         });
 
         return (
-          <div className={`list-item--sm ${styles.columns}`}>
+          <div key={employee._id} className={`list-item--sm ${styles.columns}`}>
             <div>{`${employee.firstName} ${employee.lastName}`}</div>
             <div>{department.name}</div>
             <div>{costCentre?.name}</div>

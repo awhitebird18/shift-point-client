@@ -1,5 +1,6 @@
 // Components
 import { Form, Input, Select } from "antd";
+const { Option } = Select;
 import { Button } from "../../../Components";
 import Summary from "./Summary/Summary";
 import { useSelector } from "react-redux";

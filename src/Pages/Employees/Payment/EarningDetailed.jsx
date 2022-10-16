@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { Form, Input, Select, DatePicker } from "antd";
+const { Option } = Select;
 import { Button } from "../../../Components";
 
 import styles from "./Payment.module.css";

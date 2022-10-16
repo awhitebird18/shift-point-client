@@ -109,7 +109,7 @@ const BreakTemplateConfig = ({ breakEl, showModal, setTimesheetRules }) => {
         })
         .map((breakEl) => {
           return (
-            <div className={styles.breakSection}>
+            <div key={breakEl._id} className={styles.breakSection}>
               <Form.Item
                 label="Name"
                 style={{

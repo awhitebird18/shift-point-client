@@ -15,24 +15,27 @@ const useFetch = (type, queryObj, dependancy) => {
     }
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     let isApiSubscribed = true;
+    async function fetchData() {
+      if (queryObj && queryStr === "?") {
+        return;
+      }
 
-    if (queryObj && queryStr === "?") {
-      return;
+      const url = `${type}${queryStr !== "?" ? queryStr : ""}`;
+
+      if (isApiSubscribed) {
+        try {
+          let { data } = await axios.get(url);
+
+          data = data.data;
+
+          setData(data);
+        } catch (e) {}
+      }
     }
 
-    const url = `${type}${queryStr !== "?" ? queryStr : ""}`;
-
-    if (isApiSubscribed) {
-      try {
-        let { data } = await axios.get(url);
-
-        data = data.data;
-
-        setData(data);
-      } catch (e) {}
-    }
+    fetchData();
 
     return () => {
       isApiSubscribed = false;

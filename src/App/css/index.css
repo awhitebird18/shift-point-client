@@ -35,10 +35,18 @@ h6 {
   --color_black: #000;
 
   /* Colors */
-  --blue: rgb(27, 27, 47);
   --blue: rgb(28, 28, 65);
   --section: rgb(40, 37, 85);
   --input: rgb(61, 57, 116);
+  --color-primary: #9254de;
+  --color-primary-trans: #5c1fc4be;
+  --color_red_3: #ff7875;
+  --color_yellow_3: #ffc53d;
+
+  /* Colors */
+  --blue: rgb(12, 12, 12);
+  --section: #181818;
+  --input: #212124;
   --color-primary: #9254de;
   --color-primary-trans: #5c1fc4be;
   --color_red_3: #ff7875;
@@ -55,7 +63,7 @@ h6 {
 
 body.light {
   --background-color: var(--color_gray_0);
-  --text-color: var(--color_gray_8);
+  --text-color: var(--color_gray_6);
   --text-color-highlight: #000;
   --text-color-reverse: var(--color_gray_2);
   --sectionmain: var(--color_white);
@@ -75,10 +83,10 @@ body.light {
 
 body.dark {
   --background-color: var(--blue);
-  --text-color-highlight: #fff;
-  --text-color: var(--color_gray_2);
-  --text-color-reverse: var(--color_gray_8);
   --sectionmain: var(--section);
+  --text-color-highlight: #fff;
+  --text-color: var(--color_gray_3);
+  --text-color-reverse: var(--color_gray_8);
   --inputBackground: var(--input);
   --shiftColor: var(--color_white);
   --timesheetBorderColor: var(--color_gray_5);
