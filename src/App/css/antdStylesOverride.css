@@ -15,6 +15,7 @@
   overflow: visible !important;
   /* box-shadow: 3px 3px 4px black !important; */
   box-shadow: var(--boxshadow-input) !important;
+  color: var(--text-color) !important;
 }
 
 .ant-form-item-control-input .ant-col .ant-form-item-control,
@@ -196,7 +197,7 @@ label {
 
 .ant-picker {
   color: var(--color-main) !important;
-  background: var(--inputBackground) !important;
+  /* background: var(--inputBackground) !important; */
   /* border: var(--border-main) !important; */
   border-radius: var(--inputBorderRadius) !important;
 }
@@ -229,3 +230,18 @@ input[type="file"] {
 .go4109123758 > div > div {
   color: black !important;
 }
+
+.ant-select-dropdown {
+  background-color: var(--sectionmain) !important;
+}
+
+.ant-select-item-option:hover,
+.ant-select-item-option-content:hover,
+.ant-select-item-option-selected .ant-select-item-option-content {
+  color: rgb(38, 38, 38) !important;
+}
+
+/* .ant-select-item-option-selected {
+  background-color: var(--color-primary) !important;
+  color: #fff !important;
+} */
