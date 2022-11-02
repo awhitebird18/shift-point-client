@@ -1,11 +1,8 @@
-// Components
-import Bulletin from "./Bulletin/Bulletin";
-import TimesheetStatusGraph from "./TimesheetStatusGraph/TimesheetStatusGraph";
-import TimesheetEarningGraph from "./TimesheetEarningGraph/TimesheetEarningGraph";
-import TaskList from "./TaskList/TaskList";
-import TimesheetStats from "./TimesheetStats/TimesheetStats";
-
-// Styles
+import Bulletin from "./components/Bulletin/Bulletin";
+import TimesheetStatusGraph from "./components/TimesheetStatusGraph/TimesheetStatusGraph";
+import TimesheetEarningGraph from "./components/TimesheetEarningGraph/TimesheetEarningGraph";
+import TaskList from "./components/TaskList/TaskList";
+import TimesheetStats from "./components/TimesheetStats/TimesheetStats";
 import styles from "./index.module.css";
 
 const Dashboard = () => {

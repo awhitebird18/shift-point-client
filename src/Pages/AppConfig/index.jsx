@@ -1,16 +1,12 @@
 import { useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-
-// Styles
 import styles from "./index.module.css";
-
-// Components
 import { Menu, Select } from "antd";
 const { Option, OptGroup } = Select;
-import TimesheetSetup from "./Timesheet";
-import DepartmentSetup from "./Departments";
-import EarningSetup from "./Earning";
-import PositionSetup from "./Position";
+import TimesheetSetup from "./components/Timesheet";
+import DepartmentSetup from "./components/Departments";
+import EarningSetup from "./components/Earning";
+import PositionSetup from "./components/Position";
 
 const Settings = () => {
   const [current, setCurrent] = useState("Timesheet Setup");

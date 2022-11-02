@@ -1,1 +1,1 @@
-export * as actionCreators from './actionCreators/index.js';
+export * as actionCreators from "./actionCreators";

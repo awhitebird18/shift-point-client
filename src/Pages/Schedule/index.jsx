@@ -1,10 +1,7 @@
-// Styles
 import styles from "./index.module.css";
-
-// Components
-import ModuleHeader from "./ModuleHeader/ModuleHeader";
-import Filters from "./Filters/Filters";
-import Layout from "./Layout/Layout";
+import ModuleHeader from "./components/ModuleHeader/ModuleHeader";
+import Filters from "./components/Filters/Filters";
+import Layout from "./components/Layout/Layout";
 
 const Schedule = () => {
   return (

@@ -1,11 +1,7 @@
 import { useState } from "react";
-
-// Styles
 import styles from "./index.module.css";
-
-// Components
-import Layout from "./Layout/Layout";
-import Header from "./Layout/Header";
+import Layout from "./components/Layout/Layout";
+import Header from "./components/Layout/Header";
 
 const Employees = () => {
   const [currentEmployee, setCurrentEmployee] = useState();

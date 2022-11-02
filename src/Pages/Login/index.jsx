@@ -1,14 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-// Styles
 import styles from "./index.module.css";
-
-// Components
 import { Form, Input, Divider } from "antd";
-import brandLogo from "../../Assets/brandLogo.png";
-import { Button } from "../../Components";
-
+import brandLogo from "../../assets/brandLogo.png";
+import { Button } from "../../components";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -40,18 +35,19 @@ const Login = () => {
   }
 
   const handleSubmit = async (guestAccount) => {
-    console.log(guestAccount);
     let login_data = {};
 
     if (guestAccount) {
-      login_data.clientId = "D20003";
-      login_data.username = "awhitebird";
-      login_data.password = "fish123";
+      login_data.clientId = process.env.REACT_APP_LOGIN_CLIENT;
+      login_data.username = process.env.REACT_APP_LOGIN_USERNAME;
+      login_data.password = process.env.REACT_APP_LOGIN_PASSWORD;
     } else {
       login_data.clientId = formData.clientId;
       login_data.username = formData.username;
       login_data.password = formData.password;
     }
+
+    console.log(login_data);
 
     if (!login_data.clientId || !login_data.username || !login_data.password) {
       toast.error("Missing credentials");
@@ -61,18 +57,15 @@ const Login = () => {
 
     // Fetch User
     try {
-      console.log(login_data);
       const { data } = await axios.post("/userAccounts/login", login_data);
       if (!data.token) throw error;
 
       localStorage.setItem("token", data.token);
 
-      axios.defaults.headers.common["x-access-token"] =
-        localStorage.getItem("token");
+      axios.defaults.headers.common["x-access-token"] = localStorage.getItem("token");
 
       navigate("/app");
     } catch (err) {
-      console.log(err);
       toast.error(err.response.data.message);
     }
   };
@@ -83,8 +76,6 @@ const Login = () => {
       const stateCopy = { ...state };
 
       stateCopy[field] = value;
-
-      console.log(stateCopy);
 
       return stateCopy;
     });
@@ -97,10 +88,7 @@ const Login = () => {
           <div className={styles.imgWrapper}>
             <img src={brandLogo} alt="" style={{ height: "100%" }} />
           </div>
-          <h1
-            style={{ margin: "0", paddingLeft: "0.25rem" }}
-            className={styles.title}
-          >
+          <h1 style={{ margin: "0", paddingLeft: "0.25rem" }} className={styles.title}>
             Shift Point
           </h1>
         </div>
@@ -114,16 +102,9 @@ const Login = () => {
               />
             </Form.Item>
             <Form.Item label="Username" name="username">
-              <Input
-                size="large"
-                onChange={(e) => handleChange("username", e.target.value)}
-              />
+              <Input size="large" onChange={(e) => handleChange("username", e.target.value)} />
             </Form.Item>
-            <Form.Item
-              label="Password"
-              name="password"
-              style={{ boxShadow: "none !important" }}
-            >
+            <Form.Item label="Password" name="password" style={{ boxShadow: "none !important" }}>
               <Input.Password
                 size="large"
                 visibilityToggle={false}
@@ -131,10 +112,7 @@ const Login = () => {
               />
             </Form.Item>
 
-            <Button
-              onClick={() => handleSubmit(null)}
-              style={{ width: "100%", marginTop: "1rem" }}
-            >
+            <Button onClick={() => handleSubmit(null)} style={{ width: "100%", marginTop: "1rem" }}>
               Login
             </Button>
 
@@ -142,11 +120,7 @@ const Login = () => {
           </Form>
 
           <div>
-            <Button
-              type="secondary"
-              style={{ width: "100%" }}
-              onClick={() => handleSubmit("guestAccount")}
-            >
+            <Button type="secondary" style={{ width: "100%" }} onClick={() => handleSubmit("guestAccount")}>
               Explore Shift Point
             </Button>
           </div>

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "../../App/css/darkMode.css";
+import "../../css/darkMode.css";
 
 import { BsMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 
 import styles from "./DarkmodeIcon.module.css";
-import { divide } from "lodash";
 
 const DarkMode = () => {
   const [theme, setTheme] = useState();

@@ -1,0 +1,34 @@
+.container {
+  padding: min(10vh, 1rem);
+  position: relative;
+  width: calc(100vw - 175px);
+  left: 175px;
+  transition: left 0.26s ease-out;
+  max-height: calc(100vh - 4rem);
+  overflow-x: scroll;
+  min-height: 40rem;
+  flex: 1;
+}
+
+.container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.sider {
+  transition: all 0.3s ease;
+  background: #fff;
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  height: calc(100vh - 4rem);
+  z-index: 5;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    left: 50px;
+    width: calc(100vw - 50px);
+    padding: 0.5rem;
+  }
+}

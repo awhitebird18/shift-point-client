@@ -1,9 +1,6 @@
 import styles from "./SideNav.module.css";
-
 import NavLink from "./NavLink.jsx";
-
-import { useFetch } from "../../Hooks";
-
+import { useFetch } from "../../hooks";
 import {
   BsClock,
   BsCalendar4Week,
@@ -22,6 +19,8 @@ const SideNav = ({ user }) => {
 
   const sections = ["Modules", "Users", "Communication", "Settings"];
 
+  if (!user) return null;
+
   return (
     <nav className={styles.sideNavMenu}>
       <NavLink
@@ -33,7 +32,6 @@ const SideNav = ({ user }) => {
       />
       {modules &&
         sections.map((section, index) => {
-          console.log(user);
           const assignedModules = modules.filter(
             (module) =>
               module.section === section &&

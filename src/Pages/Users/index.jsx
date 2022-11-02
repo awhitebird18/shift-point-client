@@ -1,15 +1,9 @@
 import { useState } from "react";
-
-// Styles
 import styles from "./index.module.css";
-
-// Components
-import Header from "./Layout/Header/Header";
-import Body from "./Layout/Body/Body.jsx";
-import AccountList from "./AccountList/AccountList";
-
-// Functions
-import { useFetch } from "../../Hooks";
+import Header from "./components/Layout/Header";
+import Body from "./components/Layout/Body";
+import AccountList from "./components/AccountList/AccountList";
+import { useFetch } from "../../hooks";
 
 const UserAccount = () => {
   const [currentUser, setCurrentUser] = useState();

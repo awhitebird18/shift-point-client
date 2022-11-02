@@ -1,4 +1,4 @@
-import { actionCreators } from "../../../State";
+import { actionCreators } from "../../../state";
 import { bindActionCreators } from "redux";
 import { useDispatch } from "react-redux";
 
@@ -10,7 +10,7 @@ import { Divider } from "antd";
 
 // Functions
 import dayjs from "dayjs";
-import { useClickOutside } from "../../../Hooks";
+import { useClickOutside } from "../../../hooks";
 
 const Modal = ({ setShowAlerts, notifications }) => {
   const domNode = useClickOutside((x) => {

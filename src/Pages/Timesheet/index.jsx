@@ -1,25 +1,18 @@
-// React & Redux
 import { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { actionCreators } from "../../State/index.js";
+import { actionCreators } from "../../state";
 import { bindActionCreators } from "redux";
-
-// Components
-import Filters from "./Filters/Filters";
-import TimecardLayout from "./TimecardLayout/TimecardLayout";
-import Modal from "./ExtendedTimecard/ExtendedTimecard";
-import ModuleHeader from "./ModuleHeader/ModuleHeader";
+import Filters from "./components/Filters/Filters";
+import TimecardLayout from "./components/TimecardLayout/TimecardLayout";
+import Modal from "./components/ExtendedTimecard/ExtendedTimecard";
+import ModuleHeader from "./components/ModuleHeader/ModuleHeader";
 import { toast } from "react-hot-toast";
-
-// Styles
 import styles from "./index.module.css";
-
-// Data and Functions
-import { getCurrentDate } from "./Functions/getCurrentDate";
-import { convertToOptionsArr } from "./Functions/convertToOptions";
-import { updateTimedata, updateBreakdata } from "./Functions/saveTimesheet.js";
-import { timecardSchema } from "../../Schemas/timecardSchema.js";
-import { useFetch } from "../../Hooks";
+import { getCurrentDate } from "./components/Functions/getCurrentDate";
+import { convertToOptionsArr } from "../../functions/convertToOptionsArr";
+import { updateTimedata, updateBreakdata } from "./components/Functions/saveTimesheet.js";
+import { timecardSchema } from "./data/timecardSchema.js";
+import { useFetch } from "../../hooks";
 
 const Timesheet = () => {
   let { timesheetDate, timecardId } = useSelector((state) => {
@@ -64,13 +57,10 @@ const Timesheet = () => {
 
   const dispatch = useDispatch();
 
-  const {
-    fetchTimedata,
-    storeTimedata,
-    setIsLoading,
-    fetchData,
-    removeAllTimesheetFilters,
-  } = bindActionCreators(actionCreators, dispatch);
+  const { fetchTimedata, storeTimedata, setIsLoading, fetchData, removeAllTimesheetFilters } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   // Fetches timedata upon date change
   useEffect(() => {
@@ -78,14 +68,9 @@ const Timesheet = () => {
       return;
     }
 
-    // setIsLoading(true);
     fetchTimedata(dateRange, "/timesheet", dateRangeHelper, employeeData);
     fetchTimedata(dateRange, "/breaksheet");
     fetchData("timesheetrules");
-
-    // setTimeout(() => {
-    //   setIsLoading(false);
-    // }, 300);
   }, [dateRange, employeeData, dateRangeHelper]);
 
   useEffect(() => {
@@ -111,8 +96,7 @@ const Timesheet = () => {
 
     const invalidTimeField = updatedTimesheet.find((el) => {
       return (
-        (el.start &&
-          Object.prototype.toString.call(el.start) !== "[object Date]") ||
+        (el.start && Object.prototype.toString.call(el.start) !== "[object Date]") ||
         (el.end && Object.prototype.toString.call(el.end) !== "[object Date]")
       );
     });
@@ -152,10 +136,7 @@ const Timesheet = () => {
         employeeData?.forEach((employee) => {
           dateRangeHelper.forEach((date) => {
             const index = result.findIndex((timedata) => {
-              return (
-                timedata.date.getTime() === date.getTime() &&
-                employee.eeNum === timedata.eeNum
-              );
+              return timedata.date.getTime() === date.getTime() && employee.eeNum === timedata.eeNum;
             });
 
             if (index === -1) {
@@ -205,7 +186,6 @@ const Timesheet = () => {
   };
 
   // Filter Employees
-
   useEffect(() => {
     let employeesCopy = [];
 
@@ -216,18 +196,11 @@ const Timesheet = () => {
 
       const tempArr = employeeData?.filter((employee) => {
         if (timesheetFilter[i].subtype === "contains") {
-          return employee[timesheetFilter[i].type]
-            .toLowerCase()
-            .includes(timesheetFilter[i].value.toLowerCase());
+          return employee[timesheetFilter[i].type].toLowerCase().includes(timesheetFilter[i].value.toLowerCase());
         } else if (timesheetFilter[i].subtype === "notcontains") {
-          return !employee[timesheetFilter[i].type]
-            .toLowerCase()
-            .includes(timesheetFilter[i].value.toLowerCase());
+          return !employee[timesheetFilter[i].type].toLowerCase().includes(timesheetFilter[i].value.toLowerCase());
         } else if (timesheetFilter[i].subtype === "exactly") {
-          return (
-            employee[timesheetFilter[i].type].toLowerCase() ===
-            timesheetFilter[i].value.toLowerCase()
-          );
+          return employee[timesheetFilter[i].type].toLowerCase() === timesheetFilter[i].value.toLowerCase();
         }
       });
 
@@ -239,10 +212,7 @@ const Timesheet = () => {
         let passed = true;
         const resultsArr = [];
         for (let i = 0; i < timesheetFilter.length; i++) {
-          if (
-            !timesheetFilter[i].active ||
-            timesheetFilter[i].type === "employee"
-          ) {
+          if (!timesheetFilter[i].active || timesheetFilter[i].type === "employee") {
             continue;
           }
 
@@ -270,11 +240,7 @@ const Timesheet = () => {
                 //   );
                 // }
                 // Else Do not return specified status
-                return (
-                  el.status &&
-                  el.status !== value &&
-                  el.eeNum === employee.eeNum
-                );
+                return el.status && el.status !== value && el.eeNum === employee.eeNum;
               }
             });
 
@@ -286,19 +252,13 @@ const Timesheet = () => {
 
           // Strings
           if (subtype === "contains") {
-            employee[type]
-              .toString()
-              .toLowerCase()
-              .includes(value.toLowerCase())
+            employee[type].toString().toLowerCase().includes(value.toLowerCase())
               ? resultsArr.push(true)
               : resultsArr.push(false);
           }
 
           if (subtype === "notcontains") {
-            !employee[type]
-              .toString()
-              .toLowerCase()
-              .includes(value.toLowerCase())
+            !employee[type].toString().toLowerCase().includes(value.toLowerCase())
               ? resultsArr.push(true)
               : resultsArr.push(false);
           }
@@ -316,10 +276,7 @@ const Timesheet = () => {
           }
 
           if (subtype === "startsWith") {
-            employee[type]
-              .toString()
-              .toLowerCase()
-              .startsWith(value.toLowerCase())
+            employee[type].toString().toLowerCase().startsWith(value.toLowerCase())
               ? resultsArr.push(true)
               : resultsArr.push(false);
           }
@@ -346,15 +303,11 @@ const Timesheet = () => {
           }
 
           if (subtype === "isAnyOf") {
-            value.some((a) => a === employee.homeDepartment)
-              ? resultsArr.push(true)
-              : resultsArr.push(false);
+            value.some((a) => a === employee.homeDepartment) ? resultsArr.push(true) : resultsArr.push(false);
           }
 
           if (subtype === "isNotAnyOf") {
-            value.some((a) => a === employee.homeDepartment)
-              ? resultsArr.push(true)
-              : resultsArr.push(false);
+            value.some((a) => a === employee.homeDepartment) ? resultsArr.push(true) : resultsArr.push(false);
           }
 
           if (combinator === "and") {
@@ -375,14 +328,8 @@ const Timesheet = () => {
       })
       .sort((a, b) => {
         if (timesheetSort) {
-          if (
-            timesheetSort === "firstName" ||
-            timesheetSort === "lastName" ||
-            timesheetSort === "homeDepartment"
-          ) {
-            return a[timesheetSort]
-              .toString()
-              .localeCompare(b[timesheetSort].toString());
+          if (timesheetSort === "firstName" || timesheetSort === "lastName" || timesheetSort === "homeDepartment") {
+            return a[timesheetSort].toString().localeCompare(b[timesheetSort].toString());
           } else {
             return a[timesheetSort] - b[timesheetSort];
           }
@@ -399,12 +346,7 @@ const Timesheet = () => {
       <ModuleHeader />
 
       {departments && (
-        <Filters
-          dateRange={dateRange}
-          setDateRange={setDateRange}
-          onSave={onSave}
-          departments={departments}
-        />
+        <Filters dateRange={dateRange} setDateRange={setDateRange} onSave={onSave} departments={departments} />
       )}
 
       <div className={styles.timecardContainer}>

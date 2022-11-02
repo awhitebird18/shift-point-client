@@ -1,24 +1,24 @@
 import { useEffect, useRef } from "react";
-import { actionCreators } from "../../State";
+import { actionCreators } from "../../state";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 
 // Components
-import Export from "../../Pages/Timesheet/Export/Export";
-import ManageSchedule from "../../Pages/Schedule/ManageSchedule/ManageSchedule";
-import PublishSchedule from "../../Pages/Schedule/PublishSchedule/PublishSchedule";
-import AddShift from "../../Pages/Schedule/AddShift/AddShift";
-import ManagePost from "../../Pages/Dashboard/Bulletin/ManagePost";
-import EarningDetailed from "../../Pages/Employees/Payment/EarningDetailed";
-import PositionDetailed from "../../Pages/Employees/Position/PositionDetailed";
-import ExtendedTimecard from "../../Pages/Timesheet/ExtendedTimecard/ExtendedTimecard";
-import OvertimeConfig from "../../Pages/AppConfig/Timesheet/Overtime/OvertimeConfig";
-import PremiumConfig from "../../Pages/AppConfig/Timesheet/Premium/PremiumConfig";
-import BreakTemplateConfig from "../../Pages/AppConfig/Timesheet/Breaks/BreakTemplateConfig";
-import PositionConfig from "../../Pages/AppConfig/Position/PositionConfig";
-import DepartmentConfig from "../../Pages/AppConfig/Departments/DepartmentConfig";
-import CostCentreConfig from "../../Pages/AppConfig/CostCentres/CostCentreConfig";
-import EarningConfig from "../../Pages/AppConfig/Earning/EarningConfig";
+import Export from "../../pages/Timesheet/components/Export/Export";
+import ManageSchedule from "../../pages/Schedule/components/ManageSchedule/ManageSchedule";
+import PublishSchedule from "../../pages/Schedule/components/PublishSchedule/PublishSchedule";
+import AddShift from "../../pages/Schedule/components/AddShift/AddShift";
+import ManagePost from "../../pages/Dashboard/components/Bulletin/ManagePost";
+import EarningDetailed from "../../pages/Employees/components/Payment/EarningDetailed";
+import PositionDetailed from "../../pages/Employees/components/Position/PositionDetailed";
+import ExtendedTimecard from "../../pages/Timesheet/components/ExtendedTimecard/ExtendedTimecard";
+import OvertimeConfig from "../../pages/AppConfig/components/Timesheet/Overtime/OvertimeConfig";
+import PremiumConfig from "../../pages/AppConfig/components/Timesheet/Premium/PremiumConfig";
+import BreakTemplateConfig from "../../pages/AppConfig/components/Timesheet/Breaks/BreakTemplateConfig";
+import PositionConfig from "../../pages/AppConfig/components/Position/PositionConfig";
+import DepartmentConfig from "../../pages/AppConfig/components/Departments/DepartmentConfig";
+import CostCentreConfig from "../../pages/AppConfig/components/CostCentres/CostCentreConfig";
+import EarningConfig from "../../pages/AppConfig/components/Earning/EarningConfig";
 
 // Styles
 import styles from "./Modal.module.css";
@@ -98,7 +98,7 @@ const Modal = (props) => {
   return (
     <>
       <div className={styles.modalOverlay} ref={domNode}>
-        <main className={styles.modal}>
+        <main className={styles.modal} styles={{ ...props.styles }}>
           <div className={styles.header}>
             <h2 className={styles.title}>{props.title}</h2>
             <div className={styles.close} onClick={handleClose}>

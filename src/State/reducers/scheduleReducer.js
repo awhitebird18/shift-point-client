@@ -1,6 +1,3 @@
-import StatusErrorPage from "../../Pages/ErrorHandling/StatusErrorPage";
-import { setCurrentWeek } from "../actionCreators";
-
 const initialState = {
   schedules: [],
   currentWeek: null,

@@ -1,12 +1,13 @@
 // Components
-import ProfilePicture from "../../../Components/ProfilePicture/ProfilePicture";
+import ProfilePicture from "../../../components/ProfilePicture/ProfilePicture";
 import { BsChevronDown } from "react-icons/bs";
 
 // Styles
 import styles from "./User.module.css";
 
 const CurrentUser = ({ user }) => {
-  console.log(user);
+  if (!user) return null;
+
   return (
     <div className={styles.userInfo}>
       <p

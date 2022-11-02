@@ -3,8 +3,8 @@ import { useNavigate } from "react-router";
 // Components
 import User from "./User/User";
 import Notifications from "./Notifications/Notifications";
-import DarkMode from "../../Components/DarkMode/DarkMode";
-import brandLogo from "../../Assets/brandLogo.png";
+import DarkMode from "../../components/DarkMode/DarkMode";
+import brandLogo from "../../assets/brandLogo.png";
 
 // Styles
 import styles from "./TopNav.module.css";
