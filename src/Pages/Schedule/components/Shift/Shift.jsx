@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "../../../../state";
 import { useDrag } from "react-dnd";
 import { BsInfoCircle } from "react-icons/bs";
+import { useMemo } from "react";
 
 const Shift = ({
   shift,
@@ -20,31 +21,30 @@ const Shift = ({
   function isPublished() {
     if (!currentSchedule.publishedTo) return false;
 
-    return date.isBefore(currentSchedule.publishedTo.add(1, "day"), "day")
-      ? true
-      : false;
+    return date.isBefore(currentSchedule.publishedTo.add(1, "day"), "day") ? true : false;
   }
 
-  const [{ isDragging, didDrop }, dragRef] = useDrag(() => ({
-    type: "shift",
-    item: shift,
-
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-      didDrop: !!monitor.didDrop(),
+  const dragConfig = useMemo(
+    () => ({
+      type: "shift",
+      item: shift,
+      collect: (monitor) => ({
+        isDragging: !!monitor.isDragging(),
+        didDrop: !!monitor.didDrop(),
+      }),
     }),
-  }));
+    [shift]
+  );
 
-  const shiftIsCurrentSchedule =
-    shift.scheduleId === currentSchedule._id ? true : false;
+  const [{ isDragging, didDrop }, dragRef] = useDrag(dragConfig);
+
+  const shiftIsCurrentSchedule = shift.scheduleId === currentSchedule._id ? true : false;
 
   let classNames = "shift";
   const shiftStyles = {};
 
   if (shift && shiftIsCurrentSchedule) {
-    classNames = classNames.concat(
-      ` ${shift.colorCode} text ${isPublished() ? "published" : ""} `
-    );
+    classNames = classNames.concat(` ${shift.colorCode} text ${isPublished() ? "published" : ""} `);
 
     shiftStyles.opacity = isDragging ? 0 : 1;
     shiftStyles.opacity = didDrop ? 0 : 1;

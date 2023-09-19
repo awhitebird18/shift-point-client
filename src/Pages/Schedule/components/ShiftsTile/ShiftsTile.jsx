@@ -6,6 +6,7 @@ import { useDrop } from "react-dnd";
 import Shift from "../Shift/Shift";
 import { BsPlus } from "react-icons/bs";
 import styles from "./ShiftsTile.module.css";
+import { useMemo } from "react";
 
 const ShiftsTile = ({
   date,
@@ -19,27 +20,13 @@ const ShiftsTile = ({
 }) => {
   const dispatch = useDispatch();
 
-  const { addNewShift, deleteShift, showModal } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
+  const { addNewShift, deleteShift, showModal } = bindActionCreators(actionCreators, dispatch);
 
   const shifts = useSelector((state) => {
     return state.schedule.shifts.filter((el) => {
       return date.isSame(el.date, "day") && +el.eeNum === employee.eeNum;
     });
   });
-
-  const [{ isOver }, drop] = useDrop(
-    () => ({
-      accept: "shift",
-      drop: (item) => copyShift(item),
-      collect: (monitor) => ({
-        isOver: !!monitor.isOver(),
-      }),
-    }),
-    [date]
-  );
 
   const copyShift = (shift) => {
     const newShift = { ...shift, eeNum: employee.eeNum, date };
@@ -54,6 +41,19 @@ const ShiftsTile = ({
 
     deleteShift(shift._id);
   };
+
+  const dropData = useMemo(
+    () => ({
+      accept: "shift",
+      drop: (item) => copyShift(item),
+      collect: (monitor) => ({
+        isOver: !!monitor.isOver(),
+      }),
+    }),
+    [copyShift]
+  );
+
+  const [{ isOver }, drop] = useDrop(dropData);
 
   const handleAddShift = (e) => {
     e.stopPropagation();
