@@ -16,14 +16,6 @@
   height: 100%;
 }
 
-.slideIn {
-  animation-name: slidein;
-  animation-duration: 1.5s;
-  min-width: min-content;
-  display: block;
-  height: 100%;
-}
-
 .slideIn::-webkit-scrollbar {
   width: 0;
 }

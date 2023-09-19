@@ -81,21 +81,15 @@ const AccountList = ({ setCurrentUser, userList }) => {
       <div className={`${styles.header} ${styles.columns} list-header--md`}>
         <div>
           First Name
-          <span onClick={() => handleSort("firstName")}>
-            {sortIcon("firstName")}
-          </span>
+          <span onClick={() => handleSort("firstName")}>{sortIcon("firstName")}</span>
         </div>
         <div>
           Last Name
-          <span onClick={() => handleSort("lastName")}>
-            {sortIcon("lastName")}
-          </span>
+          <span onClick={() => handleSort("lastName")}>{sortIcon("lastName")}</span>
         </div>
         <div className="hide--mobile">
           <p>Username</p>
-          <span onClick={() => handleSort("username")}>
-            {sortIcon("username")}
-          </span>
+          <span onClick={() => handleSort("username")}>{sortIcon("username")}</span>
         </div>
         <div className="hide--medium">
           Title
@@ -111,12 +105,10 @@ const AccountList = ({ setCurrentUser, userList }) => {
         </div>
         <div>
           Status
-          <span onClick={() => handleSort("active", "numeric")}>
-            {sortIcon("active")}
-          </span>
+          <span onClick={() => handleSort("active", "numeric")}>{sortIcon("active")}</span>
         </div>
       </div>
-      <div className="slideUpAnimation">
+      <div>
         {sortedUsers?.map((user) => {
           return (
             <div

@@ -132,11 +132,7 @@ export const setCurrentWeek = (startDate) => {
       },
     });
 
-    const { data } = await axios.get(
-      `shift?startDate=${startDate.format("YYYY-MM-DD")}`
-    );
-
-    console.log(data);
+    const { data } = await axios.get(`shift?startDate=${startDate.format("YYYY-MM-DD")}`);
 
     const dataFormatted = data.data.map((el) => {
       return {

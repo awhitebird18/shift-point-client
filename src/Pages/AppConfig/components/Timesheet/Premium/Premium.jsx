@@ -34,7 +34,7 @@ const Premium = () => {
           <div>Earning Code</div>
           <div className={styles.center}>Delete</div>
         </div>
-        <div className="slideUpAnimation">
+        <div>
           {premiumList && premiumList.length > 0
             ? premiumList.map((el, index) => {
                 return (
@@ -52,11 +52,7 @@ const Premium = () => {
         </div>
       </div>
       <div className={styles.addPremium}>
-        <Button
-          type="primary"
-          onClick={handleAddPremium}
-          style={{ width: "9rem" }}
-        >
+        <Button type="primary" onClick={handleAddPremium} style={{ width: "9rem" }}>
           Add Premium
         </Button>
       </div>

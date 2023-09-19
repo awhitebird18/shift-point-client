@@ -1,8 +1,8 @@
 .container {
   padding: min(10vh, 1rem);
   position: relative;
-  width: calc(100vw - 175px);
-  left: 175px;
+  width: calc(100vw - 225px);
+  left: 225px;
   transition: left 0.26s ease-out;
   max-height: calc(100vh - 4rem);
   overflow-x: scroll;

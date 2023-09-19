@@ -28,11 +28,7 @@ const EarningSetup = () => {
   return (
     <>
       <div className={`hide--medium ${styles.header}`}>
-        <Menu
-          selectedKeys={current}
-          mode="horizontal"
-          style={{ borderBottom: "none" }}
-        >
+        <Menu selectedKeys={current} mode="horizontal" style={{ borderBottom: "none" }}>
           <Menu.Item key="earningList">
             <Link to="">Earning List</Link>
           </Menu.Item>
@@ -54,7 +50,7 @@ const EarningSetup = () => {
           <div>Delete</div>
         </div>
 
-        <div className="slideUpAnimation">
+        <div>
           {earningList
             ? earningList.map((el, index) => {
                 return (

@@ -5,6 +5,5 @@
 }
 
 .container {
-  box-shadow: var(--boxshadow-main);
   border-radius: 50%;
 }

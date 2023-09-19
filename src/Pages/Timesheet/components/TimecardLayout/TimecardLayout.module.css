@@ -3,8 +3,6 @@
   border-radius: 0.5rem;
   box-shadow: var(--boxshadow-main);
   font-size: 0.8rem;
-  animation-name: slidein;
-  animation-duration: 0.75s;
 }
 
 .row {

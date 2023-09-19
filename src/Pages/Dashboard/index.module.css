@@ -71,7 +71,6 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  transition: 0.3s ease-in;
 }
 
 .chatWrapper:hover {
@@ -95,11 +94,7 @@
   height: 2rem;
   padding: 1rem;
   background: rgb(0, 0, 0);
-  background: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0) 80%
-  );
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 80%);
 }
 
 @media (max-width: 1200px) {

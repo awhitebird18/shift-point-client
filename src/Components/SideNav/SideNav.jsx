@@ -35,25 +35,19 @@ const SideNav = ({ user }) => {
           const assignedModules = modules.filter(
             (module) =>
               module.section === section &&
-              user.moduleAccess.find(
-                (assignedModule) => assignedModule.moduleId === module._id
-              )?.access
+              user.moduleAccess.find((assignedModule) => assignedModule.moduleId === module._id)
+                ?.access
           );
 
           if (assignedModules.length === 0) return;
 
           return (
             <div key={index}>
-              <h5 className={`header-gray hide--large ${styles.header}`}>
-                {section}
-              </h5>
+              <h5 className={`header-gray hide--large ${styles.header}`}>{section}</h5>
 
               {user &&
                 assignedModules.map((module, index) => {
-                  if (
-                    !user.moduleAccess.find((el) => el.moduleId === module._id)
-                      .access
-                  ) {
+                  if (!user.moduleAccess.find((el) => el.moduleId === module._id).access) {
                     return;
                   }
 

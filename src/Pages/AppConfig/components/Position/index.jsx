@@ -37,11 +37,7 @@ const PositionSetup = () => {
   return (
     <>
       <div className={styles.header}>
-        <Menu
-          selectedKeys={current}
-          mode="horizontal"
-          style={{ borderBottom: "none" }}
-        >
+        <Menu selectedKeys={current} mode="horizontal" style={{ borderBottom: "none" }}>
           <Menu.Item key="positionList">
             <Link to="">Position List</Link>
           </Menu.Item>
@@ -55,7 +51,7 @@ const PositionSetup = () => {
         <div className="hide--tablet">Premium</div>
         <div className={positionStyles.remove}>Delete</div>
       </div>
-      <div className="slideUpAnimation">
+      <div>
         <div>
           {positionList && departmentList && earningList && premiumList
             ? positionList.map((el, index) => {

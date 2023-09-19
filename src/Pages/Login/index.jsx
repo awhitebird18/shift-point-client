@@ -47,8 +47,6 @@ const Login = () => {
       login_data.password = formData.password;
     }
 
-    console.log(login_data);
-
     if (!login_data.clientId || !login_data.username || !login_data.password) {
       toast.error("Missing credentials");
 
@@ -84,15 +82,15 @@ const Login = () => {
   return (
     <div className={styles.main}>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <div className={styles.imgWrapper}>
-            <img src={brandLogo} alt="" style={{ height: "100%" }} />
-          </div>
-          <h1 style={{ margin: "0", paddingLeft: "0.25rem" }} className={styles.title}>
-            Shift Point
-          </h1>
-        </div>
         <main className={styles.content}>
+          <div className={styles.header}>
+            <div className={styles.imgWrapper}>
+              <img src={brandLogo} alt="" style={{ height: "100%" }} />
+            </div>
+            <h1 style={{ margin: "0", paddingLeft: "0.25rem" }} className={styles.title}>
+              Shift Point
+            </h1>
+          </div>
           <Form layout="vertical" autoComplete="off">
             <Form.Item label="Client Id" name="clientId">
               <Input
@@ -112,24 +110,21 @@ const Login = () => {
               />
             </Form.Item>
 
-            <Button onClick={() => handleSubmit(null)} style={{ width: "100%", marginTop: "1rem" }}>
+            <Button onClick={() => handleSubmit(null)} style={{ width: "100%", marginTop: "2rem" }}>
               Login
             </Button>
-
-            <Divider>Login with Guest Account</Divider>
           </Form>
 
-          <div>
-            <Button type="secondary" style={{ width: "100%" }} onClick={() => handleSubmit("guestAccount")}>
-              Explore Shift Point
+          <div className={styles.guestBanner}>
+            <Button
+              className={styles.guestButton}
+              style={{ width: "100%" }}
+              onClick={() => handleSubmit("guestAccount")}
+            >
+              Sign in annonymously
             </Button>
           </div>
         </main>
-        {/* <div className={styles.footer}>
-          <div
-            className={styles.url}
-          >{`Connected to: ${process.env.REACT_APP_BASE_URL}`}</div>
-        </div> */}
       </div>
     </div>
   );

@@ -1,13 +1,15 @@
 {
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    },
-    "parser": "esprima"
+    }
   },
   "rules": {
     "semi": 2
+  },
+  "env": {
+    "es6": true
   }
 }

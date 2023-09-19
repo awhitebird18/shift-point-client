@@ -21,7 +21,7 @@
 }
 
 .imgWrapper {
-  height: 2.25rem;
+  height: 2.75rem;
   width: auto;
   margin-right: 1rem;
   margin-bottom: 0.25rem;
@@ -37,10 +37,11 @@
 }
 
 .content {
-  padding: 1.5rem;
-  width: 23rem;
-  border-radius: 0.5rem;
-  box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+  position: relative;
+  padding: 3rem 2rem;
+  width: 25rem;
+  border-radius: 1rem;
+  box-shadow: 0.1rem 0.1rem 0.25rem rgba(0, 0, 0, 0.15);
 }
 
 .footer {
@@ -65,4 +66,16 @@ label {
 
 .ant-input-affix-wrapper {
   background-color: inherit !important;
+}
+
+.guestBanner {
+  position: absolute;
+  top: -1rem;
+  right: -2rem;
+}
+
+.guestButton {
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
 }

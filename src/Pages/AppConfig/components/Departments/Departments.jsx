@@ -33,7 +33,7 @@ const Departments = () => {
           <div className={styles.button}>Delete</div>
         </div>
 
-        <div className="slideUpAnimation">
+        <div>
           {departmentList && costCentreList
             ? departmentList.map((el, index) => {
                 return (

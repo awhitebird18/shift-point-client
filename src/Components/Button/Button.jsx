@@ -18,14 +18,11 @@ const Button = ({ children, color, type, onClick, style, className }) => {
 
   return (
     <button
-      className={`${styles.button} ${
-        type === "secondary" ? styles.secondary : ""
-      } ${className}`}
+      className={`${styles.button} ${type === "secondary" ? styles.secondary : ""} ${className}`}
       style={customStyles}
       onClick={onClick}
     >
       {children}
-      <div className={styles.buttonOverlay} />
     </button>
   );
 };

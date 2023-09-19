@@ -29,7 +29,7 @@ const Breaks = ({ breakTemplates, setTimesheetRules }) => {
         <div>Delete</div>
       </div>
 
-      <div className="slideUpAnimation">
+      <div>
         <div>
           {breakTemplates.length > 0 ? (
             breakTemplates.map((breakEl, index) => {

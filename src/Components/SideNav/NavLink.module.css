@@ -5,7 +5,7 @@
   transition: justify-content 1s ease;
   margin: 0.5rem 0;
   position: relative;
-  transition: 0.1s transform ease;
+  /* transition: 0.1s transform ease; */
 }
 
 .container:hover {
@@ -15,12 +15,13 @@
 .content {
   display: flex;
   height: min-content;
+  align-items: center;
 }
 
 .menuItemText {
   margin: 0;
   margin-left: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   white-space: nowrap;
   flex-shrink: 1;
   color: inherit;
@@ -34,7 +35,7 @@
   justify-content: center;
   border-radius: 5px;
   font-size: 1rem;
-  transition: transform 0.25s ease;
+  /* transition: transform 0.25s ease; */
   flex-shrink: 0;
   z-index: 3;
   box-shadow: var(--boxshadow-main);

@@ -31,7 +31,10 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-  const { setCurrentUser, fetchEmployees, fetchDataAxios } = bindActionCreators(actionCreators, dispatch);
+  const { setCurrentUser, fetchEmployees, fetchDataAxios } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   // Initial App Fetch
   useEffect(() => {
@@ -60,7 +63,6 @@ const App = () => {
       >
         <Sider
           style={{
-            transition: "",
             background: "#fff",
             position: "fixed",
             top: "4rem",
@@ -69,7 +71,7 @@ const App = () => {
             zIndex: "5",
           }}
           className="site-layout-background"
-          width={175}
+          width={225}
           breakpoint="xl"
           collapsedWidth={50}
         >

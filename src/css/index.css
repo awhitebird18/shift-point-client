@@ -16,22 +16,23 @@ h6 {
 }
 
 :root {
-  --breaksheet-row: minmax(8rem, 2fr) repeat(2, minmax(5.5rem, 1fr))
-    minmax(4rem, 1fr) minmax(5rem, 0.5fr) minmax(5rem, 1fr) 4rem;
+  --breaksheet-row: minmax(8rem, 2fr) repeat(2, minmax(5.5rem, 1fr)) minmax(4rem, 1fr)
+    minmax(5rem, 0.5fr) minmax(5rem, 1fr) 4rem;
 
-  --breaksheet-row-summary: minmax(8rem, 2fr) minmax(11rem, 1fr)
-    minmax(4rem, 1fr) minmax(5rem, 0.5fr) minmax(5rem, 1fr) 4rem;
+  --breaksheet-row-summary: minmax(8rem, 2fr) minmax(11rem, 1fr) minmax(4rem, 1fr)
+    minmax(5rem, 0.5fr) minmax(5rem, 1fr) 4rem;
 
   /* Grayscale */
   --color_white: #fff;
-  --color_gray_0: rgb(240, 242, 246);
+  --color_gray_0: #f7f8f9;
   --color_gray_1: #ecebeb;
   --color_gray_2: #d9d9d9;
   --color_gray_3: #bfbfbf;
   --color_gray_4: #8c8c8c;
   --color_gray_5: #595959;
   --color_gray_6: #434343;
-  --color_gray_8: rgb(63, 63, 63);
+  --color_gray_8: rgb(37, 37, 63);
+  --color_gray_9: #020617;
   --color_black: #000;
 
   /* Colors */
@@ -43,20 +44,18 @@ h6 {
   --color_yellow_3: #ffc53d; */
 
   /* Colors */
-  --blue: rgb(20, 20, 25);
-  --blue: rgb(18, 18, 26);
-  --section: rgb(19, 30, 42);
-  --section: rgb(23, 24, 38);
-  --input: rgba(29, 46, 64, 0.539);
-  --input: rgba(34, 35, 45, 0.539);
-  --color-primary: #9254de;
+  --blue: #121212;
+  --section: #1c1c20;
+  --input: rgb(40, 40, 46);
+  --color-primary: #6366f1;
+  --color-primary-hover: #4338ca;
   --color-primary-trans: #5c1fc4be;
   --color_red_3: #ff7875;
   --color_yellow_3: #ffc53d;
 
   /* Borders */
 
-  --border-main: 1px solid rgba(189, 189, 189, 0.297);
+  --border-main: 1px solid rgba(105, 86, 190, 0.297);
   --section-border-radius: 0.5rem;
   --inputBorderRadius: 0.25rem;
   --color_inputBorder-light: #ededed;
@@ -76,8 +75,8 @@ body.light {
   --timesheetBorderColor: var(--color_gray_1);
   --border-main: 1px solid rgba(163, 163, 163, 0.297);
   --border-input: 1px solid rgba(163, 163, 163, 0.297);
-  --boxshadow-main: rgba(0, 0, 0, 0.1) 2px 2px 3px;
-  --boxshadow-shift: rgba(0, 0, 0, 0.5) 0px 2px 4px;
+  --boxshadow-main: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  --boxshadow-shift: rgba(0, 0, 0, 0.15) 2px 2px 2px;
   --boxshadow-input: rgba(0, 0, 0, 0.05) 3px 3px 3px;
   --boxshadow-input: 0;
   --list-hover: var(--color_gray_0);
@@ -90,13 +89,15 @@ body.dark {
   --text-color: var(--color_gray_3);
   --text-color-reverse: var(--color_gray_8);
   --inputBackground: var(--input);
+  --inputBackgroundHover: rgb(50, 50, 60);
   --shiftColor: var(--color_white);
-  --timesheetBorderColor: var(--color_gray_5);
-  --inputBorder: none;
+  --timesheetBorderColor: var(--input);
+  --inputBorder: var(--input);
+  --border-input: 1px solid var(--input);
   /* --border-main: 1px solid rgba(189, 189, 189, 0.297); */
-  --border-main: 1px solid rgba(189, 189, 189, 0.145);
-  --boxshadow-main: rgba(0, 0, 0, 0.4) 0px 3px 6px;
-  --boxshadow-input: rgba(0, 0, 0, 0.2) 0px 3px 4px;
+  --border-main: 1px solid var(--color_black);
+  --boxshadow-main: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  --boxshadow-input: rgba(0, 0, 0, 0.1) 0px 3px 4px;
   --boxshadow-shift: rgba(0, 0, 0, 0.6) 0px 3px 4px;
   --list-hover: rgb(33, 30, 72);
 }
@@ -111,7 +112,6 @@ body {
   font-family: "Open Sans", sans-serif;
   font-family: "Poppins", sans-serif;
   background: var(--background-color);
-  transition: background-color 1s ease-in;
 }
 
 body nav,
@@ -121,7 +121,6 @@ body section,
 body table,
 body header,
 body ul {
-  transition: background 0.5s ease-in;
   background: var(--sectionmain);
 }
 
@@ -133,7 +132,6 @@ body section {
 
 .main--background {
   background: var(--background-color);
-  transition: background 0.5s ease-in;
 }
 
 .header-gray {

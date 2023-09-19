@@ -30,10 +30,17 @@ const CostCentres = () => {
         </div>
       </div>
 
-      <div className="slideUpAnimation">
+      <div>
         {costCentreList
           ? costCentreList.map((costCentre, index) => {
-              return <CostCentreRow key={index} costCentre={costCentre} setCostCentreList={setCostCentreList} showModal={showModal} />;
+              return (
+                <CostCentreRow
+                  key={index}
+                  costCentre={costCentre}
+                  setCostCentreList={setCostCentreList}
+                  showModal={showModal}
+                />
+              );
             })
           : "No Cost Centres "}
 

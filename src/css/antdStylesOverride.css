@@ -71,6 +71,7 @@
 .ant-select,
 .ant-input {
   background: var(--inputBackground);
+  transition: 0;
 }
 
 .ant-select > a {
@@ -237,16 +238,25 @@ input[type="file"] {
 .ant-select-item-option:hover,
 .ant-select-item-option-content:hover,
 .ant-select-item-option-active:hover {
-  color: rgb(38, 38, 38) !important;
+  color: var(--text-color) !important;
+  background-color: var(--inputBorder) !important;
+}
+
+.ant-select-item-option-active:hover:not(.ant-select-item-option-selected) {
+  background-color: var(--inputBorder) !important;
+}
+
+.ant-select-item-option-active:hover.ant-select-item-option-content {
+  color: var(--text-color) !important;
 }
 
 .ant-select-item-option-selected {
   background-color: var(--color-primary) !important;
 }
 
-.ant-select-item-option-active > .ant-select-item-option-content {
-  color: rgb(38, 38, 38) !important;
-}
+/* .ant-select-item-option-active > .ant-select-item-option-content {
+  color: var(--text-color) !important;
+} */
 
 .ant-select-item-option-selected > .ant-select-item-option-content {
   color: #fff !important;

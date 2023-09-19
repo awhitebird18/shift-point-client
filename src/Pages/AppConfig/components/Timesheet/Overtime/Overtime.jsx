@@ -31,7 +31,7 @@ const Overtime = ({ timesheetRules, setTimesheetRules }) => {
         <div className="hide--tablet">Period Start Date</div>
         <div>Delete</div>
       </div>
-      <div className="slideUpAnimation">
+      <div>
         {timesheetRules?.overtime.map((overtimeRule) => {
           return (
             <OvertimeRow
@@ -45,11 +45,7 @@ const Overtime = ({ timesheetRules, setTimesheetRules }) => {
         })}
       </div>
 
-      <Button
-        type="primary"
-        onClick={handleAddOvertime}
-        style={{ margin: "2rem 1rem 1rem auto" }}
-      >
+      <Button type="primary" onClick={handleAddOvertime} style={{ margin: "2rem 1rem 1rem auto" }}>
         Add Overtime Rule
       </Button>
     </>
