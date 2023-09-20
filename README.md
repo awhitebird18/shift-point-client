@@ -1,4 +1,4 @@
-# Shift Point ![Shift Point Logo](path_to_logo.png)
+# Shift Point ![Shift Point Logo](https://res.cloudinary.com/dwkvw91pm/image/upload/v1695171836/brandLogo_yxrufv.png)
 
 A workspace management tool designed to offer businesses comprehensive control over employee shifts, timesheets, and schedules. It introduces a seamless way for companies to monitor and manage their workforce's time, while also allowing for custom configurations tailored to unique operational needs.
 
