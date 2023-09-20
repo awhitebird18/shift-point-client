@@ -6,8 +6,8 @@ A workspace management tool designed to offer businesses comprehensive control o
 
 ## Features
 
-- __Employee Timesheets:__ Managers can review, modify, and code the working hours of employees, adjusting rates of pay as necessary.
-- **Exportable Timesheets**: Easily export timesheets to a CSV format.
+- **Employee Timesheets:** Managers can review, modify, and code the working hours of employees, adjusting rates of pay as necessary.
+- **Exportable Timesheets:** Easily export timesheets to a CSV format.
 - **Employee Scheduling:** Managers can set schedules for employees. System flags deviations from set schedules, ensuring adherence to company policies.
 - **User and Admin Controls:** Full account controls ensure managers and admins have the right access levels.
 - **Easy Employee Onboarding:** Simple and straightforward employee account creation.
