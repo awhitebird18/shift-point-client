@@ -30,7 +30,7 @@ To get the Shift Point application running locally, follow these steps:
 ### Frontend
 
 1. Clone the frontend repository:
-```https://github.com/awhitebird18/shift-point.git)](https://github.com/awhitebird18/shift-point.git```
+```https://github.com/awhitebird18/shift-point.git```
 
 2. Navigate to the cloned directory and install dependencies:
 cd <path_to_frontend_directory>
