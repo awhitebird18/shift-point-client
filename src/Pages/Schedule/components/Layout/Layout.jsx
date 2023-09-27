@@ -28,8 +28,10 @@ const Layout = () => {
 
   const dispatch = useDispatch();
 
-  const { deleteShift, addNewShift, fetchSchedules, setCurrentWeek } =
-    bindActionCreators(actionCreators, dispatch);
+  const { deleteShift, addNewShift, fetchSchedules, setCurrentWeek } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   useEffect(() => {
     const currentDate = dayjs().startOf("week");
@@ -103,6 +105,8 @@ const Layout = () => {
     }
   }, [keysPressed]);
 
+  if (!dates) return;
+
   return (
     <div className={styles.container}>
       {currentWeek && <Header currentWeek={currentWeek} />}
@@ -131,9 +135,7 @@ const Layout = () => {
             );
           })}
       </DndProvider>
-      {dates && currentSchedule && (
-        <Footer dates={dates} currentSchedule={currentSchedule} />
-      )}
+      {dates && currentSchedule && <Footer dates={dates} currentSchedule={currentSchedule} />}
 
       {/* {currentShift && isModalVisible && currentSchedule && (
         <AddShift
