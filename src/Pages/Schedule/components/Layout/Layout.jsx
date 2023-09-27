@@ -104,8 +104,9 @@ const Layout = () => {
       }
     }
   }, [keysPressed]);
+  console.log(dates);
 
-  if (!dates) return;
+  if (!dates) return <div />;
 
   return (
     <div className={styles.container}>
