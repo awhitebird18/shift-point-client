@@ -7,6 +7,7 @@ import Premium from "./Premium/Premium";
 import ShiftRules from "./ShiftRules/ShiftRules";
 import Breaks from "./Breaks/Breaks";
 import { Menu } from "antd";
+import GenerateSchedule from "../GenerateSchedule/GenerateSchedule";
 
 const TimesheetSetting = () => {
   const firstLoad = useRef(true);
@@ -77,25 +78,49 @@ const TimesheetSetting = () => {
           <Menu.Item key="shiftrules">
             <Link to="/app/settings/timesheet/shiftrules">Shift Rules</Link>
           </Menu.Item>
+          <Menu.Item key="generateschedule">
+            <Link to="/app/settings/timesheet/generateschedule">Generate Schedule</Link>
+          </Menu.Item>
         </Menu>
       </div>
       <div>
         {timesheetRules && (
           <Routes>
-            <Route path="/rounding" element={<Rounding timesheetRules={timesheetRules} setTimesheetRules={setTimesheetRules} />} />
+            <Route
+              path="/rounding"
+              element={
+                <Rounding timesheetRules={timesheetRules} setTimesheetRules={setTimesheetRules} />
+              }
+            />
 
-            <Route path="/overtime" element={<Overtime timesheetRules={timesheetRules} setTimesheetRules={setTimesheetRules} />} />
+            <Route
+              path="/overtime"
+              element={
+                <Overtime timesheetRules={timesheetRules} setTimesheetRules={setTimesheetRules} />
+              }
+            />
 
             <Route path="/premium" element={<Premium />} />
 
             <Route
               path="/breaks"
-              element={<Breaks breakTemplates={timesheetRules.breakTemplates} setTimesheetRules={setTimesheetRules} />}
+              element={
+                <Breaks
+                  breakTemplates={timesheetRules.breakTemplates}
+                  setTimesheetRules={setTimesheetRules}
+                />
+              }
             />
             <Route
               path="/shiftrules"
-              element={<ShiftRules shiftRulesTM={{ ...timesheetRules.shiftRules }} setTimesheetRules={setTimesheetRules} />}
+              element={
+                <ShiftRules
+                  shiftRulesTM={{ ...timesheetRules.shiftRules }}
+                  setTimesheetRules={setTimesheetRules}
+                />
+              }
             />
+            <Route path="/generateschedule" element={<GenerateSchedule />} />
           </Routes>
         )}
       </div>

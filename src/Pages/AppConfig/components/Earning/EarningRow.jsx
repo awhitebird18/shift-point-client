@@ -49,11 +49,7 @@ const EarningRow = ({ earning, setEarningList, showModal }) => {
       </div>
 
       <div className={styles.icon}>
-        <Button
-          type="secondary"
-          onClick={handleDelete}
-          style={{ padding: "0.25rem 0.5rem" }}
-        >
+        <Button type="secondary" onClick={handleDelete} style={{ padding: "0.25rem 0.5rem" }}>
           Delete
         </Button>
       </div>
