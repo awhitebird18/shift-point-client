@@ -19,26 +19,26 @@ const ScheduleRow = ({
           <ProfilePicture user={employee} />
         </div>
 
-        <div
-          className={styles.employeeName}
-        >{`${employee.firstName} ${employee.lastName}`}</div>
+        <div className={styles.employeeName}>{`${employee.firstName} ${employee.lastName}`}</div>
       </div>
 
-      {dates.map((date, index) => {
-        return (
-          <ShiftsTile
-            key={index}
-            date={date}
-            employee={employee}
-            setIsModalVisible={setIsModalVisible}
-            currentShift={currentShift}
-            setCurrentShift={setCurrentShift}
-            currentSchedule={currentSchedule}
-            positionList={positionList}
-            keysPressedRef={keysPressedRef}
-          />
-        );
-      })}
+      {dates
+        ? dates.map((date, index) => {
+            return (
+              <ShiftsTile
+                key={index}
+                date={date}
+                employee={employee}
+                setIsModalVisible={setIsModalVisible}
+                currentShift={currentShift}
+                setCurrentShift={setCurrentShift}
+                currentSchedule={currentSchedule}
+                positionList={positionList}
+                keysPressedRef={keysPressedRef}
+              />
+            );
+          })
+        : null}
     </div>
   );
 };

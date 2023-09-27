@@ -106,8 +106,6 @@ const Layout = () => {
   }, [keysPressed]);
   console.log(dates);
 
-  if (!dates) return <div />;
-
   return (
     <div className={styles.container}>
       {currentWeek && <Header currentWeek={currentWeek} />}
